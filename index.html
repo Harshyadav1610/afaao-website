@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Afaao is a Revenue Operations and GTM systems consultancy. We implement Salesforce, HubSpot, and compliant data enrichment for B2B teams." />
+  <title>Afaao — RevOps & GTM Systems Consultancy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --ink: #0a0f1e;
+      --muted: #5b6478;
+      --accent: #1e3a8a;
+      --accent-light: #eef2ff;
+      --border: #e5e7eb;
+      --card: #f9fafb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* Navigation */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: 800; font-size: 22px; letter-spacing: -0.5px; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { color: var(--ink); text-decoration: none; font-size: 15px; font-weight: 500; }
+    .nav-links a:hover { color: var(--accent); }
+    .btn {
+      display: inline-block; padding: 10px 20px; border-radius: 8px;
+      font-weight: 600; text-decoration: none; font-size: 15px;
+      transition: all 0.2s;
+    }
+    .btn-primary { background: var(--ink); color: white; }
+    .btn-primary:hover { background: var(--accent); }
+    .btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--ink); }
+
+    /* Hero */
+    .hero { padding: 100px 0 80px; }
+    .eyebrow {
+      display: inline-block; padding: 6px 14px;
+      background: var(--accent-light); color: var(--accent);
+      border-radius: 100px; font-size: 13px; font-weight: 600;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 800; line-height: 1.1; letter-spacing: -1.5px;
+      margin-bottom: 24px; max-width: 900px;
+    }
+    .hero p.lead {
+      font-size: 20px; color: var(--muted); max-width: 720px;
+      margin-bottom: 32px;
+    }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* Logos strip */
+    .logos-strip { padding: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .logos-strip p { text-align: center; color: var(--muted); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+    .logos-row { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; opacity: 0.6; font-weight: 600; }
+
+    /* Sections */
+    section { padding: 80px 0; }
+    .section-title { font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; }
+    .section-sub { font-size: 18px; color: var(--muted); max-width: 680px; margin-bottom: 48px; }
+
+    /* Problem section */
+    .problem { background: var(--card); }
+    .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 32px; }
+    .problem-item { padding: 24px; background: white; border-radius: 12px; border: 1px solid var(--border); }
+    .problem-item h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .problem-item p { font-size: 14px; color: var(--muted); }
+
+    /* Services */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .service-card {
+      padding: 32px; border: 1px solid var(--border); border-radius: 16px;
+      background: white; transition: all 0.3s;
+    }
+    .service-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 10px 40px rgba(30,58,138,0.08); }
+    .service-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--accent-light); display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 20px;
+    }
+    .service-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+    .service-card p { color: var(--muted); font-size: 15px; margin-bottom: 16px; }
+    .service-card ul { list-style: none; }
+    .service-card li { font-size: 14px; color: var(--muted); padding: 4px 0; padding-left: 20px; position: relative; }
+    .service-card li:before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+
+    /* Framework */
+    .framework { background: var(--ink); color: white; }
+    .framework .section-title { color: white; }
+    .framework .section-sub { color: #9ca3af; }
+    .framework-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+    .framework-step { padding: 28px; background: rgba(255,255,255,0.05); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
+    .framework-step .num { font-size: 14px; color: #60a5fa; font-weight: 700; margin-bottom: 12px; }
+    .framework-step h4 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .framework-step p { font-size: 14px; color: #9ca3af; }
+
+    /* Why us */
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
+    .why-item h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .why-item p { color: var(--muted); font-size: 15px; }
+
+    /* CTA */
+    .cta-section { background: var(--accent-light); text-align: center; padding: 80px 0; }
+    .cta-section h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 16px; letter-spacing: -1px; }
+    .cta-section p { font-size: 18px; color: var(--muted); margin-bottom: 32px; }
+
+    /* Footer */
+    footer { padding: 48px 0 32px; border-top: 1px solid var(--border); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; flex-wrap: wrap; }
+    .footer-col p { font-size: 14px; color: var(--muted); margin-top: 8px; max-width: 320px; }
+    .footer-col h5 { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; color: var(--muted); }
+    .footer-col a { display: block; color: var(--ink); text-decoration: none; font-size: 14px; padding: 4px 0; }
+    .footer-col a:hover { color: var(--accent); }
+    .footer-bottom { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted); }
+
+    @media (max-width: 640px) {
+      .nav-links a:not(.btn) { display: none; }
+      .hero { padding: 60px 0 40px; }
+      section { padding: 60px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="container nav-inner">
+      <div class="logo">afa<span>ao</span></div>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#approach">Approach</a>
+        <a href="#why">Why Afaao</a>
+        <a href="#contact" class="btn btn-primary">Book a call</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">RevOps & GTM Systems Consultancy</span>
+      <h1>The RevOps partner for B2B teams that need their stack to actually work.</h1>
+      <p class="lead">Afaao implements, cleans up, and scales your Salesforce, HubSpot, and data enrichment tools — with compliance built in, not bolted on.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary">Book a 30-min intro call</a>
+        <a href="#services" class="btn btn-secondary">See our services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOGOS STRIP -->
+  <div class="logos-strip">
+    <div class="container">
+      <p>We work with the tools your revenue team depends on</p>
+      <div class="logos-row">
+        <span>Salesforce</span>
+        <span>HubSpot</span>
+        <span>Gainsight</span>
+        <span>Marketo</span>
+        <span>ZoomInfo</span>
+        <span>Cognism</span>
+        <span>Apollo</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <section class="problem">
+    <div class="container">
+      <h2 class="section-title">Sound familiar?</h2>
+      <p class="section-sub">Most B2B teams don't need another marketing agency. They need someone who understands the plumbing.</p>
+      <div class="problem-grid">
+        <div class="problem-item">
+          <h4>Half-configured CRM</h4>
+          <p>Salesforce or HubSpot set up in a hurry, now nobody trusts the data.</p>
+        </div>
+        <div class="problem-item">
+          <h4>Enrichment chaos</h4>
+          <p>ZoomInfo and Cognism overwriting fields they shouldn't touch.</p>
+        </div>
+        <div class="problem-item">
+          <h4>Compliance anxiety</h4>
+          <p>Expanding to new regions but unsure if your data practices hold up under GDPR or CASL.</p>
+        </div>
+        <div class="problem-item">
+          <h4>Sales vs Marketing</h4>
+          <p>Arguing over lead quality because routing and scoring rules were never fully defined.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title">What we do</h2>
+      <p class="section-sub">Three focused practices — designed to work together, available separately.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">⚙️</div>
+          <h3>MarTech & RevOps Implementation</h3>
+          <p>Salesforce, HubSpot, Marketo, Gainsight — set up, migrated, or rebuilt.</p>
+          <ul>
+            <li>Platform setup and migration</li>
+            <li>Object and workflow architecture</li>
+            <li>Lead routing and deduplication</li>
+            <li>Integrations and documentation</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🔐</div>
+          <h3>Compliant Data Enrichment</h3>
+          <p>ZoomInfo, Cognism, Apollo, Clay — structured to respect GDPR, CCPA, and CASL from day one.</p>
+          <ul>
+            <li>Enrichment workflow design</li>
+            <li>Compliance-aligned data processes</li>
+            <li>Deduplication and hygiene</li>
+            <li>Multi-region data strategy</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📊</div>
+          <h3>Fractional RevOps & Support</h3>
+          <p>Dashboards, process docs, lead routing, and a phone-a-friend for your ops team.</p>
+          <ul>
+            <li>Ongoing fractional RevOps</li>
+            <li>Reporting and dashboards</li>
+            <li>Process documentation</li>
+            <li>Team training and enablement</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRAMEWORK -->
+  <section id="approach" class="framework">
+    <div class="container">
+      <h2 class="section-title">The Afaao Framework</h2>
+      <p class="section-sub">A simple four-phase engagement model that keeps projects on scope and on time.</p>
+      <div class="framework-grid">
+        <div class="framework-step">
+          <div class="num">01 — AUDIT</div>
+          <h4>Understand before acting</h4>
+          <p>We inventory your stack, data, and processes. No assumptions.</p>
+        </div>
+        <div class="framework-step">
+          <div class="num">02 — ARCHITECT</div>
+          <h4>Design the system</h4>
+          <p>We design the solution before we touch a single field or workflow.</p>
+        </div>
+        <div class="framework-step">
+          <div class="num">03 — ACTIVATE</div>
+          <h4>Build and launch</h4>
+          <p>We implement, migrate, and integrate — with clear documentation throughout.</p>
+        </div>
+        <div class="framework-step">
+          <div class="num">04 — ADAPT</div>
+          <h4>Tune and train</h4>
+          <p>We stay close post-launch to iterate, train your team, and hand off cleanly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why">
+    <div class="container">
+      <h2 class="section-title">Why Afaao</h2>
+      <p class="section-sub">Three principles that shape every engagement.</p>
+      <div class="why-grid">
+        <div class="why-item">
+          <h4>🔒 Compliance-first</h4>
+          <p>We treat data privacy as a design principle, not a checkbox at the end of the project. Your enrichment workflows respect GDPR, CCPA, and CASL from day one.</p>
+        </div>
+        <div class="why-item">
+          <h4>🧩 Systems-literate, not just tool-literate</h4>
+          <p>Most problems aren't platform problems — they're process problems. We fix workflows, then configure tools to support them.</p>
+        </div>
+        <div class="why-item">
+          <h4>💡 No bloated retainers</h4>
+          <p>Project, retainer, or fractional — priced to match the work, not the calendar. We scope ruthlessly and document everything.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" class="cta-section">
+    <div class="container">
+      <h2>Ready to make your revenue stack actually work?</h2>
+      <p>Book a 30-minute intro call. No pitch deck, just a conversation about what you're trying to fix.</p>
+      <a href="mailto:hello@afaao.com" class="btn btn-primary">Book a call</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <div class="logo">afa<span style="color: var(--accent);">ao</span></div>
+          <p>The RevOps and GTM systems partner for B2B teams that need their stack to actually work.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <a href="#services">RevOps Implementation</a>
+          <a href="#services">Data Enrichment</a>
+          <a href="#services">Fractional RevOps</a>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="#approach">Approach</a>
+          <a href="#why">Why Afaao</a>
+          <a href="mailto:hello@afaao.com">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h5>Get in touch</h5>
+          <a href="mailto:hello@afaao.com">hello@afaao.com</a>
+          <a href="https://www.linkedin.com/company/afaao/about/?viewAsMember=true">LinkedIn</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 Afaao. All rights reserved. Toronto. Working with B2B teams globally.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
