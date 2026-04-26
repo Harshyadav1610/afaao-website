@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preview E — Dark Editorial | Afaao</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0c0e14;
+      --surface: #13151e;
+      --surface2: #1a1d28;
+      --ink: #f0ede8;
+      --muted: #7a7f8e;
+      --accent: #c4943a;
+      --accent-light: rgba(196,148,58,0.12);
+      --green: #1c3a28;
+      --green-light: #2a5039;
+      --border: rgba(255,255,255,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(12,14,20,0.9); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 18px 0; }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .logo img { height: 44px; filter: brightness(0) invert(1); }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: 0.3px; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--ink); }
+    .btn { display: inline-block; padding: 10px 22px; border-radius: 6px; font-weight: 600; text-decoration: none; font-size: 14px; transition: all 0.2s; }
+    .btn-gold { background: var(--accent); color: #0c0e14; }
+    .btn-gold:hover { background: #d4a84a; }
+    .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--border); }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* HERO */
+    .hero { padding: 120px 0 100px; position: relative; overflow: hidden; }
+    .hero::before {
+      content: '';
+      position: absolute; top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(196,148,58,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-label { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; }
+    .hero-label span { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); }
+    .hero-label::before { content: ''; display: block; width: 32px; height: 1px; background: var(--accent); }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(48px, 7vw, 88px);
+      font-weight: 300; line-height: 1.05; letter-spacing: -2px;
+      margin-bottom: 32px; max-width: 900px; color: var(--ink);
+    }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero p.lead { font-size: 17px; color: var(--muted); max-width: 560px; margin-bottom: 40px; line-height: 1.75; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+    .hero-divider { width: 1px; height: 32px; background: var(--border); }
+
+    /* TICKER */
+    .ticker { padding: 20px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); overflow: hidden; white-space: nowrap; background: var(--surface); }
+    .ticker-inner { display: inline-flex; gap: 64px; animation: ticker 20s linear infinite; }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .ticker-item { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); }
+    .ticker-dot { color: var(--accent); }
+
+    /* PROBLEM */
+    .problem { padding: 100px 0; }
+    .problem-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    @media (max-width: 768px) { .problem-layout { grid-template-columns: 1fr; } }
+    .problem-left h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 300; line-height: 1.15; letter-spacing: -1px;
+      margin-bottom: 24px;
+    }
+    .problem-left h2 em { font-style: italic; color: var(--accent); }
+    .problem-left p { font-size: 16px; color: var(--muted); line-height: 1.8; }
+    .problem-list { display: flex; flex-direction: column; gap: 0; }
+    .problem-row { display: flex; gap: 20px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .problem-row:first-child { border-top: 1px solid var(--border); }
+    .problem-num { font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 1px; min-width: 28px; margin-top: 3px; }
+    .problem-row h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .problem-row p { font-size: 14px; color: var(--muted); }
+
+    /* SERVICES */
+    .services { padding: 100px 0; background: var(--surface); }
+    .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; flex-wrap: wrap; gap: 24px; }
+    .services-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 52px); font-weight: 300; letter-spacing: -1px; }
+    .services-header h2 em { font-style: italic; color: var(--accent); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+    @media (max-width: 768px) { .services-grid { grid-template-columns: 1fr; } }
+    .service-card { padding: 40px 36px; background: var(--surface2); transition: background 0.3s; }
+    .service-card:hover { background: rgba(196,148,58,0.04); }
+    .service-num { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+    .service-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 14px; line-height: 1.3; }
+    .service-card p { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 20px; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { font-size: 11px; font-weight: 600; color: var(--muted); background: rgba(255,255,255,0.04); border: 1px solid var(--border); padding: 4px 10px; border-radius: 100px; }
+
+    /* FRAMEWORK */
+    .framework { padding: 100px 0; }
+    .framework-header { margin-bottom: 64px; }
+    .framework-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 52px); font-weight: 300; letter-spacing: -1px; margin-bottom: 12px; }
+    .framework-header h2 em { font-style: italic; color: var(--accent); }
+    .framework-header p { font-size: 16px; color: var(--muted); }
+    .framework-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+    @media (max-width: 768px) { .framework-row { grid-template-columns: 1fr 1fr; } }
+    .fw-step { padding: 36px 28px; background: var(--surface); }
+    .fw-step:hover { background: var(--surface2); }
+    .fw-num { font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: 2px; margin-bottom: 16px; }
+    .fw-step h4 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .fw-step p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+    /* WHY */
+    .why { padding: 100px 0; background: var(--surface); }
+    .why-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start; }
+    @media (max-width: 768px) { .why-layout { grid-template-columns: 1fr; } }
+    .why-left h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 52px); font-weight: 300; letter-spacing: -1px; }
+    .why-left h2 em { font-style: italic; color: var(--accent); }
+    .why-items { display: flex; flex-direction: column; gap: 0; }
+    .why-item { padding: 28px 0; border-bottom: 1px solid var(--border); }
+    .why-item:first-child { border-top: 1px solid var(--border); }
+    .why-item h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .why-item p { font-size: 14px; color: var(--muted); line-height: 1.75; }
+
+    /* CTA */
+    .cta-section { padding: 120px 0; text-align: center; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(196,148,58,0.08) 0%, transparent 70%); pointer-events: none; }
+    .cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(42px, 7vw, 72px); font-weight: 300; letter-spacing: -2px; margin-bottom: 20px; line-height: 1.1; }
+    .cta-section h2 em { font-style: italic; color: var(--accent); }
+    .cta-section p { font-size: 17px; color: var(--muted); margin-bottom: 40px; }
+    .cta-section .btn-gold { padding: 16px 32px; font-size: 16px; border-radius: 8px; }
+
+    /* FOOTER */
+    footer { padding: 56px 0 32px; border-top: 1px solid var(--border); }
+    .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; flex-wrap: wrap; margin-bottom: 40px; }
+    .footer-col h5 { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-bottom: 16px; }
+    .footer-col a { display: block; color: var(--muted); text-decoration: none; font-size: 14px; padding: 4px 0; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--ink); }
+    .footer-bottom { padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+    .preview-badge { position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: #0c0e14; padding: 10px 16px; border-radius: 8px; font-size: 13px; font-weight: 700; z-index: 999; }
+    .preview-badge a { color: #0c0e14; text-decoration: none; }
+
+    @media (max-width: 640px) { .nav-links a:not(.btn) { display: none; } }
+  </style>
+</head>
+<body>
+
+  <div class="preview-badge">Option E: Dark Editorial · <a href="index.html">← Back to site</a></div>
+
+  <nav>
+    <div class="container nav-inner">
+      <div class="logo"><img src="logo.svg" alt="Afaao" /></div>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#approach">Approach</a>
+        <a href="#why">Why Afaao</a>
+        <a href="contact.html" class="btn btn-gold">Contact Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-label"><span>RevOps & GTM Systems</span></div>
+      <h1>The partner for B2B teams that need their stack to <em>actually work.</em></h1>
+      <p class="lead">Afaao implements, cleans up, and scales your Salesforce, HubSpot, and data enrichment tools — with compliance built in, not bolted on.</p>
+      <div class="hero-ctas">
+        <a href="contact.html" class="btn btn-gold">Book a 30-min intro call</a>
+        <div class="hero-divider"></div>
+        <a href="#services" class="btn btn-outline">Explore services</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span class="ticker-item">Salesforce</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">HubSpot</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">Gainsight</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">Marketo</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">ZoomInfo</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">Cognism</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">Apollo</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">Clay</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">GDPR</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">CCPA</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">CASL</span><span class="ticker-dot">·</span>
+      <!-- duplicate for seamless loop -->
+      <span class="ticker-item">Salesforce</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">HubSpot</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">Gainsight</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">Marketo</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">ZoomInfo</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">Cognism</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">Apollo</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">Clay</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">GDPR</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">CCPA</span><span class="ticker-dot">·</span>
+      <span class="ticker-item">CASL</span><span class="ticker-dot">·</span>
+    </div>
+  </div>
+
+  <section class="problem">
+    <div class="container">
+      <div class="problem-layout">
+        <div class="problem-left">
+          <h2>Sound <em>familiar?</em></h2>
+          <p>Most B2B teams don't need another marketing agency. They need someone who understands the plumbing.</p>
+        </div>
+        <div class="problem-list">
+          <div class="problem-row"><div class="problem-num">01</div><div><h4>Half-configured CRM</h4><p>Salesforce or HubSpot set up in a hurry, now nobody trusts the data.</p></div></div>
+          <div class="problem-row"><div class="problem-num">02</div><div><h4>Enrichment chaos</h4><p>ZoomInfo and Cognism overwriting fields they shouldn't touch.</p></div></div>
+          <div class="problem-row"><div class="problem-num">03</div><div><h4>Compliance anxiety</h4><p>Expanding to new regions but unsure if your data practices hold up under GDPR or CASL.</p></div></div>
+          <div class="problem-row"><div class="problem-num">04</div><div><h4>Sales vs Marketing</h4><p>Arguing over lead quality because routing and scoring rules were never fully defined.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="services">
+    <div class="container">
+      <div class="services-header">
+        <h2>What we <em>do</em></h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-num">01</div>
+          <h3>MarTech & RevOps Implementation</h3>
+          <p>Salesforce, HubSpot, Marketo, Gainsight — set up, migrated, or rebuilt to serve your team.</p>
+          <div class="service-tags"><span class="tag">Salesforce</span><span class="tag">HubSpot</span><span class="tag">Marketo</span><span class="tag">Gainsight</span></div>
+        </div>
+        <div class="service-card">
+          <div class="service-num">02</div>
+          <h3>Compliant Data Enrichment</h3>
+          <p>ZoomInfo, Cognism, Apollo, Clay — structured to respect GDPR, CCPA, and CASL from day one.</p>
+          <div class="service-tags"><span class="tag">GDPR</span><span class="tag">CCPA</span><span class="tag">CASL</span><span class="tag">ZoomInfo</span></div>
+        </div>
+        <div class="service-card">
+          <div class="service-num">03</div>
+          <h3>Fractional RevOps & Support</h3>
+          <p>Dashboards, process docs, lead routing, and a phone-a-friend for your ops team.</p>
+          <div class="service-tags"><span class="tag">Fractional</span><span class="tag">Dashboards</span><span class="tag">Training</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="approach" class="framework">
+    <div class="container">
+      <div class="framework-header">
+        <h2>The Afaao <em>Framework</em></h2>
+        <p>A simple four-phase model that keeps every project on scope and on time.</p>
+      </div>
+      <div class="framework-row">
+        <div class="fw-step"><div class="fw-num">01 — Audit</div><h4>Understand first</h4><p>Full inventory of your stack, data, and processes. No assumptions.</p></div>
+        <div class="fw-step"><div class="fw-num">02 — Architect</div><h4>Design the system</h4><p>Blueprint everything before touching a single field or workflow.</p></div>
+        <div class="fw-step"><div class="fw-num">03 — Activate</div><h4>Build and launch</h4><p>Implement, migrate, integrate. Clear documentation throughout.</p></div>
+        <div class="fw-step"><div class="fw-num">04 — Adapt</div><h4>Tune and train</h4><p>Iterate post-launch, train your team, hand off cleanly.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" class="why">
+    <div class="container">
+      <div class="why-layout">
+        <div class="why-left"><h2>Why <em>Afaao</em></h2></div>
+        <div class="why-items">
+          <div class="why-item"><h4>Compliance-first</h4><p>We treat data privacy as a design principle, not a checkbox at the end of the project. Your enrichment workflows respect GDPR, CCPA, and CASL from day one.</p></div>
+          <div class="why-item"><h4>Systems-literate, not just tool-literate</h4><p>Most problems aren't platform problems — they're process problems. We fix workflows, then configure tools to support them.</p></div>
+          <div class="why-item"><h4>No bloated retainers</h4><p>Project, retainer, or fractional — priced to match the work, not the calendar. We scope ruthlessly and document everything.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready to make your revenue stack <em>actually work?</em></h2>
+      <p>Book a 30-minute intro call. No pitch deck — just a conversation about what you're trying to fix.</p>
+      <a href="contact.html" class="btn btn-gold">Book a call</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-col"><div style="margin-bottom:16px"><img src="logo.svg" alt="Afaao" style="height:36px;filter:brightness(0) invert(1);" /></div></div>
+        <div class="footer-col"><h5>Services</h5><a href="#services">RevOps Implementation</a><a href="#services">Data Enrichment</a><a href="#services">Fractional RevOps</a></div>
+        <div class="footer-col"><h5>Company</h5><a href="#approach">Approach</a><a href="#why">Why Afaao</a><a href="contact.html">Contact</a></div>
+        <div class="footer-col"><h5>Get in touch</h5><a href="contact.html">hello@afaao.com</a><a href="https://www.linkedin.com/company/afaao/">LinkedIn</a></div>
+      </div>
+      <div class="footer-bottom"><span>© 2026 Afaao. All rights reserved.</span><span>Toronto — Working with B2B teams globally</span></div>
+    </div>
+  </footer>
+
+</body>
+</html>

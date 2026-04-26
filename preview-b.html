@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preview B — ROI Calculator | Afaao</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #ffffff; --ink: #0a0f1e; --muted: #5b6478; --accent: #1e3a8a; --accent-light: #eef2ff; --border: #e5e7eb; --card: #f9fafb; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 16px 0; }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .logo img { height: 44px; width: auto; }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { color: var(--ink); text-decoration: none; font-size: 15px; font-weight: 500; }
+    .nav-links a:hover { color: var(--accent); }
+    .btn { display: inline-block; padding: 10px 20px; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 15px; transition: all 0.2s; }
+    .btn-primary { background: var(--ink); color: white; }
+    .btn-primary:hover { background: var(--accent); }
+    .btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--border); }
+    .hero { padding: 100px 0 80px; }
+    .eyebrow { display: inline-block; padding: 6px 14px; background: var(--accent-light); color: var(--accent); border-radius: 100px; font-size: 13px; font-weight: 600; margin-bottom: 24px; }
+    h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 24px; max-width: 900px; }
+    .hero p.lead { font-size: 20px; color: var(--muted); max-width: 720px; margin-bottom: 32px; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    section { padding: 80px 0; }
+    .section-title { font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; }
+    .section-sub { font-size: 18px; color: var(--muted); max-width: 680px; margin-bottom: 48px; }
+
+    /* ROI CALCULATOR */
+    .calc-section { background: var(--ink); color: white; padding: 80px 0; }
+    .calc-section .section-title { color: white; }
+    .calc-section .section-sub { color: #9ca3af; }
+    .calc-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    @media (max-width: 768px) { .calc-inner { grid-template-columns: 1fr; } }
+    .calc-controls { display: flex; flex-direction: column; gap: 28px; }
+    .slider-group label { display: flex; justify-content: space-between; font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+    .slider-group label span { color: #60a5fa; font-weight: 700; }
+    input[type="range"] {
+      width: 100%; -webkit-appearance: none; height: 4px;
+      border-radius: 4px; background: rgba(255,255,255,0.15); outline: none; cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%;
+      background: #60a5fa; cursor: pointer; transition: transform 0.15s;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+    .slider-hint { font-size: 12px; color: #6b7280; margin-top: 6px; }
+
+    .calc-result { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 36px; }
+    .result-label { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #9ca3af; font-weight: 600; margin-bottom: 8px; }
+    .result-main { font-size: clamp(42px, 6vw, 64px); font-weight: 800; color: #60a5fa; letter-spacing: -2px; line-height: 1; margin-bottom: 12px; }
+    .result-sub { font-size: 15px; color: #9ca3af; margin-bottom: 32px; }
+    .result-breakdown { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
+    .breakdown-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .breakdown-item span:first-child { font-size: 14px; color: #9ca3af; }
+    .breakdown-item span:last-child { font-size: 14px; font-weight: 700; color: white; }
+    .calc-cta { display: block; text-align: center; padding: 14px; background: #1e3a8a; color: white; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 15px; transition: background 0.2s; }
+    .calc-cta:hover { background: #2563eb; }
+
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .service-card { padding: 32px; border: 1px solid var(--border); border-radius: 16px; background: white; transition: all 0.3s; }
+    .service-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 10px 40px rgba(30,58,138,0.08); }
+    .service-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--accent-light); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; }
+    .service-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+    .service-card p { color: var(--muted); font-size: 15px; }
+    .cta-section { background: var(--accent-light); text-align: center; padding: 80px 0; }
+    .cta-section h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 16px; letter-spacing: -1px; }
+    .cta-section p { font-size: 18px; color: var(--muted); margin-bottom: 32px; }
+    footer { padding: 40px 0 28px; border-top: 1px solid var(--border); }
+    .footer-bottom { font-size: 13px; color: var(--muted); text-align: center; }
+    .preview-badge { position: fixed; bottom: 20px; right: 20px; background: var(--ink); color: white; padding: 10px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; z-index: 999; }
+    .preview-badge a { color: #60a5fa; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <div class="preview-badge">Option B: ROI Calculator · <a href="index.html">← Back to site</a></div>
+
+  <nav>
+    <div class="container nav-inner">
+      <div class="logo"><img src="logo.svg" alt="Afaao" /></div>
+      <div class="nav-links">
+        <a href="#services">Services</a><a href="#calc">Calculator</a><a href="#why">Why Afaao</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">RevOps & GTM Systems Consultancy</span>
+      <h1>The RevOps partner for B2B teams that need their stack to actually work.</h1>
+      <p class="lead">Afaao implements, cleans up, and scales your Salesforce, HubSpot, and data enrichment tools — with compliance built in, not bolted on.</p>
+      <div class="hero-ctas">
+        <a href="contact.html" class="btn btn-primary">Book a 30-min intro call</a>
+        <a href="#calc" class="btn btn-secondary">Calculate your RevOps cost →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI CALCULATOR -->
+  <section id="calc" class="calc-section">
+    <div class="container">
+      <h2 class="section-title">How much is broken RevOps costing you?</h2>
+      <p class="section-sub">Move the sliders to get an estimate of your annual revenue leak from inefficient systems.</p>
+      <div class="calc-inner">
+        <div class="calc-controls">
+          <div class="slider-group">
+            <label>Revenue team size <span id="reps-val">12 reps</span></label>
+            <input type="range" id="reps" min="2" max="100" value="12" step="1" />
+            <div class="slider-hint">Sales + RevOps headcount</div>
+          </div>
+          <div class="slider-group">
+            <label>Hours/week lost to bad data <span id="hours-val">6 hrs</span></label>
+            <input type="range" id="hours" min="1" max="20" value="6" step="1" />
+            <div class="slider-hint">Manual fixes, data hunting, duplicate cleanup</div>
+          </div>
+          <div class="slider-group">
+            <label>Average OTE per rep <span id="ote-val">$120k</span></label>
+            <input type="range" id="ote" min="60000" max="300000" value="120000" step="5000" />
+            <div class="slider-hint">On-target earnings including benefits</div>
+          </div>
+          <div class="slider-group">
+            <label>Deals lost to routing errors/month <span id="deals-val">3</span></label>
+            <input type="range" id="deals" min="0" max="20" value="3" step="1" />
+            <div class="slider-hint">Leads that fell through the cracks</div>
+          </div>
+          <div class="slider-group">
+            <label>Average deal value <span id="adv-val">$25k</span></label>
+            <input type="range" id="adv" min="5000" max="500000" value="25000" step="5000" />
+            <div class="slider-hint">Average contract value (ACV)</div>
+          </div>
+        </div>
+
+        <div class="calc-result">
+          <div class="result-label">Estimated annual revenue leak</div>
+          <div class="result-main" id="total">$0</div>
+          <div class="result-sub">This is what broken RevOps costs your business every year.</div>
+          <div class="result-breakdown">
+            <div class="breakdown-item"><span>Wasted payroll (bad data)</span><span id="payroll-cost">—</span></div>
+            <div class="breakdown-item"><span>Lost deals (routing errors)</span><span id="deal-cost">—</span></div>
+            <div class="breakdown-item"><span>Estimated tool overspend</span><span id="tool-cost">—</span></div>
+          </div>
+          <a href="contact.html" class="calc-cta">Fix this — talk to Afaao →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title">What we do</h2>
+      <p class="section-sub">Three focused practices — designed to work together, available separately.</p>
+      <div class="services-grid">
+        <div class="service-card"><div class="service-icon">⚙️</div><h3>MarTech & RevOps Implementation</h3><p>Salesforce, HubSpot, Marketo, Gainsight — set up, migrated, or rebuilt.</p></div>
+        <div class="service-card"><div class="service-icon">🔐</div><h3>Compliant Data Enrichment</h3><p>ZoomInfo, Cognism, Apollo, Clay — structured to respect GDPR, CCPA, and CASL from day one.</p></div>
+        <div class="service-card"><div class="service-icon">📊</div><h3>Fractional RevOps & Support</h3><p>Dashboards, process docs, lead routing, and a phone-a-friend for your ops team.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready to stop the leak?</h2>
+      <p>Book a 30-minute intro call. No pitch deck, just a conversation about what you're trying to fix.</p>
+      <a href="contact.html" class="btn btn-primary">Book a call</a>
+    </div>
+  </section>
+
+  <footer><div class="container"><div class="footer-bottom">© 2026 Afaao. All rights reserved.</div></div></footer>
+
+  <script>
+    const fmt = (n) => n >= 1000000 ? '$' + (n/1000000).toFixed(1) + 'M' : n >= 1000 ? '$' + Math.round(n/1000) + 'k' : '$' + n;
+    const fmtLabel = (n, suffix) => n + suffix;
+
+    function calc() {
+      const reps = +document.getElementById('reps').value;
+      const hours = +document.getElementById('hours').value;
+      const ote = +document.getElementById('ote').value;
+      const deals = +document.getElementById('deals').value;
+      const adv = +document.getElementById('adv').value;
+
+      document.getElementById('reps-val').textContent = reps + ' reps';
+      document.getElementById('hours-val').textContent = hours + ' hrs';
+      document.getElementById('ote-val').textContent = fmt(ote);
+      document.getElementById('deals-val').textContent = deals;
+      document.getElementById('adv-val').textContent = fmt(adv);
+
+      const hourlyRate = ote / 2080;
+      const payroll = Math.round(reps * hours * 52 * hourlyRate);
+      const dealLoss = deals * 12 * adv;
+      const toolWaste = Math.round(reps * 1800);
+      const total = payroll + dealLoss + toolWaste;
+
+      document.getElementById('payroll-cost').textContent = fmt(payroll);
+      document.getElementById('deal-cost').textContent = fmt(dealLoss);
+      document.getElementById('tool-cost').textContent = fmt(toolWaste);
+      document.getElementById('total').textContent = fmt(total);
+    }
+
+    ['reps','hours','ote','deals','adv'].forEach(id => document.getElementById(id).addEventListener('input', calc));
+    calc();
+  </script>
+</body>
+</html>
