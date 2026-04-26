@@ -160,6 +160,44 @@
     .who-card h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
     .who-card p { font-size: 14px; color: #9ca3af; }
 
+    /* ROI Calculator */
+    .calc-section { background: #0d1117; color: white; padding: 80px 0; }
+    .calc-section .section-title { color: white; }
+    .calc-section .section-sub { color: #9ca3af; }
+    .calc-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    @media (max-width: 768px) { .calc-inner { grid-template-columns: 1fr; gap: 32px; } }
+    .calc-controls { display: flex; flex-direction: column; gap: 32px; }
+    .slider-group label {
+      display: flex; justify-content: space-between; align-items: baseline;
+      font-size: 15px; font-weight: 600; color: white; margin-bottom: 12px;
+    }
+    .slider-group label span { color: #60a5fa; font-weight: 700; }
+    .slider-group input[type="range"] {
+      width: 100%; -webkit-appearance: none; height: 4px; border-radius: 4px;
+      background: rgba(255,255,255,0.12); outline: none; cursor: pointer;
+    }
+    .slider-group input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%;
+      background: #60a5fa; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .slider-group input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); box-shadow: 0 0 0 6px rgba(96,165,250,0.15); }
+    .slider-hint { font-size: 12px; color: #6b7280; margin-top: 6px; }
+    .calc-result { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 36px; position: sticky; top: 100px; }
+    .result-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #9ca3af; margin-bottom: 10px; }
+    .result-total { font-size: clamp(44px, 6vw, 64px); font-weight: 800; color: #60a5fa; letter-spacing: -2px; line-height: 1; margin-bottom: 10px; }
+    .result-sub { font-size: 14px; color: #9ca3af; margin-bottom: 28px; line-height: 1.6; }
+    .result-rows { display: flex; flex-direction: column; gap: 0; margin-bottom: 28px; }
+    .result-row { display: flex; justify-content: space-between; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .result-row span:first-child { font-size: 14px; color: #9ca3af; }
+    .result-row span:last-child { font-size: 14px; font-weight: 700; color: white; }
+    .calc-cta {
+      display: block; text-align: center; padding: 14px 20px;
+      background: var(--accent); color: white; border-radius: 10px;
+      text-decoration: none; font-weight: 600; font-size: 15px;
+      transition: background 0.2s;
+    }
+    .calc-cta:hover { background: #2563eb; }
+
     /* How We Work — interactive timeline */
     .framework { background: #0d1117; color: white; }
     .framework .section-title { color: white; }
@@ -373,6 +411,55 @@
         </ul>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ROI CALCULATOR -->
+  <section class="calc-section">
+    <div class="container">
+      <h2 class="section-title">What is broken Marketing Ops costing you?</h2>
+      <p class="section-sub">Move the sliders to estimate your annual cost of not having proper Marketing Operations in place.</p>
+      <div class="calc-inner">
+        <div class="calc-controls">
+          <div class="slider-group">
+            <label>Marketing team size <span id="v-team">8 people</span></label>
+            <input type="range" id="r-team" min="1" max="50" value="8" />
+            <div class="slider-hint">Total headcount in marketing</div>
+          </div>
+          <div class="slider-group">
+            <label>Hours/week lost to manual ops tasks <span id="v-hours">6 hrs</span></label>
+            <input type="range" id="r-hours" min="1" max="20" value="6" />
+            <div class="slider-hint">Data cleanup, manual fixes, chasing reports</div>
+          </div>
+          <div class="slider-group">
+            <label>Average marketing salary <span id="v-salary">$90k</span></label>
+            <input type="range" id="r-salary" min="40000" max="200000" value="90000" step="5000" />
+            <div class="slider-hint">Annual salary including benefits</div>
+          </div>
+          <div class="slider-group">
+            <label>Campaigns impacted by bad data/month <span id="v-campaigns">4</span></label>
+            <input type="range" id="r-campaigns" min="0" max="20" value="4" />
+            <div class="slider-hint">Campaigns with targeting or attribution issues</div>
+          </div>
+          <div class="slider-group">
+            <label>Average campaign budget <span id="v-budget">$8k</span></label>
+            <input type="range" id="r-budget" min="1000" max="50000" value="8000" step="500" />
+            <div class="slider-hint">Spend per campaign</div>
+          </div>
+        </div>
+
+        <div class="calc-result">
+          <div class="result-label">Estimated Annual MOPs Cost</div>
+          <div class="result-total" id="result-total">$0</div>
+          <div class="result-sub">This is what broken Marketing Ops is costing your business every year.</div>
+          <div class="result-rows">
+            <div class="result-row"><span>Wasted staff time (manual ops)</span><span id="r-staff">—</span></div>
+            <div class="result-row"><span>Campaign budget wasted (bad data)</span><span id="r-campaign-waste">—</span></div>
+            <div class="result-row"><span>Estimated tool overspend</span><span id="r-tools">—</span></div>
+          </div>
+          <a href="contact.html" class="calc-cta">Fix this — talk to Afaao →</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -595,6 +682,36 @@
       setTimeout(type, deleting ? 35 : 65);
     }
     type();
+
+    // ROI Calculator
+    const fmt = n => n >= 1000000 ? '$'+(n/1000000).toFixed(1)+'M' : n >= 1000 ? '$'+Math.round(n/1000)+'k' : '$'+n;
+    function calcROI() {
+      const team     = +document.getElementById('r-team').value;
+      const hours    = +document.getElementById('r-hours').value;
+      const salary   = +document.getElementById('r-salary').value;
+      const campaigns= +document.getElementById('r-campaigns').value;
+      const budget   = +document.getElementById('r-budget').value;
+
+      document.getElementById('v-team').textContent     = team + ' people';
+      document.getElementById('v-hours').textContent    = hours + ' hrs';
+      document.getElementById('v-salary').textContent   = fmt(salary);
+      document.getElementById('v-campaigns').textContent= campaigns;
+      document.getElementById('v-budget').textContent   = fmt(budget);
+
+      const staffWaste    = Math.round(team * hours * 52 * (salary / 2080));
+      const campaignWaste = Math.round(campaigns * 12 * budget * 0.2);
+      const toolWaste     = team * 2000;
+      const total         = staffWaste + campaignWaste + toolWaste;
+
+      document.getElementById('r-staff').textContent          = fmt(staffWaste);
+      document.getElementById('r-campaign-waste').textContent = fmt(campaignWaste);
+      document.getElementById('r-tools').textContent          = fmt(toolWaste);
+      document.getElementById('result-total').textContent     = fmt(total);
+    }
+    ['r-team','r-hours','r-salary','r-campaigns','r-budget'].forEach(id =>
+      document.getElementById(id).addEventListener('input', calcROI)
+    );
+    calcROI();
 
     // Animated counters
     const counters = document.querySelectorAll('.stat-num[data-target]');
