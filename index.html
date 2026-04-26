@@ -97,6 +97,18 @@
     }
     .stat-label { font-size: 14px; color: var(--muted); margin-top: 6px; font-weight: 500; }
 
+    /* Scroll animations */
+    .sr {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .sr.in { opacity: 1; transform: translateY(0); }
+    .sr.d1 { transition-delay: 0.1s; }
+    .sr.d2 { transition-delay: 0.2s; }
+    .sr.d3 { transition-delay: 0.3s; }
+    .sr.d4 { transition-delay: 0.4s; }
+
     /* Logos strip */
     .logos-strip { padding: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .logos-strip p { text-align: center; color: var(--muted); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
@@ -732,6 +744,29 @@
       });
     }, { threshold: 0.5 });
     counters.forEach(c => cObs.observe(c));
+
+    // Scroll reveal
+    const srEls = document.querySelectorAll([
+      '.stats-inner > div', '.logos-strip p', '.logos-row',
+      '.section-title', '.section-sub',
+      '.problem-item', '.service-card', '.additional-support',
+      '.calc-controls', '.calc-result',
+      '.who-card', '.about-inner > div', '.why-item',
+      '.cta-section h2', '.cta-section p', '.cta-section a'
+    ].join(','));
+    srEls.forEach(el => {
+      el.classList.add('sr');
+      const siblings = [...el.parentElement.children].filter(c => c.classList.contains('sr'));
+      const idx = siblings.indexOf(el);
+      if (idx === 1) el.classList.add('d1');
+      else if (idx === 2) el.classList.add('d2');
+      else if (idx === 3) el.classList.add('d3');
+      else if (idx >= 4) el.classList.add('d4');
+    });
+    const srObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); srObs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    srEls.forEach(el => srObs.observe(el));
   </script>
 </body>
 </html>
