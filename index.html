@@ -749,9 +749,10 @@
       'companies that outgrew their CRM setup.',
       'teams tired of manual data fixes.',
     ];
-    let pi = 0, ci = 0, deleting = false;
+    let pi = 0, ci = 0, deleting = false, twActive = true;
     const tw = document.getElementById('typewriter');
     function type() {
+      if (!twActive) return;
       const phrase = phrases[pi];
       if (!deleting) {
         tw.textContent = phrase.slice(0, ++ci);
@@ -763,6 +764,12 @@
       setTimeout(type, deleting ? 35 : 65);
     }
     type();
+    new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !twActive) { twActive = true; type(); }
+        else if (!e.isIntersecting) { twActive = false; }
+      });
+    }, { threshold: 0 }).observe(document.querySelector('.hero'));
 
     // ROI Calculator
     const fmt = n => n >= 1000000 ? '$'+(n/1000000).toFixed(1)+'M' : n >= 1000 ? '$'+Math.round(n/1000)+'k' : '$'+n;
