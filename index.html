@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Afaao is a Revenue Operations and GTM systems consultancy. We implement Salesforce, HubSpot, and compliant data enrichment for B2B teams." />
-  <title>Afaao — RevOps & GTM Systems Consultancy</title>
+  <meta name="description" content="Afaao helps growing B2B teams set up and fix CRM, data, and enrichment workflows — without needing a dedicated Marketing Ops team." />
+  <title>Afaao — Marketing Operations for Growing Teams</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
@@ -63,10 +63,10 @@
     h1 {
       font-size: clamp(36px, 5vw, 56px);
       font-weight: 800; line-height: 1.1; letter-spacing: -1.5px;
-      margin-bottom: 24px; max-width: 900px;
+      margin-bottom: 24px; max-width: 860px;
     }
     .hero p.lead {
-      font-size: 20px; color: var(--muted); max-width: 720px;
+      font-size: 20px; color: var(--muted); max-width: 700px;
       margin-bottom: 32px;
     }
     .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
@@ -83,10 +83,10 @@
 
     /* Problem section */
     .problem { background: var(--card); }
-    .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 32px; }
-    .problem-item { padding: 24px; background: white; border-radius: 12px; border: 1px solid var(--border); }
-    .problem-item h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
-    .problem-item p { font-size: 14px; color: var(--muted); }
+    .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 32px; }
+    .problem-item { padding: 22px 24px; background: white; border-radius: 12px; border: 1px solid var(--border); display: flex; gap: 14px; align-items: flex-start; }
+    .problem-item .bullet { color: var(--accent); font-size: 18px; font-weight: 800; line-height: 1.4; flex-shrink: 0; }
+    .problem-item h4 { font-size: 15px; font-weight: 600; line-height: 1.5; color: var(--ink); }
 
     /* Services */
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
@@ -106,15 +106,47 @@
     .service-card li { font-size: 14px; color: var(--muted); padding: 4px 0; padding-left: 20px; position: relative; }
     .service-card li:before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
 
+    /* Additional support sub-section */
+    .additional-support {
+      margin-top: 40px; padding: 28px 32px;
+      background: var(--card); border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+    .additional-support h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .additional-support p { font-size: 14px; color: var(--muted); margin-bottom: 16px; max-width: 680px; }
+    .additional-support ul { list-style: none; display: flex; gap: 12px; flex-wrap: wrap; }
+    .additional-support li {
+      font-size: 13px; color: var(--muted); font-weight: 500;
+      background: white; border: 1px solid var(--border);
+      padding: 6px 14px; border-radius: 100px;
+    }
+
+    /* Who we work with */
+    .who { background: var(--ink); color: white; }
+    .who .section-title { color: white; }
+    .who .section-sub { color: #9ca3af; }
+    .who-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .who-card {
+      padding: 28px; background: rgba(255,255,255,0.05);
+      border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);
+    }
+    .who-card .who-icon { font-size: 28px; margin-bottom: 14px; }
+    .who-card h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .who-card p { font-size: 14px; color: #9ca3af; }
+
     /* Framework */
-    .framework { background: var(--ink); color: white; }
-    .framework .section-title { color: white; }
-    .framework .section-sub { color: #9ca3af; }
+    .framework { background: var(--card); }
     .framework-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
-    .framework-step { padding: 28px; background: rgba(255,255,255,0.05); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
-    .framework-step .num { font-size: 14px; color: #60a5fa; font-weight: 700; margin-bottom: 12px; }
-    .framework-step h4 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
-    .framework-step p { font-size: 14px; color: #9ca3af; }
+    .framework-step { padding: 28px; background: white; border-radius: 12px; border: 1px solid var(--border); }
+    .framework-step .num { font-size: 13px; color: var(--accent); font-weight: 700; margin-bottom: 12px; letter-spacing: 0.5px; }
+    .framework-step h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .framework-step p { font-size: 14px; color: var(--muted); }
+
+    /* About */
+    .about-inner { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: center; }
+    @media (max-width: 768px) { .about-inner { grid-template-columns: 1fr; gap: 32px; } }
+    .about-left h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -1px; line-height: 1.15; }
+    .about-right p { font-size: 17px; color: var(--muted); line-height: 1.8; }
 
     /* Why us */
     .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
@@ -124,7 +156,7 @@
     /* CTA */
     .cta-section { background: var(--accent-light); text-align: center; padding: 80px 0; }
     .cta-section h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 16px; letter-spacing: -1px; }
-    .cta-section p { font-size: 18px; color: var(--muted); margin-bottom: 32px; }
+    .cta-section p { font-size: 18px; color: var(--muted); margin-bottom: 32px; max-width: 560px; margin-left: auto; margin-right: auto; }
 
     /* Footer */
     footer { padding: 48px 0 32px; border-top: 1px solid var(--border); }
@@ -150,8 +182,8 @@
       <div class="logo"><img src="logo.svg" alt="Afaao" /></div>
       <div class="nav-links">
         <a href="#services">Services</a>
-        <a href="#approach">Approach</a>
-        <a href="#why">Why Afaao</a>
+        <a href="#how-we-work">How We Work</a>
+        <a href="#about">About</a>
         <a href="contact.html">Contact Us</a>
       </div>
     </div>
@@ -160,53 +192,61 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <span class="eyebrow">RevOps & GTM Systems Consultancy</span>
-      <h1>The RevOps partner for B2B teams that need their stack to actually work.</h1>
-      <p class="lead">Afaao implements, cleans up, and scales your Salesforce, HubSpot, and data enrichment tools — with compliance built in, not bolted on.</p>
+      <span class="eyebrow">Marketing Operations Consultancy</span>
+      <h1>Build Marketing Operations Without Hiring a Full Team</h1>
+      <p class="lead">Afaao helps growing teams set up and fix CRM, data, and enrichment workflows so campaigns, reporting, and systems actually work — without needing a full Marketing Ops function.</p>
       <div class="hero-ctas">
-        <a href="#contact" class="btn btn-primary">Book a 30-min intro call</a>
-        <a href="#services" class="btn btn-secondary">See our services</a>
+        <a href="contact.html" class="btn btn-primary">Book a 30-min Audit Call</a>
+        <a href="#services" class="btn btn-secondary">See how we can help</a>
       </div>
     </div>
   </section>
 
-  <!-- LOGOS STRIP -->
+  <!-- TOOLS STRIP -->
   <div class="logos-strip">
     <div class="container">
-      <p>We work with the tools your revenue team depends on</p>
+      <p>Tools we work with</p>
       <div class="logos-row">
         <span>Salesforce</span>
         <span>HubSpot</span>
-        <span>Gainsight</span>
-        <span>Marketo</span>
         <span>ZoomInfo</span>
         <span>Cognism</span>
+        <span>Marketo</span>
         <span>Apollo</span>
+        <span>Gainsight</span>
       </div>
     </div>
   </div>
 
-  <!-- PROBLEM -->
+  <!-- PROBLEMS -->
   <section class="problem">
     <div class="container">
-      <h2 class="section-title">Sound familiar?</h2>
-      <p class="section-sub">Most B2B teams don't need another marketing agency. They need someone who understands the plumbing.</p>
+      <h2 class="section-title">Common Marketing Ops Challenges We Fix</h2>
+      <p class="section-sub">Sound familiar? These are the problems most growing teams hit when they don't have a dedicated ops function.</p>
       <div class="problem-grid">
         <div class="problem-item">
-          <h4>Half-configured CRM</h4>
-          <p>Salesforce or HubSpot set up in a hurry, now nobody trusts the data.</p>
+          <span class="bullet">→</span>
+          <h4>No dedicated Marketing Operations function — things are held together with spreadsheets and good intentions</h4>
         </div>
         <div class="problem-item">
-          <h4>Enrichment chaos</h4>
-          <p>ZoomInfo and Cognism overwriting fields they shouldn't touch.</p>
+          <span class="bullet">→</span>
+          <h4>CRM is set up but not structured properly — fields are inconsistent, stages don't reflect reality</h4>
         </div>
         <div class="problem-item">
-          <h4>Compliance anxiety</h4>
-          <p>Expanding to new regions but unsure if your data practices hold up under GDPR or CASL.</p>
+          <span class="bullet">→</span>
+          <h4>Enrichment tools like ZoomInfo or Cognism aren't integrated effectively — data lands in the wrong places</h4>
         </div>
         <div class="problem-item">
-          <h4>Sales vs Marketing</h4>
-          <p>Arguing over lead quality because routing and scoring rules were never fully defined.</p>
+          <span class="bullet">→</span>
+          <h4>Lifecycle stages are unclear or broken — no one agrees on what MQL, SQL, or Opportunity actually means</h4>
+        </div>
+        <div class="problem-item">
+          <span class="bullet">→</span>
+          <h4>Campaign tracking doesn't match reporting — attribution is a mess and results are hard to trust</h4>
+        </div>
+        <div class="problem-item">
+          <span class="bullet">→</span>
+          <h4>Data is messy, duplicated, or unreliable — your team spends more time cleaning than actually using it</h4>
         </div>
       </div>
     </div>
@@ -215,93 +255,147 @@
   <!-- SERVICES -->
   <section id="services">
     <div class="container">
-      <h2 class="section-title">What we do</h2>
-      <p class="section-sub">Three focused practices — designed to work together, available separately.</p>
+      <h2 class="section-title">Marketing Operations Setup & Optimisation</h2>
+      <p class="section-sub">We help you build or fix the core systems your marketing and revenue teams rely on.</p>
       <div class="services-grid">
+
         <div class="service-card">
           <div class="service-icon">⚙️</div>
-          <h3>MarTech & RevOps Implementation</h3>
-          <p>Salesforce, HubSpot, Marketo, Gainsight — set up, migrated, or rebuilt.</p>
+          <h3>CRM & Lifecycle Optimisation</h3>
+          <p>Get your CRM working the way your team actually operates — clean data, clear stages, and a pipeline that reflects reality.</p>
           <ul>
-            <li>Platform setup and migration</li>
-            <li>Object and workflow architecture</li>
-            <li>Lead routing and deduplication</li>
-            <li>Integrations and documentation</li>
+            <li>Salesforce cleanup and restructuring</li>
+            <li>Lead lifecycle and stage definition</li>
+            <li>Pipeline and funnel alignment</li>
           </ul>
         </div>
+
         <div class="service-card">
-          <div class="service-icon">🔐</div>
-          <h3>Compliant Data Enrichment</h3>
-          <p>ZoomInfo, Cognism, Apollo, Clay — structured to respect GDPR, CCPA, and CASL from day one.</p>
+          <div class="service-icon">🔗</div>
+          <h3>Data & Enrichment Workflows</h3>
+          <p>Stop enrichment tools overwriting the wrong fields. Build clean, compliant workflows that actually improve your data.</p>
           <ul>
-            <li>Enrichment workflow design</li>
-            <li>Compliance-aligned data processes</li>
-            <li>Deduplication and hygiene</li>
-            <li>Multi-region data strategy</li>
+            <li>ZoomInfo / Cognism integration</li>
+            <li>Lead routing and enrichment logic</li>
+            <li>Data normalisation and cleanup</li>
           </ul>
         </div>
+
         <div class="service-card">
           <div class="service-icon">📊</div>
-          <h3>Fractional RevOps & Support</h3>
-          <p>Dashboards, process docs, lead routing, and a phone-a-friend for your ops team.</p>
+          <h3>Campaign Tracking & Reporting</h3>
+          <p>Know what's working. Build tracking and attribution that gives marketing and leadership a shared source of truth.</p>
           <ul>
-            <li>Ongoing fractional RevOps</li>
-            <li>Reporting and dashboards</li>
-            <li>Process documentation</li>
-            <li>Team training and enablement</li>
+            <li>Campaign tracking setup</li>
+            <li>Attribution structure</li>
+            <li>Funnel visibility and reporting</li>
           </ul>
+        </div>
+
+      </div>
+
+      <!-- Additional RevOps Support -->
+      <div class="additional-support">
+        <h4>Additional Support Across Revenue Operations</h4>
+        <p>While our core focus is Marketing Operations, we also support adjacent areas where systems and data overlap:</p>
+        <ul>
+          <li>Customer Success workflows (Gainsight)</li>
+          <li>RevOps reporting and alignment</li>
+          <li>Cross-team process optimisation</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHO WE WORK WITH -->
+  <section class="who">
+    <div class="container">
+      <h2 class="section-title">Who We Work With</h2>
+      <p class="section-sub">We work with teams that are scaling fast but don't yet have the internal ops infrastructure to keep up.</p>
+      <div class="who-grid">
+        <div class="who-card">
+          <div class="who-icon">🔁</div>
+          <h4>RevOps Teams</h4>
+          <p>Overloaded RevOps generalists who need a specialist to own the marketing ops layer while they focus on the bigger picture.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-icon">📣</div>
+          <h4>Growth & Demand Generation Teams</h4>
+          <p>Teams running campaigns who need systems — tracking, attribution, lifecycle — that actually support their work rather than getting in the way.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-icon">🧩</div>
+          <h4>Marketing Teams Without a Dedicated Ops Function</h4>
+          <p>Companies that have invested in the tools but haven't had the bandwidth to set them up properly. That's exactly the gap we fill.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FRAMEWORK -->
-  <section id="approach" class="framework">
+  <!-- HOW WE WORK -->
+  <section id="how-we-work" class="framework">
     <div class="container">
-      <h2 class="section-title">The Afaao Framework</h2>
-      <p class="section-sub">A simple four-phase engagement model that keeps projects on scope and on time.</p>
+      <h2 class="section-title">How We Work</h2>
+      <p class="section-sub">A straightforward four-step process — no long discovery phases, no unnecessary complexity.</p>
       <div class="framework-grid">
         <div class="framework-step">
           <div class="num">01 — AUDIT</div>
-          <h4>Understand before acting</h4>
-          <p>We inventory your stack, data, and processes. No assumptions.</p>
+          <h4>Understand the setup</h4>
+          <p>We review your CRM setup, lifecycle stages, and data flow to understand exactly what's broken and what isn't.</p>
         </div>
         <div class="framework-step">
-          <div class="num">02 — ARCHITECT</div>
-          <h4>Design the system</h4>
-          <p>We design the solution before we touch a single field or workflow.</p>
+          <div class="num">02 — IDENTIFY</div>
+          <h4>Find the gaps</h4>
+          <p>We uncover inefficiencies in data, enrichment, and workflows — and prioritise what to fix first for the biggest impact.</p>
         </div>
         <div class="framework-step">
-          <div class="num">03 — ACTIVATE</div>
-          <h4>Build and launch</h4>
-          <p>We implement, migrate, and integrate — with clear documentation throughout.</p>
+          <div class="num">03 — IMPLEMENT</div>
+          <h4>Fix what matters</h4>
+          <p>We fix CRM, enrichment logic, and campaign tracking. No bloated project plans — just clean, documented work.</p>
         </div>
         <div class="framework-step">
-          <div class="num">04 — ADAPT</div>
-          <h4>Tune and train</h4>
-          <p>We stay close post-launch to iterate, train your team, and hand off cleanly.</p>
+          <div class="num">04 — OPTIMISE</div>
+          <h4>Make it last</h4>
+          <p>We ensure long-term scalability and reporting accuracy — and hand off clearly so your team can maintain it.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WHY US -->
-  <section id="why">
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-left">
+          <h2>About<br/>Afaao</h2>
+        </div>
+        <div class="about-right">
+          <p>Afaao was built to solve a common problem — growing companies invest in powerful tools, but their systems often don't work together effectively.</p>
+          <br/>
+          <p>We focus on setting up and fixing marketing operations — CRM, data workflows, and enrichment processes — so teams can trust their systems and scale efficiently without needing a full in-house ops team.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY AFAAO -->
+  <section id="why" style="background: var(--card);">
     <div class="container">
       <h2 class="section-title">Why Afaao</h2>
-      <p class="section-sub">Three principles that shape every engagement.</p>
+      <p class="section-sub">Three things that are non-negotiable in how we work.</p>
       <div class="why-grid">
         <div class="why-item">
-          <h4>🔒 Compliance-first</h4>
-          <p>We treat data privacy as a design principle, not a checkbox at the end of the project. Your enrichment workflows respect GDPR, CCPA, and CASL from day one.</p>
+          <h4>🎯 MOPs-first, not tool-first</h4>
+          <p>We fix your processes before we touch a platform setting. Most problems aren't software problems — they're workflow problems that software then inherits.</p>
         </div>
         <div class="why-item">
-          <h4>🧩 Systems-literate, not just tool-literate</h4>
-          <p>Most problems aren't platform problems — they're process problems. We fix workflows, then configure tools to support them.</p>
+          <h4>🧩 Systems your team can actually maintain</h4>
+          <p>We document everything and build for handoff. You shouldn't need us to be available every time something breaks — and with clean systems, you usually won't.</p>
         </div>
         <div class="why-item">
           <h4>💡 No bloated retainers</h4>
-          <p>Project, retainer, or fractional — priced to match the work, not the calendar. We scope ruthlessly and document everything.</p>
+          <p>Project, retainer, or fractional — priced to match the work, not the calendar. We scope clearly, move quickly, and don't stretch engagements unnecessarily.</p>
         </div>
       </div>
     </div>
@@ -310,9 +404,9 @@
   <!-- CTA -->
   <section id="contact" class="cta-section">
     <div class="container">
-      <h2>Ready to make your revenue stack actually work?</h2>
-      <p>Book a 30-minute intro call. No pitch deck, just a conversation about what you're trying to fix.</p>
-      <a href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" class="btn btn-primary">Book a call</a>
+      <h2>Not sure what's broken in your setup?</h2>
+      <p>We'll walk through your CRM, data, and workflows and highlight where things can be improved — no commitment required.</p>
+      <a href="contact.html" class="btn btn-primary">Book a 30-min Audit Call</a>
     </div>
   </section>
 
@@ -322,24 +416,25 @@
       <div class="footer-inner">
         <div class="footer-col">
           <div class="logo"><img src="logo.svg" alt="Afaao" /></div>
-          <p>The RevOps and GTM systems partner for B2B teams that need their stack to actually work.</p>
+          <p>Marketing Operations for growing B2B teams — without the full-time hire.</p>
         </div>
         <div class="footer-col">
           <h5>Services</h5>
-          <a href="#services">RevOps Implementation</a>
-          <a href="#services">Data Enrichment</a>
-          <a href="#services">Fractional RevOps</a>
+          <a href="#services">CRM & Lifecycle Optimisation</a>
+          <a href="#services">Data & Enrichment Workflows</a>
+          <a href="#services">Campaign Tracking & Reporting</a>
         </div>
         <div class="footer-col">
           <h5>Company</h5>
-          <a href="#approach">Approach</a>
+          <a href="#how-we-work">How We Work</a>
+          <a href="#about">About</a>
           <a href="#why">Why Afaao</a>
-          <a href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min">Contact</a>
         </div>
         <div class="footer-col">
           <h5>Get in touch</h5>
           <a href="contact.html">hello@afaao.com</a>
           <a href="https://www.linkedin.com/company/afaao/">LinkedIn</a>
+          <a href="contact.html">Book an Audit Call</a>
         </div>
       </div>
       <div class="footer-bottom">
