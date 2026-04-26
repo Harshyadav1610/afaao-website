@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preview D — Interactive Timeline | Afaao</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #ffffff; --ink: #0a0f1e; --muted: #5b6478; --accent: #1e3a8a; --accent-light: #eef2ff; --border: #e5e7eb; --card: #f9fafb; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--bg); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 16px 0; }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .logo img { height: 44px; }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { color: var(--ink); text-decoration: none; font-size: 15px; font-weight: 500; }
+    .nav-links a:hover { color: var(--accent); }
+    .btn { display: inline-block; padding: 10px 20px; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 15px; transition: all 0.2s; }
+    .btn-primary { background: var(--ink); color: white; }
+    .btn-primary:hover { background: var(--accent); }
+    .btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--border); }
+    .hero { padding: 100px 0 80px; }
+    .eyebrow { display: inline-block; padding: 6px 14px; background: var(--accent-light); color: var(--accent); border-radius: 100px; font-size: 13px; font-weight: 600; margin-bottom: 24px; }
+    h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 24px; max-width: 900px; }
+    .hero p.lead { font-size: 20px; color: var(--muted); max-width: 720px; margin-bottom: 32px; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    section { padding: 80px 0; }
+    .section-title { font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; }
+    .section-sub { font-size: 18px; color: var(--muted); max-width: 680px; margin-bottom: 48px; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .service-card { padding: 32px; border: 1px solid var(--border); border-radius: 16px; background: white; transition: all 0.3s; }
+    .service-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 10px 40px rgba(30,58,138,0.08); }
+    .service-icon { width: 48px; height: 48px; border-radius: 12px; background: var(--accent-light); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; }
+    .service-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+    .service-card p { color: var(--muted); font-size: 15px; }
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
+    .why-item h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .why-item p { color: var(--muted); font-size: 15px; }
+    .cta-section { background: var(--accent-light); text-align: center; padding: 80px 0; }
+    .cta-section h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 16px; }
+    .cta-section p { font-size: 18px; color: var(--muted); margin-bottom: 32px; }
+    footer { padding: 40px 0 28px; border-top: 1px solid var(--border); }
+    .footer-bottom { font-size: 13px; color: var(--muted); text-align: center; }
+
+    /* INTERACTIVE TIMELINE */
+    .framework { background: var(--ink); color: white; padding: 80px 0; }
+    .framework .section-title { color: white; }
+    .framework .section-sub { color: #9ca3af; }
+
+    .timeline { position: relative; display: flex; flex-direction: column; gap: 0; }
+    .timeline::before { content: ''; position: absolute; left: 28px; top: 0; bottom: 0; width: 2px; background: rgba(255,255,255,0.1); }
+
+    .timeline-step { position: relative; padding-left: 72px; padding-bottom: 8px; }
+    .step-dot {
+      position: absolute; left: 18px; top: 4px;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.2);
+      cursor: pointer; transition: all 0.3s; z-index: 1;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step-dot::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #60a5fa; opacity: 0; transition: opacity 0.3s; }
+    .timeline-step.active .step-dot { background: #1e3a8a; border-color: #60a5fa; }
+    .timeline-step.active .step-dot::after { opacity: 1; }
+
+    .step-header {
+      display: flex; align-items: center; gap: 16px;
+      padding: 20px 24px; border-radius: 12px; cursor: pointer;
+      border: 1px solid transparent; transition: all 0.3s;
+      margin-bottom: 2px;
+    }
+    .step-header:hover { background: rgba(255,255,255,0.05); }
+    .timeline-step.active .step-header { background: rgba(96,165,250,0.08); border-color: rgba(96,165,250,0.2); }
+    .step-num { font-size: 12px; color: #60a5fa; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; min-width: 80px; }
+    .step-title { font-size: 20px; font-weight: 700; flex: 1; }
+    .step-arrow { font-size: 18px; color: #60a5fa; transition: transform 0.3s; }
+    .timeline-step.active .step-arrow { transform: rotate(90deg); }
+
+    .step-body {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+      opacity: 0; padding: 0 24px;
+    }
+    .timeline-step.active .step-body { max-height: 300px; opacity: 1; padding: 0 24px 24px; }
+
+    .step-body p { font-size: 15px; color: #9ca3af; margin-bottom: 16px; }
+    .step-checklist { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .step-checklist li { font-size: 14px; color: #d1d5db; display: flex; align-items: center; gap: 10px; }
+    .step-checklist li::before { content: '✓'; color: #60a5fa; font-weight: 700; flex-shrink: 0; }
+
+    .preview-badge { position: fixed; bottom: 20px; right: 20px; background: var(--ink); color: white; padding: 10px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; z-index: 999; }
+    .preview-badge a { color: #60a5fa; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <div class="preview-badge">Option D: Interactive Timeline · <a href="index.html">← Back to site</a></div>
+
+  <nav>
+    <div class="container nav-inner">
+      <div class="logo"><img src="logo.svg" alt="Afaao" /></div>
+      <div class="nav-links">
+        <a href="#services">Services</a><a href="#approach">Approach</a><a href="#why">Why Afaao</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">RevOps & GTM Systems Consultancy</span>
+      <h1>The RevOps partner for B2B teams that need their stack to actually work.</h1>
+      <p class="lead">Afaao implements, cleans up, and scales your Salesforce, HubSpot, and data enrichment tools — with compliance built in, not bolted on.</p>
+      <div class="hero-ctas">
+        <a href="contact.html" class="btn btn-primary">Book a 30-min intro call</a>
+        <a href="#services" class="btn btn-secondary">See our services</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title">What we do</h2>
+      <p class="section-sub">Three focused practices — designed to work together, available separately.</p>
+      <div class="services-grid">
+        <div class="service-card"><div class="service-icon">⚙️</div><h3>MarTech & RevOps Implementation</h3><p>Salesforce, HubSpot, Marketo, Gainsight — set up, migrated, or rebuilt.</p></div>
+        <div class="service-card"><div class="service-icon">🔐</div><h3>Compliant Data Enrichment</h3><p>ZoomInfo, Cognism, Apollo, Clay — structured to respect GDPR, CCPA, and CASL from day one.</p></div>
+        <div class="service-card"><div class="service-icon">📊</div><h3>Fractional RevOps & Support</h3><p>Dashboards, process docs, lead routing, and a phone-a-friend for your ops team.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE FRAMEWORK -->
+  <section id="approach" class="framework">
+    <div class="container">
+      <h2 class="section-title">The Afaao Framework</h2>
+      <p class="section-sub">Click each phase to see exactly what we do — and what you get.</p>
+
+      <div class="timeline">
+        <div class="timeline-step active" data-step="0">
+          <div class="step-dot"></div>
+          <div class="step-header" onclick="toggleStep(0)">
+            <div class="step-num">01 — Audit</div>
+            <div class="step-title">Understand before acting</div>
+            <div class="step-arrow">›</div>
+          </div>
+          <div class="step-body">
+            <p>We inventory your entire stack before touching anything. No assumptions, no shortcuts.</p>
+            <ul class="step-checklist">
+              <li>Full CRM and MarTech audit</li>
+              <li>Data quality assessment</li>
+              <li>Process and workflow mapping</li>
+              <li>Compliance gap analysis</li>
+              <li>Deliverable: Audit report with prioritised findings</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-step" data-step="1">
+          <div class="step-dot"></div>
+          <div class="step-header" onclick="toggleStep(1)">
+            <div class="step-num">02 — Architect</div>
+            <div class="step-title">Design the system</div>
+            <div class="step-arrow">›</div>
+          </div>
+          <div class="step-body">
+            <p>We design the full solution architecture before writing a single workflow rule.</p>
+            <ul class="step-checklist">
+              <li>Object and field architecture</li>
+              <li>Lead routing and scoring design</li>
+              <li>Integration and data flow mapping</li>
+              <li>Compliance framework design</li>
+              <li>Deliverable: Technical blueprint for sign-off</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-step" data-step="2">
+          <div class="step-dot"></div>
+          <div class="step-header" onclick="toggleStep(2)">
+            <div class="step-num">03 — Activate</div>
+            <div class="step-title">Build and launch</div>
+            <div class="step-arrow">›</div>
+          </div>
+          <div class="step-body">
+            <p>We implement, migrate, and integrate — with documentation at every step so you're never in the dark.</p>
+            <ul class="step-checklist">
+              <li>Platform configuration and migration</li>
+              <li>Integration build and testing</li>
+              <li>UAT and quality assurance</li>
+              <li>Go-live support</li>
+              <li>Deliverable: Live system + full documentation</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-step" data-step="3">
+          <div class="step-dot"></div>
+          <div class="step-header" onclick="toggleStep(3)">
+            <div class="step-num">04 — Adapt</div>
+            <div class="step-title">Tune and train</div>
+            <div class="step-arrow">›</div>
+          </div>
+          <div class="step-body">
+            <p>We stay close post-launch to iterate based on real-world usage and hand off cleanly to your team.</p>
+            <ul class="step-checklist">
+              <li>30-day post-launch support</li>
+              <li>Team training sessions</li>
+              <li>Performance monitoring and tuning</li>
+              <li>Clean handoff with runbooks</li>
+              <li>Deliverable: Trained team + ongoing support options</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="container">
+      <h2 class="section-title">Why Afaao</h2>
+      <p class="section-sub">Three principles that shape every engagement.</p>
+      <div class="why-grid">
+        <div class="why-item"><h4>🔒 Compliance-first</h4><p>We treat data privacy as a design principle, not a checkbox. Your enrichment workflows respect GDPR, CCPA, and CASL from day one.</p></div>
+        <div class="why-item"><h4>🧩 Systems-literate, not just tool-literate</h4><p>Most problems aren't platform problems — they're process problems. We fix workflows, then configure tools to support them.</p></div>
+        <div class="why-item"><h4>💡 No bloated retainers</h4><p>Project, retainer, or fractional — priced to match the work, not the calendar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready to make your revenue stack actually work?</h2>
+      <p>Book a 30-minute intro call. No pitch deck, just a conversation about what you're trying to fix.</p>
+      <a href="contact.html" class="btn btn-primary">Book a call</a>
+    </div>
+  </section>
+
+  <footer><div class="container"><div class="footer-bottom">© 2026 Afaao. All rights reserved.</div></div></footer>
+
+  <script>
+    function toggleStep(index) {
+      const steps = document.querySelectorAll('.timeline-step');
+      steps.forEach((s, i) => s.classList.toggle('active', i === index));
+    }
+  </script>
+</body>
+</html>
