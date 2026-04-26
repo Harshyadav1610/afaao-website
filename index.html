@@ -65,11 +65,37 @@
       font-weight: 800; line-height: 1.1; letter-spacing: -1.5px;
       margin-bottom: 24px; max-width: 860px;
     }
+    .hero-rotating { color: var(--accent); }
+    .cursor {
+      display: inline-block; width: 3px; height: 0.85em;
+      background: var(--accent); margin-left: 2px;
+      vertical-align: middle; border-radius: 1px;
+      animation: blink 0.9s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
     .hero p.lead {
       font-size: 20px; color: var(--muted); max-width: 700px;
       margin-bottom: 32px;
     }
     .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* Stats bar */
+    .stats-bar {
+      padding: 48px 0;
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stats-inner {
+      display: grid; grid-template-columns: repeat(4,1fr);
+      gap: 24px; text-align: center;
+    }
+    @media (max-width: 600px) { .stats-inner { grid-template-columns: repeat(2,1fr); } }
+    .stat-num {
+      font-size: clamp(36px, 5vw, 52px); font-weight: 800;
+      letter-spacing: -2px; color: var(--accent); line-height: 1;
+    }
+    .stat-label { font-size: 14px; color: var(--muted); margin-top: 6px; font-weight: 500; }
 
     /* Logos strip */
     .logos-strip { padding: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -223,7 +249,7 @@
   <section class="hero">
     <div class="container">
       <span class="eyebrow">Marketing Operations Consultancy</span>
-      <h1>Build Marketing Operations Without Hiring a Full Team</h1>
+      <h1>Marketing Operations for <span class="hero-rotating" id="typewriter"></span><span class="cursor"></span></h1>
       <p class="lead">Afaao helps growing teams set up and fix CRM, data, and enrichment workflows so campaigns, reporting, and systems actually work — without needing a full Marketing Ops function.</p>
       <div class="hero-ctas">
         <a href="contact.html" class="btn btn-primary">Book a 30-min Audit Call</a>
@@ -231,6 +257,18 @@
       </div>
     </div>
   </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-inner">
+        <div><div class="stat-num" data-target="50" data-suffix="+">0+</div><div class="stat-label">CRM implementations</div></div>
+        <div><div class="stat-num" data-target="30" data-suffix="+">0+</div><div class="stat-label">B2B teams served</div></div>
+        <div><div class="stat-num" data-target="8" data-suffix="">0</div><div class="stat-label">Years MOPs experience</div></div>
+        <div><div class="stat-num" data-target="3" data-suffix="">0</div><div class="stat-label">Compliance regions covered</div></div>
+      </div>
+    </div>
+  </div>
 
   <!-- TOOLS STRIP -->
   <div class="logos-strip">
@@ -531,11 +569,52 @@
   </footer>
 
   <script>
+    // Accordion
     function toggleStep(index) {
-      document.querySelectorAll('.t-step').forEach((s, i) => {
-        s.classList.toggle('open', i === index);
-      });
+      document.querySelectorAll('.t-step').forEach((s, i) => s.classList.toggle('open', i === index));
     }
+
+    // Typewriter
+    const phrases = [
+      'teams without a dedicated ops function.',
+      'growing B2B marketing teams.',
+      'companies that outgrew their CRM setup.',
+      'teams tired of manual data fixes.',
+    ];
+    let pi = 0, ci = 0, deleting = false;
+    const tw = document.getElementById('typewriter');
+    function type() {
+      const phrase = phrases[pi];
+      if (!deleting) {
+        tw.textContent = phrase.slice(0, ++ci);
+        if (ci === phrase.length) { deleting = true; setTimeout(type, 2000); return; }
+      } else {
+        tw.textContent = phrase.slice(0, --ci);
+        if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
+      }
+      setTimeout(type, deleting ? 35 : 65);
+    }
+    type();
+
+    // Animated counters
+    const counters = document.querySelectorAll('.stat-num[data-target]');
+    const cObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        const target = +el.dataset.target;
+        const suffix = el.dataset.suffix || '';
+        let cur = 0;
+        const step = Math.max(1, Math.ceil(target / 40));
+        const t = setInterval(() => {
+          cur = Math.min(cur + step, target);
+          el.textContent = cur + suffix;
+          if (cur >= target) clearInterval(t);
+        }, 40);
+        cObs.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(c => cObs.observe(c));
   </script>
 </body>
 </html>
