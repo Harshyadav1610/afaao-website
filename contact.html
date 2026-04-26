@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Contact Afaao — get in touch with our RevOps and GTM systems team." />
+  <title>Contact Us — Afaao</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --ink: #0a0f1e;
+      --muted: #5b6478;
+      --accent: #1e3a8a;
+      --accent-light: #eef2ff;
+      --border: #e5e7eb;
+      --card: #f9fafb;
+      --green: #1c3a28;
+      --gold: #c4943a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* Navigation */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .logo img { height: 44px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { color: var(--ink); text-decoration: none; font-size: 15px; font-weight: 500; }
+    .nav-links a:hover { color: var(--accent); }
+    .btn {
+      display: inline-block; padding: 10px 20px; border-radius: 8px;
+      font-weight: 600; text-decoration: none; font-size: 15px;
+      transition: all 0.2s;
+    }
+    .btn-primary { background: var(--ink); color: white; }
+    .btn-primary:hover { background: var(--accent); }
+
+    /* Page hero */
+    .page-hero {
+      padding: 72px 0 56px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .page-hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    /* Contact layout */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 64px;
+      padding: 72px 0 96px;
+    }
+    @media (max-width: 768px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 40px; padding: 48px 0 64px; }
+    }
+
+    /* Side info */
+    .contact-info h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .contact-info p {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+    .info-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 24px;
+    }
+    .info-item span:first-child {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+    }
+    .info-item a, .info-item span:last-child {
+      font-size: 15px;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .info-item a:hover { color: var(--accent); }
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 32px 0;
+    }
+    .trust-note {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .trust-note strong { color: var(--ink); }
+
+    /* Form */
+    .contact-form {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+    }
+    @media (max-width: 480px) { .contact-form { padding: 24px; } }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .form-group label .optional {
+      font-weight: 400;
+      color: var(--muted);
+      margin-left: 4px;
+    }
+    .form-group input,
+    .form-group textarea {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--ink);
+      background: white;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(30,58,138,0.08);
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #b0b8c8; }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--ink);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 4px;
+    }
+    .submit-btn:hover { background: var(--accent); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* Success / error states */
+    .form-message {
+      display: none;
+      padding: 16px 20px;
+      border-radius: 10px;
+      font-size: 15px;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .form-message.success {
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #6ee7b7;
+    }
+    .form-message.error {
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fca5a5;
+    }
+
+    /* Footer */
+    footer { padding: 40px 0 28px; border-top: 1px solid var(--border); }
+    .footer-bottom { font-size: 13px; color: var(--muted); text-align: center; }
+
+    @media (max-width: 640px) {
+      .nav-links a:not(.btn) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="container nav-inner">
+      <div class="logo"><a href="index.html"><img src="logo.svg" alt="Afaao" /></a></div>
+      <div class="nav-links">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#approach">Approach</a>
+        <a href="index.html#why">Why Afaao</a>
+        <a href="contact.html" class="btn btn-primary">Contact us</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="container">
+      <h1>Let's talk about your stack.</h1>
+      <p>Tell us what you're working on and we'll get back to you within one business day.</p>
+    </div>
+  </div>
+
+  <!-- CONTACT LAYOUT -->
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- LEFT: info -->
+      <div class="contact-info">
+        <h2>Get in touch</h2>
+        <p>Whether you have a specific project in mind or just want to explore what's possible — we're happy to talk.</p>
+
+        <div class="info-item">
+          <span>Email</span>
+          <a href="mailto:hello@afaao.com">hello@afaao.com</a>
+        </div>
+        <div class="info-item">
+          <span>LinkedIn</span>
+          <a href="https://www.linkedin.com/company/afaao/" target="_blank" rel="noopener">Afaao on LinkedIn</a>
+        </div>
+        <div class="info-item">
+          <span>Based in</span>
+          <span>Toronto — working with B2B teams globally</span>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="trust-note">
+          <strong>Prefer a call?</strong><br>
+          Book a 30-minute intro directly via
+          <a href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; font-weight: 600;">Calendly →</a>
+        </div>
+      </div>
+
+      <!-- RIGHT: form -->
+      <div class="contact-form">
+        <div class="form-message" id="form-message"></div>
+
+        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY" />
+          <input type="hidden" name="subject" value="New enquiry from afaao.com" />
+          <input type="hidden" name="redirect" value="false" />
+          <input type="checkbox" name="botcheck" style="display:none" />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" required />
+            </div>
+            <div class="form-group">
+              <label for="company">Company name</label>
+              <input type="text" id="company" name="company" placeholder="Acme Corp" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email address</label>
+              <input type="email" id="email" name="email" placeholder="jane@acme.com" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone <span class="optional">(optional)</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="+1 416 000 0000" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">What can we help you with?</label>
+            <textarea id="message" name="message" placeholder="Tell us about your current stack, what's broken, or what you're trying to build..." required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submit-btn">Send message</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-bottom">© 2026 Afaao. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const btn = document.getElementById('submit-btn');
+    const msg = document.getElementById('form-message');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      msg.style.display = 'none';
+
+      const data = new FormData(form);
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: data });
+        const json = await res.json();
+        if (json.success) {
+          msg.textContent = "Thanks! We've received your message and will be in touch within one business day.";
+          msg.className = 'form-message success';
+          form.reset();
+        } else {
+          throw new Error('submission failed');
+        }
+      } catch {
+        msg.textContent = 'Something went wrong. Please email us directly at hello@afaao.com';
+        msg.className = 'form-message error';
+      }
+
+      msg.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Send message';
+    });
+  </script>
+
+</body>
+</html>
