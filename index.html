@@ -87,7 +87,7 @@
       border-bottom: 1px solid var(--border);
     }
     .stats-inner {
-      display: grid; grid-template-columns: repeat(4,1fr);
+      display: grid; grid-template-columns: repeat(3,1fr);
       gap: 24px; text-align: center;
     }
     @media (max-width: 600px) { .stats-inner { grid-template-columns: repeat(2,1fr); } }
@@ -280,12 +280,6 @@
     .t-list li::before { content: '✓'; color: #60a5fa; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
     .t-deliverable { margin-top: 16px; padding: 10px 14px; background: rgba(96,165,250,0.08); border-left: 2px solid #60a5fa; border-radius: 0 6px 6px 0; font-size: 13px; color: #93c5fd; font-weight: 500; }
 
-    /* About */
-    .about-inner { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: center; }
-    @media (max-width: 768px) { .about-inner { grid-template-columns: 1fr; gap: 32px; } }
-    .about-left h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -1px; line-height: 1.15; }
-    .about-right p { font-size: 17px; color: var(--muted); line-height: 1.8; }
-
     /* Why us */
     .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
     .why-item h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
@@ -321,7 +315,6 @@
       <div class="nav-links">
         <a href="#services">Services</a>
         <a href="#how-we-work">How We Work</a>
-        <a href="#about">About</a>
         <a href="contact.html">Contact Us</a>
       </div>
     </div>
@@ -334,7 +327,7 @@
       <h1>Marketing Operations for <span class="hero-rotating" id="typewriter"></span><span class="cursor"></span></h1>
       <p class="lead">Afaao delivers AI-driven marketing ops and CRM implementations for growing B2B teams. We build the systems, workflows, and data infrastructure your marketing needs to run at scale, without the overhead of a full in-house ops hire.</p>
       <div class="hero-ctas">
-        <a href="contact.html" class="btn btn-primary">Book a 30-min Audit Call</a>
+        <a href="https://calendly.com/afaao" target="_blank" rel="noopener" class="btn btn-primary">Book a 30-min Audit Call</a>
         <a href="#services" class="btn btn-secondary">See how we can help</a>
       </div>
     </div>
@@ -344,7 +337,6 @@
   <div class="stats-bar">
     <div class="container">
       <div class="stats-inner">
-        <div><div class="stat-num" data-target="50" data-suffix="+">0+</div><div class="stat-label">CRM implementations</div></div>
         <div><div class="stat-num" data-target="10" data-suffix="+">0+</div><div class="stat-label">B2B teams</div></div>
         <div><div class="stat-num" data-target="7" data-suffix="+">0+</div><div class="stat-label">Years MOPs experience</div></div>
         <div><div class="stat-num" data-target="4" data-suffix="+">0+</div><div class="stat-label">Compliance regions covered</div></div>
@@ -679,23 +671,7 @@
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="container">
-      <div class="about-inner">
-        <div class="about-left">
-          <h2>About<br/>Afaao</h2>
-        </div>
-        <div class="about-right">
-          <p>Afaao was built around a challenge that comes up at almost every growing company. The tools are in place. The team is capable. But the systems underneath are not working the way they should.</p>
-          <br/>
-          <p>We specialize in marketing operations. Not strategy decks or platform demos. We come in, look at what you have, figure out what is breaking, and fix it. CRM structure, enrichment logic, lifecycle stages, campaign tracking. The nuts and bolts that determine whether your marketing actually produces results.</p>
-          <br/>
-          <p>Most of our clients have a strong marketing team. What they are missing is the operational layer underneath it. That is where we work.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+
 
   <!-- WHY AFAAO -->
   <section id="why" style="background: var(--card);">
@@ -724,7 +700,7 @@
     <div class="container">
       <h2>Not sure what's broken in your setup?</h2>
       <p>We'll walk through your CRM, data, and workflows and highlight where things can be improved. No commitment required.</p>
-      <a href="contact.html" class="btn btn-primary">Book a 30-min Audit Call</a>
+      <a href="https://calendly.com/afaao" target="_blank" rel="noopener" class="btn btn-primary">Book a 30-min Audit Call</a>
     </div>
   </section>
 
@@ -745,14 +721,13 @@
         <div class="footer-col">
           <h5>Company</h5>
           <a href="#how-we-work">How We Work</a>
-          <a href="#about">About</a>
           <a href="#why">Why Afaao</a>
         </div>
         <div class="footer-col">
           <h5>Get in touch</h5>
           <a href="contact.html">hello@afaao.com</a>
           <a href="https://www.linkedin.com/company/afaao/">LinkedIn</a>
-          <a href="contact.html">Book an Audit Call</a>
+          <a href="https://calendly.com/afaao" target="_blank" rel="noopener">Book an Audit Call</a>
         </div>
       </div>
       <div class="footer-bottom">
