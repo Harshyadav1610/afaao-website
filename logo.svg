@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80" width="260" height="80">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&amp;display=swap');
+      .logo-text {
+        font-family: 'Cormorant Garamond', 'Georgia', serif;
+        font-size: 52px;
+        font-weight: 400;
+        fill: #1c3a28;
+        letter-spacing: -0.5px;
+      }
+    </style>
+  </defs>
+  <text class="logo-text" x="12" y="58">Afaao</text>
+  <line x1="12" y1="68" x2="248" y2="68" stroke="#c4943a" stroke-width="1.5"/>
+</svg>
