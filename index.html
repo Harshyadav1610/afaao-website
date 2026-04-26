@@ -134,13 +134,43 @@
     .who-card h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
     .who-card p { font-size: 14px; color: #9ca3af; }
 
-    /* Framework */
-    .framework { background: var(--card); }
-    .framework-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
-    .framework-step { padding: 28px; background: white; border-radius: 12px; border: 1px solid var(--border); }
-    .framework-step .num { font-size: 13px; color: var(--accent); font-weight: 700; margin-bottom: 12px; letter-spacing: 0.5px; }
-    .framework-step h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
-    .framework-step p { font-size: 14px; color: var(--muted); }
+    /* How We Work — interactive timeline */
+    .framework { background: #0d1117; color: white; }
+    .framework .section-title { color: white; }
+    .framework .section-sub { color: #9ca3af; }
+    .timeline { position: relative; display: flex; flex-direction: column; max-width: 860px; }
+    .timeline::before { content: ''; position: absolute; left: 27px; top: 8px; bottom: 8px; width: 2px; background: rgba(255,255,255,0.08); }
+    .t-step { position: relative; padding-left: 68px; margin-bottom: 6px; }
+    .t-dot {
+      position: absolute; left: 17px; top: 18px;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: #1a1f2e; border: 2px solid rgba(255,255,255,0.15);
+      cursor: pointer; transition: all 0.25s; z-index: 1;
+    }
+    .t-step.open .t-dot { background: var(--accent); border-color: #60a5fa; box-shadow: 0 0 0 4px rgba(96,165,250,0.15); }
+    .t-header {
+      display: flex; align-items: center; gap: 20px;
+      padding: 18px 24px; border-radius: 12px; cursor: pointer;
+      border: 1px solid transparent; transition: all 0.25s;
+      user-select: none;
+    }
+    .t-header:hover { background: rgba(255,255,255,0.04); }
+    .t-step.open .t-header { background: rgba(96,165,250,0.07); border-color: rgba(96,165,250,0.18); }
+    .t-num { font-size: 11px; font-weight: 700; color: #60a5fa; letter-spacing: 1.5px; text-transform: uppercase; min-width: 90px; }
+    .t-title { font-size: 20px; font-weight: 700; flex: 1; color: white; }
+    .t-arrow { font-size: 20px; color: #60a5fa; transition: transform 0.3s; line-height: 1; }
+    .t-step.open .t-arrow { transform: rotate(90deg); }
+    .t-body {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+      opacity: 0; padding: 0 24px;
+    }
+    .t-step.open .t-body { max-height: 400px; opacity: 1; padding: 4px 24px 24px; }
+    .t-body p { font-size: 15px; color: #9ca3af; margin-bottom: 16px; line-height: 1.7; }
+    .t-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .t-list li { font-size: 14px; color: #d1d5db; display: flex; align-items: flex-start; gap: 10px; }
+    .t-list li::before { content: '✓'; color: #60a5fa; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .t-deliverable { margin-top: 16px; padding: 10px 14px; background: rgba(96,165,250,0.08); border-left: 2px solid #60a5fa; border-radius: 0 6px 6px 0; font-size: 13px; color: #93c5fd; font-weight: 500; }
 
     /* About */
     .about-inner { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: center; }
@@ -337,28 +367,85 @@
   <section id="how-we-work" class="framework">
     <div class="container">
       <h2 class="section-title">How We Work</h2>
-      <p class="section-sub">A straightforward four-step process — no long discovery phases, no unnecessary complexity.</p>
-      <div class="framework-grid">
-        <div class="framework-step">
-          <div class="num">01 — AUDIT</div>
-          <h4>Understand the setup</h4>
-          <p>We review your CRM setup, lifecycle stages, and data flow to understand exactly what's broken and what isn't.</p>
+      <p class="section-sub">Four focused steps — click each one to see exactly what we do and what you get at the end.</p>
+      <div class="timeline">
+
+        <div class="t-step open" data-step="0">
+          <div class="t-dot"></div>
+          <div class="t-header" onclick="toggleStep(0)">
+            <div class="t-num">01 — Audit</div>
+            <div class="t-title">Understand the setup</div>
+            <div class="t-arrow">›</div>
+          </div>
+          <div class="t-body">
+            <p>We review your CRM, lifecycle stages, and data flow before touching anything. No assumptions.</p>
+            <ul class="t-list">
+              <li>CRM field and object mapping</li>
+              <li>Lifecycle stage review</li>
+              <li>Enrichment tool configuration check</li>
+              <li>Campaign tracking audit</li>
+            </ul>
+            <div class="t-deliverable">Deliverable: MOPs health report with prioritised findings</div>
+          </div>
         </div>
-        <div class="framework-step">
-          <div class="num">02 — IDENTIFY</div>
-          <h4>Find the gaps</h4>
-          <p>We uncover inefficiencies in data, enrichment, and workflows — and prioritise what to fix first for the biggest impact.</p>
+
+        <div class="t-step" data-step="1">
+          <div class="t-dot"></div>
+          <div class="t-header" onclick="toggleStep(1)">
+            <div class="t-num">02 — Identify</div>
+            <div class="t-title">Find the gaps</div>
+            <div class="t-arrow">›</div>
+          </div>
+          <div class="t-body">
+            <p>We pinpoint exactly where data, enrichment, and workflows are breaking down — and agree on what to fix first.</p>
+            <ul class="t-list">
+              <li>Data quality and duplication gaps</li>
+              <li>Broken workflow triggers</li>
+              <li>Attribution blind spots</li>
+              <li>Integration failures between tools</li>
+            </ul>
+            <div class="t-deliverable">Deliverable: Prioritised fix list with effort and impact estimates</div>
+          </div>
         </div>
-        <div class="framework-step">
-          <div class="num">03 — IMPLEMENT</div>
-          <h4>Fix what matters</h4>
-          <p>We fix CRM, enrichment logic, and campaign tracking. No bloated project plans — just clean, documented work.</p>
+
+        <div class="t-step" data-step="2">
+          <div class="t-dot"></div>
+          <div class="t-header" onclick="toggleStep(2)">
+            <div class="t-num">03 — Implement</div>
+            <div class="t-title">Fix what matters</div>
+            <div class="t-arrow">›</div>
+          </div>
+          <div class="t-body">
+            <p>We rebuild CRM structure, enrichment logic, and campaign tracking — with clear documentation throughout.</p>
+            <ul class="t-list">
+              <li>CRM cleanup and restructuring</li>
+              <li>Enrichment workflow rebuild</li>
+              <li>Campaign tracking and UTM setup</li>
+              <li>Lifecycle stage definition and testing</li>
+            </ul>
+            <div class="t-deliverable">Deliverable: Working systems, fully tested and documented</div>
+          </div>
         </div>
-        <div class="framework-step">
-          <div class="num">04 — OPTIMISE</div>
-          <h4>Make it last</h4>
-          <p>We ensure long-term scalability and reporting accuracy — and hand off clearly so your team can maintain it.</p>
+
+        <div class="t-step" data-step="3">
+          <div class="t-dot"></div>
+          <div class="t-header" onclick="toggleStep(3)">
+            <div class="t-num">04 — Optimise</div>
+            <div class="t-title">Make it last</div>
+            <div class="t-arrow">›</div>
+          </div>
+          <div class="t-body">
+            <p>We set up reporting, train your team, and hand off clearly so you're not dependent on us to keep things running.</p>
+            <ul class="t-list">
+              <li>Reporting dashboard setup</li>
+              <li>Scalability and edge case review</li>
+              <li>Team training sessions</li>
+              <li>Clean handoff with runbooks</li>
+            </ul>
+            <div class="t-deliverable">Deliverable: Systems your team can own and maintain independently</div>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -443,5 +530,12 @@
     </div>
   </footer>
 
+  <script>
+    function toggleStep(index) {
+      document.querySelectorAll('.t-step').forEach((s, i) => {
+        s.classList.toggle('open', i === index);
+      });
+    }
+  </script>
 </body>
 </html>
