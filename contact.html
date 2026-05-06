@@ -219,8 +219,61 @@
     footer { padding: 40px 0 28px; border-top: 1px solid var(--border); }
     .footer-bottom { font-size: 13px; color: var(--muted); text-align: center; }
 
-    @media (max-width: 640px) {
-      .nav-links a:not(.btn) { display: none; }
+    /* Mobile nav toggle */
+    .nav-toggle {
+      display: none;
+      background: none; border: none; cursor: pointer;
+      width: 44px; height: 44px; padding: 10px;
+      flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+    }
+    .nav-toggle span {
+      display: block; width: 22px; height: 2px;
+      background: var(--ink); border-radius: 2px;
+      transition: transform 0.3s, opacity 0.2s;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ===== Mobile (≤768px) ===== */
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: absolute; top: 100%; left: 0; right: 0;
+        flex-direction: column; gap: 0;
+        background: white;
+        padding: 8px 24px 24px;
+        border-bottom: 1px solid var(--border);
+        transform: translateY(-110%);
+        transition: transform 0.3s ease;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        z-index: 99;
+      }
+      .nav-links.open { transform: translateY(0); }
+      .nav-links a {
+        display: block; width: 100%;
+        padding: 14px 0; font-size: 17px;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links a:last-child { border-bottom: none; }
+
+      .page-hero { padding: 48px 0 36px; }
+      .page-hero h1 { letter-spacing: -1px; }
+      .page-hero p { font-size: 16px; }
+
+      .contact-info h2 { font-size: 20px; }
+      .contact-info p { font-size: 15px; margin-bottom: 24px; }
+      .info-item { margin-bottom: 20px; }
+      .submit-btn { padding: 16px; font-size: 16px; min-height: 52px; }
+    }
+
+    /* ===== Small phones (≤480px) ===== */
+    @media (max-width: 480px) {
+      .logo svg { height: 38px; }
+      .page-hero h1 { font-size: 30px; }
+      .contact-form { padding: 22px; }
     }
   </style>
 </head>
@@ -230,12 +283,15 @@
   <nav>
     <div class="container nav-inner">
       <div class="logo"><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80" aria-label="Afaao" role="img"><text style="font-family:'Cormorant Garamond',Georgia,serif;font-size:52px;font-weight:700;fill:#1c3a28;letter-spacing:-0.5px" x="12" y="58">Afaao</text><line x1="12" y1="68" x2="248" y2="68" stroke="#c4943a" stroke-width="1.5"/></svg></a></div>
-      <div class="nav-links">
+      <div class="nav-links" id="nav-links">
         <a href="index.html#services">Services</a>
         <a href="index.html#approach">Approach</a>
         <a href="index.html#why">Why Afaao</a>
         <a href="contact.html">Contact Us</a>
       </div>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
@@ -330,6 +386,25 @@
   </footer>
 
   <script>
+    // Mobile nav drawer
+    (function () {
+      const toggle = document.querySelector('.nav-toggle');
+      const links = document.querySelector('.nav-links');
+      if (!toggle || !links) return;
+      toggle.addEventListener('click', () => {
+        const open = links.classList.toggle('open');
+        toggle.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+      links.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+          links.classList.remove('open');
+          toggle.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+
     const form = document.getElementById('contact-form');
     const btn = document.getElementById('submit-btn');
     const msg = document.getElementById('form-message');

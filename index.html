@@ -299,10 +299,140 @@
     .footer-col a:hover { color: var(--accent); }
     .footer-bottom { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted); }
 
-    @media (max-width: 640px) {
-      .nav-links a:not(.btn) { display: none; }
-      .hero { padding: 60px 0 40px; }
-      section { padding: 60px 0; }
+    /* Mobile nav toggle (hamburger) */
+    .nav-toggle {
+      display: none;
+      background: none; border: none; cursor: pointer;
+      width: 44px; height: 44px; padding: 10px;
+      flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+    }
+    .nav-toggle span {
+      display: block; width: 22px; height: 2px;
+      background: var(--ink); border-radius: 2px;
+      transition: transform 0.3s, opacity 0.2s;
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ===== Mobile (≤768px) ===== */
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+
+      /* Nav drawer */
+      .nav-toggle { display: flex; }
+      .nav-links {
+        position: absolute; top: 100%; left: 0; right: 0;
+        flex-direction: column; gap: 0;
+        background: white;
+        padding: 8px 24px 24px;
+        border-bottom: 1px solid var(--border);
+        transform: translateY(-110%);
+        transition: transform 0.3s ease;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        z-index: 99;
+      }
+      .nav-links.open { transform: translateY(0); }
+      .nav-links a {
+        display: block; width: 100%;
+        padding: 14px 0; font-size: 17px;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links a:last-child { border-bottom: none; }
+
+      /* Hero */
+      .hero { padding: 48px 0 32px; }
+      h1 { letter-spacing: -1px; }
+      .hero p.lead { font-size: 17px; margin-bottom: 28px; }
+      .hero-ctas { flex-direction: column; gap: 10px; align-items: stretch; }
+      .hero-ctas .btn { width: 100%; text-align: center; padding: 14px 20px; font-size: 16px; }
+
+      /* Sections */
+      section { padding: 56px 0; }
+      .section-sub { font-size: 16px; margin-bottom: 32px; }
+
+      /* Stats — keep 3 columns, just smaller */
+      .stats-inner { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+      .stat-num { font-size: 30px; letter-spacing: -1px; }
+      .stat-label { font-size: 12px; line-height: 1.3; }
+
+      /* Problem cards — answers always visible (no hover on phones) */
+      .problem-grid { gap: 14px; margin-top: 24px; }
+      .problem-item { min-height: 0; }
+      .problem-front { padding: 18px 20px 8px; }
+      .problem-front h4 { font-size: 16px; }
+      .problem-hint { display: none; }
+      .problem-back {
+        position: static; transform: none !important;
+        background: transparent; color: var(--muted);
+        padding: 0 20px 18px 44px;
+        border-radius: 0;
+      }
+      .problem-back p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+      /* Services */
+      .service-card { padding: 26px 24px; }
+      .service-card h3 { font-size: 18px; }
+      .additional-support { padding: 22px 24px; margin-top: 32px; }
+
+      /* Who */
+      .who-card { padding: 24px; }
+      .who-card h4 { font-size: 17px; }
+
+      /* ROI calculator */
+      .calc-section { padding: 56px 0; }
+      .calc-inner { gap: 28px; }
+      .calc-result { position: static; padding: 28px 24px; border-radius: 16px; }
+      .result-total { font-size: 44px; }
+      .calc-controls { gap: 24px; }
+      .slider-group input[type="range"]::-webkit-slider-thumb { width: 24px; height: 24px; }
+      .calc-cta { padding: 16px 20px; font-size: 16px; }
+
+      /* Timeline */
+      .framework { padding: 56px 0; }
+      .timeline::before { left: 21px; }
+      .t-step { padding-left: 50px; }
+      .t-dot { left: 11px; top: 16px; }
+      .t-header { flex-wrap: wrap; padding: 14px 16px; gap: 4px 12px; }
+      .t-num { min-width: 0; flex-basis: 100%; font-size: 10px; }
+      .t-title { font-size: 17px; flex: 1; }
+      .t-arrow { font-size: 18px; }
+      .t-step.open .t-body { padding: 0 16px 20px; }
+      .t-body p { font-size: 14px; }
+
+      /* Why */
+      .why-grid { gap: 24px; }
+      .why-item h4 { font-size: 17px; }
+      .why-item p { font-size: 14px; }
+
+      /* CTA */
+      .cta-section { padding: 56px 0; }
+      .cta-section p { font-size: 16px; margin-bottom: 28px; }
+      .cta-section .btn-primary {
+        display: block; width: 100%; max-width: 340px; margin: 0 auto;
+        padding: 14px 20px; font-size: 16px;
+      }
+
+      /* Footer */
+      .footer-inner { gap: 28px; }
+      .footer-col { width: 100%; }
+      .footer-col p { max-width: none; }
+
+      /* Logos marquee */
+      .logos-track { gap: 40px; animation-duration: 28s; }
+      .logos-track span { font-size: 14px; }
+    }
+
+    /* ===== Small phones (≤480px) ===== */
+    @media (max-width: 480px) {
+      .logo svg { height: 38px; }
+      .stats-bar { padding: 36px 0; }
+      .stat-num { font-size: 26px; }
+      .stat-label { font-size: 11px; }
+      h1 { font-size: 32px; }
+      .section-title { font-size: 26px; letter-spacing: -0.5px; }
+      .hero p.lead { font-size: 16px; }
+      .result-total { font-size: 38px; }
     }
   </style>
 </head>
@@ -312,12 +442,15 @@
   <nav>
     <div class="container nav-inner">
       <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80" aria-label="Afaao" role="img"><text style="font-family:'Cormorant Garamond',Georgia,serif;font-size:52px;font-weight:700;fill:#1c3a28;letter-spacing:-0.5px" x="12" y="58">Afaao</text><line x1="12" y1="68" x2="248" y2="68" stroke="#c4943a" stroke-width="1.5"/></svg></div>
-      <div class="nav-links">
+      <div class="nav-links" id="nav-links">
         <a href="#services">Services</a>
         <a href="#how-we-work">How We Work</a>
         <a href="#why">Why Afaao</a>
         <a href="contact.html">Contact Us</a>
       </div>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
@@ -738,6 +871,25 @@
   </footer>
 
   <script>
+    // Mobile nav drawer
+    (function () {
+      const toggle = document.querySelector('.nav-toggle');
+      const links = document.querySelector('.nav-links');
+      if (!toggle || !links) return;
+      toggle.addEventListener('click', () => {
+        const open = links.classList.toggle('open');
+        toggle.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+      links.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+          links.classList.remove('open');
+          toggle.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+
     // Accordion
     function toggleStep(index) {
       document.querySelectorAll('.t-step').forEach((s, i) => s.classList.toggle('open', i === index));
