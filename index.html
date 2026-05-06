@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Afaao delivers AI-driven marketing ops and CRM implementations for growing B2B teams, without the overhead of a full in-house ops hire." />
-  <title>Afaao — Marketing Operations for Growing Teams</title>
+  <meta name="description" content="Afaao builds the marketing ops, CRM, and data systems your B2B team needs to scale — without the full-time hire." />
+  <title>Afaao — Marketing Ops, done right.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
@@ -29,7 +29,7 @@
     }
     .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
-    /* Navigation */
+    /* Nav */
     nav {
       position: sticky; top: 0; z-index: 100;
       background: rgba(255,255,255,0.85);
@@ -42,264 +42,19 @@
     .nav-links { display: flex; gap: 28px; align-items: center; }
     .nav-links a { color: var(--ink); text-decoration: none; font-size: 15px; font-weight: 500; }
     .nav-links a:hover { color: var(--accent); }
+
+    /* Buttons */
     .btn {
-      display: inline-block; padding: 10px 20px; border-radius: 8px;
-      font-weight: 600; text-decoration: none; font-size: 15px;
-      transition: all 0.2s;
+      display: inline-block; padding: 14px 24px; border-radius: 10px;
+      font-weight: 600; text-decoration: none; font-size: 16px;
+      transition: all 0.2s; cursor: pointer; border: none;
     }
     .btn-primary { background: var(--ink); color: white; }
-    .btn-primary:hover { background: var(--accent); }
-    .btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--border); }
-    .btn-secondary:hover { border-color: var(--ink); }
+    .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+    .btn-ghost { color: var(--ink); border: 1px solid var(--border); background: transparent; }
+    .btn-ghost:hover { border-color: var(--ink); }
 
-    /* Hero */
-    .hero { padding: 100px 0 80px; }
-    .eyebrow {
-      display: inline-block; padding: 6px 14px;
-      background: var(--accent-light); color: var(--accent);
-      border-radius: 100px; font-size: 13px; font-weight: 600;
-      margin-bottom: 24px;
-    }
-    h1 {
-      font-size: clamp(36px, 5vw, 56px);
-      font-weight: 800; line-height: 1.1; letter-spacing: -1.5px;
-      margin-bottom: 24px; max-width: 860px;
-    }
-    .hero-rotating { color: var(--accent); }
-    .cursor {
-      display: inline-block; width: 3px; height: 0.85em;
-      background: var(--accent); margin-left: 2px;
-      vertical-align: middle; border-radius: 1px;
-      animation: blink 0.9s step-end infinite;
-    }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-    .hero p.lead {
-      font-size: 20px; color: var(--muted); max-width: 700px;
-      margin-bottom: 32px;
-    }
-    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-
-    /* Stats bar */
-    .stats-bar {
-      padding: 48px 0;
-      background: var(--card);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .stats-inner {
-      display: grid; grid-template-columns: repeat(3,1fr);
-      gap: 24px; text-align: center;
-    }
-    @media (max-width: 600px) { .stats-inner { grid-template-columns: repeat(2,1fr); } }
-    .stat-num {
-      font-size: clamp(36px, 5vw, 52px); font-weight: 800;
-      letter-spacing: -2px; color: var(--accent); line-height: 1;
-    }
-    .stat-label { font-size: 14px; color: var(--muted); margin-top: 6px; font-weight: 500; }
-
-    /* Scroll animations */
-    .sr {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-    .sr.in { opacity: 1; transform: translateY(0); }
-    .sr.d1 { transition-delay: 0.1s; }
-    .sr.d2 { transition-delay: 0.2s; }
-    .sr.d3 { transition-delay: 0.3s; }
-    .sr.d4 { transition-delay: 0.4s; }
-
-    /* Logos strip — marquee */
-    .logos-strip { padding: 40px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .logos-strip p { text-align: center; color: var(--muted); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
-    .logos-marquee { overflow: hidden; position: relative; }
-    .logos-marquee::before, .logos-marquee::after {
-      content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none;
-    }
-    .logos-marquee::before { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
-    .logos-marquee::after  { right: 0; background: linear-gradient(to left,  var(--bg), transparent); }
-    .logos-track {
-      display: flex; gap: 56px; align-items: center;
-      width: max-content;
-      animation: marquee-scroll 32s linear infinite;
-    }
-    .logos-track:hover { animation-play-state: paused; }
-    @keyframes marquee-scroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    .logos-track span { font-weight: 600; font-size: 15px; color: var(--muted); white-space: nowrap; opacity: 0.65; }
-
-    /* Sections */
-    section { padding: 80px 0; }
-    .section-title { font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; }
-    .section-sub { font-size: 18px; color: var(--muted); max-width: 680px; margin-bottom: 48px; }
-
-    /* Problem section */
-    .problem { background: var(--card); }
-    .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 32px; }
-    .problem-item {
-      position: relative; overflow: hidden; cursor: default;
-      min-height: 130px; background: white; border-radius: 12px; border: 1px solid var(--border);
-    }
-    .problem-front { padding: 22px 24px; display: flex; gap: 14px; align-items: flex-start; }
-    .problem-front .bullet { color: var(--accent); font-size: 18px; font-weight: 800; line-height: 1.4; flex-shrink: 0; }
-    .problem-front h4 { font-size: 15px; font-weight: 600; line-height: 1.5; color: var(--ink); margin-bottom: 6px; }
-    .problem-hint { font-size: 11px; color: var(--accent); font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
-    .problem-back {
-      position: absolute; inset: 0;
-      background: var(--accent); color: white;
-      padding: 22px 24px;
-      display: flex; align-items: center;
-      transform: translateY(100%);
-      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      border-radius: 11px;
-    }
-    .problem-item:hover .problem-back { transform: translateY(0); }
-    .problem-back p { font-size: 14px; line-height: 1.7; color: white; }
-
-    /* Services */
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-    .service-card {
-      padding: 32px; border: 1px solid var(--border); border-radius: 16px;
-      background: white; transition: all 0.3s;
-    }
-    .service-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 10px 40px rgba(30,58,138,0.08); }
-    .service-icon {
-      width: 48px; height: 48px; border-radius: 12px;
-      background: var(--accent-light); display: flex; align-items: center; justify-content: center;
-      font-size: 24px; margin-bottom: 20px;
-    }
-    .service-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
-    .service-card p { color: var(--muted); font-size: 15px; margin-bottom: 16px; }
-    .service-card ul { list-style: none; }
-    .service-card li { font-size: 14px; color: var(--muted); padding: 4px 0; padding-left: 20px; position: relative; }
-    .service-card li:before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
-
-    /* Additional support sub-section */
-    .additional-support {
-      margin-top: 40px; padding: 28px 32px;
-      background: var(--card); border-radius: 14px;
-      border: 1px solid var(--border);
-    }
-    .additional-support h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
-    .additional-support p { font-size: 14px; color: var(--muted); margin-bottom: 16px; max-width: 680px; }
-    .additional-support ul { list-style: none; display: flex; gap: 12px; flex-wrap: wrap; }
-    .additional-support li {
-      font-size: 13px; color: var(--muted); font-weight: 500;
-      background: white; border: 1px solid var(--border);
-      padding: 6px 14px; border-radius: 100px;
-    }
-
-    /* Who we work with */
-    .who { background: var(--ink); color: white; }
-    .who .section-title { color: white; }
-    .who .section-sub { color: #9ca3af; }
-    .who-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-    .who-card {
-      padding: 28px; background: rgba(255,255,255,0.05);
-      border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);
-    }
-    .who-card .who-icon { font-size: 28px; margin-bottom: 14px; }
-    .who-card h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
-    .who-card p { font-size: 14px; color: #9ca3af; }
-
-    /* ROI Calculator */
-    .calc-section { background: #0d1117; color: white; padding: 80px 0; }
-    .calc-section .section-title { color: white; }
-    .calc-section .section-sub { color: #9ca3af; }
-    .calc-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
-    @media (max-width: 768px) { .calc-inner { grid-template-columns: 1fr; gap: 32px; } }
-    .calc-controls { display: flex; flex-direction: column; gap: 32px; }
-    .slider-group label {
-      display: flex; justify-content: space-between; align-items: baseline;
-      font-size: 15px; font-weight: 600; color: white; margin-bottom: 12px;
-    }
-    .slider-group label span { color: #60a5fa; font-weight: 700; }
-    .slider-group input[type="range"] {
-      width: 100%; -webkit-appearance: none; height: 4px; border-radius: 4px;
-      background: rgba(255,255,255,0.12); outline: none; cursor: pointer;
-    }
-    .slider-group input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%;
-      background: #60a5fa; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s;
-    }
-    .slider-group input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); box-shadow: 0 0 0 6px rgba(96,165,250,0.15); }
-    .slider-hint { font-size: 12px; color: #6b7280; margin-top: 6px; }
-    .calc-result { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 36px; position: sticky; top: 100px; }
-    .result-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #9ca3af; margin-bottom: 10px; }
-    .result-total { font-size: clamp(44px, 6vw, 64px); font-weight: 800; color: #60a5fa; letter-spacing: -2px; line-height: 1; margin-bottom: 10px; }
-    .result-sub { font-size: 14px; color: #9ca3af; margin-bottom: 28px; line-height: 1.6; }
-    .result-rows { display: flex; flex-direction: column; gap: 0; margin-bottom: 28px; }
-    .result-row { display: flex; justify-content: space-between; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
-    .result-row span:first-child { font-size: 14px; color: #9ca3af; }
-    .result-row span:last-child { font-size: 14px; font-weight: 700; color: white; }
-    .calc-cta {
-      display: block; text-align: center; padding: 14px 20px;
-      background: var(--accent); color: white; border-radius: 10px;
-      text-decoration: none; font-weight: 600; font-size: 15px;
-      transition: background 0.2s;
-    }
-    .calc-cta:hover { background: #2563eb; }
-
-    /* How We Work — interactive timeline */
-    .framework { background: #0d1117; color: white; }
-    .framework .section-title { color: white; }
-    .framework .section-sub { color: #9ca3af; }
-    .timeline { position: relative; display: flex; flex-direction: column; max-width: 860px; }
-    .timeline::before { content: ''; position: absolute; left: 27px; top: 8px; bottom: 8px; width: 2px; background: rgba(255,255,255,0.08); }
-    .t-step { position: relative; padding-left: 68px; margin-bottom: 6px; }
-    .t-dot {
-      position: absolute; left: 17px; top: 18px;
-      width: 22px; height: 22px; border-radius: 50%;
-      background: #1a1f2e; border: 2px solid rgba(255,255,255,0.15);
-      cursor: pointer; transition: all 0.25s; z-index: 1;
-    }
-    .t-step.open .t-dot { background: var(--accent); border-color: #60a5fa; box-shadow: 0 0 0 4px rgba(96,165,250,0.15); }
-    .t-header {
-      display: flex; align-items: center; gap: 20px;
-      padding: 18px 24px; border-radius: 12px; cursor: pointer;
-      border: 1px solid transparent; transition: all 0.25s;
-      user-select: none;
-    }
-    .t-header:hover { background: rgba(255,255,255,0.04); }
-    .t-step.open .t-header { background: rgba(96,165,250,0.07); border-color: rgba(96,165,250,0.18); }
-    .t-num { font-size: 11px; font-weight: 700; color: #60a5fa; letter-spacing: 1.5px; text-transform: uppercase; min-width: 90px; }
-    .t-title { font-size: 20px; font-weight: 700; flex: 1; color: white; }
-    .t-arrow { font-size: 20px; color: #60a5fa; transition: transform 0.3s; line-height: 1; }
-    .t-step.open .t-arrow { transform: rotate(90deg); }
-    .t-body {
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
-      opacity: 0; padding: 0 24px;
-    }
-    .t-step.open .t-body { max-height: 400px; opacity: 1; padding: 4px 24px 24px; }
-    .t-body p { font-size: 15px; color: #9ca3af; margin-bottom: 16px; line-height: 1.7; }
-    .t-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
-    .t-list li { font-size: 14px; color: #d1d5db; display: flex; align-items: flex-start; gap: 10px; }
-    .t-list li::before { content: '✓'; color: #60a5fa; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-    .t-deliverable { margin-top: 16px; padding: 10px 14px; background: rgba(96,165,250,0.08); border-left: 2px solid #60a5fa; border-radius: 0 6px 6px 0; font-size: 13px; color: #93c5fd; font-weight: 500; }
-
-    /* Why us */
-    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px; }
-    .why-item h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
-    .why-item p { color: var(--muted); font-size: 15px; }
-
-    /* CTA */
-    .cta-section { background: var(--accent-light); text-align: center; padding: 80px 0; }
-    .cta-section h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; margin-bottom: 16px; letter-spacing: -1px; }
-    .cta-section p { font-size: 18px; color: var(--muted); margin-bottom: 32px; max-width: 560px; margin-left: auto; margin-right: auto; }
-
-    /* Footer */
-    footer { padding: 48px 0 32px; border-top: 1px solid var(--border); }
-    .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 32px; flex-wrap: wrap; }
-    .footer-col p { font-size: 14px; color: var(--muted); margin-top: 8px; max-width: 320px; }
-    .footer-col h5 { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; color: var(--muted); }
-    .footer-col a { display: block; color: var(--ink); text-decoration: none; font-size: 14px; padding: 4px 0; }
-    .footer-col a:hover { color: var(--accent); }
-    .footer-bottom { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted); }
-
-    /* Mobile nav toggle (hamburger) */
+    /* Mobile nav toggle */
     .nav-toggle {
       display: none;
       background: none; border: none; cursor: pointer;
@@ -315,11 +70,234 @@
     .nav-toggle.open span:nth-child(2) { opacity: 0; }
     .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+    /* Hero */
+    .hero { padding: 96px 0 80px; }
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 72px);
+      font-weight: 800;
+      line-height: 1.04;
+      letter-spacing: -2px;
+      margin-bottom: 22px;
+      max-width: 920px;
+    }
+    .hero h1 .accent { color: var(--accent); }
+    .hero p.lead {
+      font-size: clamp(17px, 1.6vw, 21px);
+      color: var(--muted);
+      max-width: 600px;
+      margin-bottom: 36px;
+    }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+    /* Stats strip */
+    .strip {
+      padding: 48px 0;
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      text-align: center;
+    }
+    .stat-num {
+      font-size: clamp(34px, 5vw, 52px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .stat-label { font-size: 13px; color: var(--muted); margin-top: 6px; font-weight: 500; }
+
+    /* Sections */
+    section { padding: 96px 0; }
+    .label {
+      display: inline-block;
+      padding: 6px 12px;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 14px;
+      max-width: 720px;
+    }
+    .section-sub {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 580px;
+      margin-bottom: 56px;
+    }
+
+    /* Services */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .svc {
+      padding: 32px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: all 0.3s;
+    }
+    .svc:hover {
+      border-color: var(--accent);
+      box-shadow: 0 12px 32px rgba(30,58,138,0.08);
+      transform: translateY(-3px);
+    }
+    .svc-num {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 1.5px;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .svc h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.4px; }
+    .svc p { font-size: 15px; color: var(--muted); line-height: 1.6; }
+
+    /* Tools strip / marquee */
+    .tools {
+      padding: 36px 0;
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .tools-label {
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .marquee { overflow: hidden; position: relative; }
+    .marquee::before, .marquee::after {
+      content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none;
+    }
+    .marquee::before { left: 0; background: linear-gradient(to right, var(--card), transparent); }
+    .marquee::after { right: 0; background: linear-gradient(to left, var(--card), transparent); }
+    .marquee-track {
+      display: flex; gap: 56px; align-items: center;
+      width: max-content;
+      animation: marquee 30s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track span {
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--muted);
+      white-space: nowrap;
+      opacity: 0.7;
+    }
+
+    /* Process — 4 steps in a row */
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+    }
+    .step {
+      padding-top: 22px;
+      border-top: 2px solid var(--accent);
+    }
+    .step-num {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+    .step h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.3px; }
+    .step p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+    /* Audience chips */
+    .audience { background: var(--card); }
+    .audience-row {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-top: 12px;
+    }
+    .chip {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      background: white;
+      border: 1px solid var(--border);
+      padding: 10px 18px;
+      border-radius: 100px;
+    }
+
+    /* Final CTA */
+    .final-cta {
+      background: var(--ink);
+      color: white;
+      text-align: center;
+      padding: 88px 0;
+    }
+    .final-cta h2 {
+      font-size: clamp(30px, 4.5vw, 44px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 14px;
+      color: white;
+    }
+    .final-cta p {
+      font-size: 17px;
+      color: #9ca3af;
+      max-width: 520px;
+      margin: 0 auto 32px;
+    }
+    .final-cta .btn-primary { background: white; color: var(--ink); }
+    .final-cta .btn-primary:hover { background: var(--accent-light); color: var(--accent); }
+
+    /* Footer */
+    footer {
+      padding: 36px 0 28px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .footer-links { display: flex; gap: 22px; flex-wrap: wrap; }
+    .footer-links a { color: var(--ink); text-decoration: none; font-size: 14px; font-weight: 500; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-bottom {
+      margin-top: 24px; padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 13px; color: var(--muted);
+      text-align: center;
+    }
+
+    /* Reveal */
+    .sr {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .sr.in { opacity: 1; transform: translateY(0); }
+
     /* ===== Mobile (≤768px) ===== */
     @media (max-width: 768px) {
       .container { padding: 0 20px; }
 
-      /* Nav drawer */
       .nav-toggle { display: flex; }
       .nav-links {
         position: absolute; top: 100%; left: 0; right: 0;
@@ -340,113 +318,52 @@
       }
       .nav-links a:last-child { border-bottom: none; }
 
-      /* Hero */
-      .hero { padding: 48px 0 32px; }
-      h1 { letter-spacing: -1px; }
-      .hero p.lead { font-size: 17px; margin-bottom: 28px; }
-      .hero-ctas { flex-direction: column; gap: 10px; align-items: stretch; }
-      .hero-ctas .btn { width: 100%; text-align: center; padding: 14px 20px; font-size: 16px; }
+      .hero { padding: 56px 0 48px; }
+      .hero p.lead { margin-bottom: 28px; }
+      .hero-ctas { flex-direction: column; align-items: stretch; gap: 10px; }
+      .hero-ctas .btn { width: 100%; text-align: center; }
 
-      /* Sections */
-      section { padding: 56px 0; }
-      .section-sub { font-size: 16px; margin-bottom: 32px; }
+      section { padding: 64px 0; }
+      .section-sub { margin-bottom: 36px; font-size: 16px; }
 
-      /* Stats — keep 3 columns, just smaller */
-      .stats-inner { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+      .services { grid-template-columns: 1fr; gap: 14px; }
+      .svc { padding: 26px 24px; }
+
+      .stats { gap: 12px; }
       .stat-num { font-size: 30px; letter-spacing: -1px; }
       .stat-label { font-size: 12px; line-height: 1.3; }
 
-      /* Problem cards — answers always visible (no hover on phones) */
-      .problem-grid { gap: 14px; margin-top: 24px; }
-      .problem-item { min-height: 0; }
-      .problem-front { padding: 18px 20px 8px; }
-      .problem-front h4 { font-size: 16px; }
-      .problem-hint { display: none; }
-      .problem-back {
-        position: static; transform: none !important;
-        background: transparent; color: var(--muted);
-        padding: 0 20px 18px 44px;
-        border-radius: 0;
-      }
-      .problem-back p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+      .process { grid-template-columns: 1fr 1fr; gap: 24px 18px; }
+      .step { padding-top: 18px; }
 
-      /* Services */
-      .service-card { padding: 26px 24px; }
-      .service-card h3 { font-size: 18px; }
-      .additional-support { padding: 22px 24px; margin-top: 32px; }
+      .marquee-track { gap: 40px; animation-duration: 26s; }
+      .marquee-track span { font-size: 14px; }
 
-      /* Who */
-      .who-card { padding: 24px; }
-      .who-card h4 { font-size: 17px; }
+      .final-cta { padding: 64px 0; }
+      .final-cta p { font-size: 16px; }
+      .final-cta .btn { width: 100%; max-width: 320px; }
 
-      /* ROI calculator */
-      .calc-section { padding: 56px 0; }
-      .calc-inner { gap: 28px; }
-      .calc-result { position: static; padding: 28px 24px; border-radius: 16px; }
-      .result-total { font-size: 44px; }
-      .calc-controls { gap: 24px; }
-      .slider-group input[type="range"]::-webkit-slider-thumb { width: 24px; height: 24px; }
-      .calc-cta { padding: 16px 20px; font-size: 16px; }
-
-      /* Timeline */
-      .framework { padding: 56px 0; }
-      .timeline::before { left: 21px; }
-      .t-step { padding-left: 50px; }
-      .t-dot { left: 11px; top: 16px; }
-      .t-header { flex-wrap: wrap; padding: 14px 16px; gap: 4px 12px; }
-      .t-num { min-width: 0; flex-basis: 100%; font-size: 10px; }
-      .t-title { font-size: 17px; flex: 1; }
-      .t-arrow { font-size: 18px; }
-      .t-step.open .t-body { padding: 0 16px 20px; }
-      .t-body p { font-size: 14px; }
-
-      /* Why */
-      .why-grid { gap: 24px; }
-      .why-item h4 { font-size: 17px; }
-      .why-item p { font-size: 14px; }
-
-      /* CTA */
-      .cta-section { padding: 56px 0; }
-      .cta-section p { font-size: 16px; margin-bottom: 28px; }
-      .cta-section .btn-primary {
-        display: block; width: 100%; max-width: 340px; margin: 0 auto;
-        padding: 14px 20px; font-size: 16px;
-      }
-
-      /* Footer */
-      .footer-inner { gap: 28px; }
-      .footer-col { width: 100%; }
-      .footer-col p { max-width: none; }
-
-      /* Logos marquee */
-      .logos-track { gap: 40px; animation-duration: 28s; }
-      .logos-track span { font-size: 14px; }
+      .footer-row { flex-direction: column; align-items: flex-start; }
     }
 
-    /* ===== Small phones (≤480px) ===== */
     @media (max-width: 480px) {
       .logo svg { height: 38px; }
-      .stats-bar { padding: 36px 0; }
+      .process { grid-template-columns: 1fr; gap: 22px; }
       .stat-num { font-size: 26px; }
       .stat-label { font-size: 11px; }
-      h1 { font-size: 32px; }
-      .section-title { font-size: 26px; letter-spacing: -0.5px; }
-      .hero p.lead { font-size: 16px; }
-      .result-total { font-size: 38px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAVIGATION -->
+  <!-- NAV -->
   <nav>
     <div class="container nav-inner">
       <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80" aria-label="Afaao" role="img"><text style="font-family:'Cormorant Garamond',Georgia,serif;font-size:52px;font-weight:700;fill:#1c3a28;letter-spacing:-0.5px" x="12" y="58">Afaao</text><line x1="12" y1="68" x2="248" y2="68" stroke="#c4943a" stroke-width="1.5"/></svg></div>
       <div class="nav-links" id="nav-links">
-        <a href="#services">Services</a>
-        <a href="#how-we-work">How We Work</a>
-        <a href="#why">Why Afaao</a>
-        <a href="contact.html">Contact Us</a>
+        <a href="#services">What we do</a>
+        <a href="#process">How we work</a>
+        <a href="contact.html">Contact</a>
       </div>
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
@@ -457,416 +374,139 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <span class="eyebrow">Your marketing stack, working the way it should</span>
-      <h1>Marketing Operations for <span class="hero-rotating" id="typewriter"></span><span class="cursor"></span></h1>
-      <p class="lead">Afaao delivers AI-driven marketing ops and CRM implementations for growing B2B teams. We build the systems, workflows, and data infrastructure your marketing needs to run at scale, without the overhead of a full in-house ops hire.</p>
+      <h1>Marketing ops that actually <span class="accent">work</span>.</h1>
+      <p class="lead">We build the CRM, data, and tracking systems your B2B team needs to scale — without hiring a full ops team.</p>
       <div class="hero-ctas">
-        <a href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener" class="btn btn-primary">Book a 30-min Audit Call</a>
-        <a href="#services" class="btn btn-secondary">See how we can help</a>
+        <a href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener" class="btn btn-primary">Book a 30-min call</a>
+        <a href="#services" class="btn btn-ghost">See what we do</a>
       </div>
     </div>
   </section>
 
-  <!-- STATS BAR -->
-  <div class="stats-bar">
+  <!-- STATS -->
+  <div class="strip">
     <div class="container">
-      <div class="stats-inner">
+      <div class="stats">
         <div><div class="stat-num" data-target="10" data-suffix="+">0+</div><div class="stat-label">B2B teams</div></div>
-        <div><div class="stat-num" data-target="7" data-suffix="+">0+</div><div class="stat-label">Years MOPs experience</div></div>
-        <div><div class="stat-num" data-target="4" data-suffix="+">0+</div><div class="stat-label">Compliance regions covered</div></div>
+        <div><div class="stat-num" data-target="7" data-suffix="+">0+</div><div class="stat-label">Years experience</div></div>
+        <div><div class="stat-num" data-target="4" data-suffix="+">0+</div><div class="stat-label">Compliance regions</div></div>
       </div>
     </div>
   </div>
-
-  <!-- TOOLS STRIP -->
-  <div class="logos-strip">
-    <div class="container">
-      <p>Tools we work with</p>
-    </div>
-    <div class="logos-marquee">
-      <div class="logos-track">
-        <span>HubSpot</span>
-        <span>Salesforce</span>
-        <span>Marketo</span>
-        <span>Leandata</span>
-        <span>Clay</span>
-        <span>6sense</span>
-        <span>ZoomInfo</span>
-        <span>Google Analytics</span>
-        <span>Outreach</span>
-        <span>Chilipiper</span>
-        <span>Zapier</span>
-        <span>Cognism</span>
-        <span>Gong</span>
-        <span>Gainsight</span>
-        <!-- duplicate for seamless loop -->
-        <span>HubSpot</span>
-        <span>Salesforce</span>
-        <span>Marketo</span>
-        <span>Leandata</span>
-        <span>Clay</span>
-        <span>6sense</span>
-        <span>ZoomInfo</span>
-        <span>Google Analytics</span>
-        <span>Outreach</span>
-        <span>Chilipiper</span>
-        <span>Zapier</span>
-        <span>Cognism</span>
-        <span>Gong</span>
-        <span>Gainsight</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- PROBLEMS -->
-  <section class="problem">
-    <div class="container">
-      <h2 class="section-title">Common Marketing Ops Challenges We Fix</h2>
-      <p class="section-sub">Sound familiar? These are the problems most growing teams hit when they don't have a dedicated ops function.</p>
-      <div class="problem-grid">
-        <div class="problem-item">
-          <div class="problem-front">
-            <span class="bullet">→</span>
-            <div>
-              <h4>No dedicated Marketing Operations function</h4>
-              <p class="problem-hint">hover to see how we fix it</p>
-            </div>
-          </div>
-          <div class="problem-back"><p>We become your embedded MOPs team. We build the structure and systems your marketing needs to hold up as you grow.</p></div>
-        </div>
-        <div class="problem-item">
-          <div class="problem-front">
-            <span class="bullet">→</span>
-            <div>
-              <h4>CRM that doesn't reflect how your team actually sells</h4>
-              <p class="problem-hint">hover to see how we fix it</p>
-            </div>
-          </div>
-          <div class="problem-back"><p>We map your real sales process and rebuild your CRM around it. Clean fields, clear stages, a pipeline you can trust.</p></div>
-        </div>
-        <div class="problem-item">
-          <div class="problem-front">
-            <span class="bullet">→</span>
-            <div>
-              <h4>Enrichment tools sending data to the wrong places</h4>
-              <p class="problem-hint">hover to see how we fix it</p>
-            </div>
-          </div>
-          <div class="problem-back"><p>We configure ZoomInfo, Cognism, and Clay to enrich the right records, in the right fields, with the right logic applied every time.</p></div>
-        </div>
-        <div class="problem-item">
-          <div class="problem-front">
-            <span class="bullet">→</span>
-            <div>
-              <h4>Nobody agrees on MQL, SQL, or what Opportunity means</h4>
-              <p class="problem-hint">hover to see how we fix it</p>
-            </div>
-          </div>
-          <div class="problem-back"><p>We define and document lifecycle stages your whole revenue team can align on, then implement them directly in your CRM.</p></div>
-        </div>
-        <div class="problem-item">
-          <div class="problem-front">
-            <span class="bullet">→</span>
-            <div>
-              <h4>Campaign tracking and reporting tell different stories</h4>
-              <p class="problem-hint">hover to see how we fix it</p>
-            </div>
-          </div>
-          <div class="problem-back"><p>We build tracking, UTM structures, and attribution models so marketing has a number leadership can actually stand behind.</p></div>
-        </div>
-        <div class="problem-item">
-          <div class="problem-front">
-            <span class="bullet">→</span>
-            <div>
-              <h4>Data is messy, duplicated, and impossible to trust</h4>
-              <p class="problem-hint">hover to see how we fix it</p>
-            </div>
-          </div>
-          <div class="problem-back"><p>We audit your data, remove duplicates, and build automated workflows that keep everything clean without ongoing manual effort.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- SERVICES -->
   <section id="services">
     <div class="container">
-      <h2 class="section-title">Marketing Operations Setup & Optimisation</h2>
-      <p class="section-sub">We help you build or fix the core systems your marketing and revenue teams rely on.</p>
-      <div class="services-grid">
-
-        <div class="service-card">
-          <div class="service-icon">⚙️</div>
-          <h3>CRM & Lifecycle Optimisation</h3>
-          <p>Get your CRM working the way your team actually operates. Clean data, clear stages, and a pipeline that reflects reality.</p>
-          <ul>
-            <li>Salesforce cleanup and restructuring</li>
-            <li>Lead lifecycle and stage definition</li>
-            <li>Pipeline and funnel alignment</li>
-          </ul>
+      <span class="label">What we do</span>
+      <h2 class="section-title">Three things, done right.</h2>
+      <p class="section-sub">The systems that actually move pipeline — fixed, built, and handed back to you.</p>
+      <div class="services">
+        <div class="svc">
+          <span class="svc-num">01</span>
+          <h3>CRM &amp; lifecycle</h3>
+          <p>A clean Salesforce or HubSpot setup with stages and fields that match how your team actually sells.</p>
         </div>
-
-        <div class="service-card">
-          <div class="service-icon">🔗</div>
-          <h3>Data & Enrichment Workflows</h3>
-          <p>Stop enrichment tools overwriting the wrong fields. Build clean, compliant workflows that actually improve your data.</p>
-          <ul>
-            <li>ZoomInfo / Cognism integration</li>
-            <li>Lead routing and enrichment logic</li>
-            <li>Data normalisation and cleanup</li>
-          </ul>
+        <div class="svc">
+          <span class="svc-num">02</span>
+          <h3>Data &amp; enrichment</h3>
+          <p>ZoomInfo, Cognism, Clay — configured to enrich the right records with the right logic, every time.</p>
         </div>
-
-        <div class="service-card">
-          <div class="service-icon">📊</div>
-          <h3>Campaign Tracking & Reporting</h3>
-          <p>Know what's working. Build tracking and attribution that gives marketing and leadership a shared source of truth.</p>
-          <ul>
-            <li>Campaign tracking setup</li>
-            <li>Attribution structure</li>
-            <li>Funnel visibility and reporting</li>
-          </ul>
-        </div>
-
-      </div>
-
-      <!-- Additional RevOps Support -->
-      <div class="additional-support">
-        <h4>Additional Support Across Revenue Operations</h4>
-        <p>While our core focus is Marketing Operations, we also support adjacent areas where systems and data overlap:</p>
-        <ul>
-          <li>Customer Success workflows (Gainsight)</li>
-          <li>RevOps reporting and alignment</li>
-          <li>Cross-team process optimisation</li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ROI CALCULATOR -->
-  <section class="calc-section">
-    <div class="container">
-      <h2 class="section-title">What is broken Marketing Ops costing you?</h2>
-      <p class="section-sub">Move the sliders to estimate your annual cost of not having proper Marketing Operations in place.</p>
-      <div class="calc-inner">
-        <div class="calc-controls">
-          <div class="slider-group">
-            <label>Marketing team size <span id="v-team">8 people</span></label>
-            <input type="range" id="r-team" min="1" max="50" value="8" />
-            <div class="slider-hint">Total headcount in marketing</div>
-          </div>
-          <div class="slider-group">
-            <label>Hours/week lost to manual ops tasks <span id="v-hours">6 hrs</span></label>
-            <input type="range" id="r-hours" min="1" max="20" value="6" />
-            <div class="slider-hint">Data cleanup, manual fixes, chasing reports</div>
-          </div>
-          <div class="slider-group">
-            <label>Average marketing salary <span id="v-salary">$90k</span></label>
-            <input type="range" id="r-salary" min="40000" max="200000" value="90000" step="5000" />
-            <div class="slider-hint">Annual salary including benefits</div>
-          </div>
-          <div class="slider-group">
-            <label>Campaigns impacted by bad data/month <span id="v-campaigns">4</span></label>
-            <input type="range" id="r-campaigns" min="0" max="20" value="4" />
-            <div class="slider-hint">Campaigns with targeting or attribution issues</div>
-          </div>
-          <div class="slider-group">
-            <label>Average campaign budget <span id="v-budget">$8k</span></label>
-            <input type="range" id="r-budget" min="1000" max="50000" value="8000" step="500" />
-            <div class="slider-hint">Spend per campaign</div>
-          </div>
-        </div>
-
-        <div class="calc-result">
-          <div class="result-label">Estimated Annual MOPs Cost</div>
-          <div class="result-total" id="result-total">$0</div>
-          <div class="result-sub">This is what broken Marketing Ops is costing your business every year.</div>
-          <div class="result-rows">
-            <div class="result-row"><span>Wasted staff time (manual ops)</span><span id="r-staff">—</span></div>
-            <div class="result-row"><span>Campaign budget wasted (bad data)</span><span id="r-campaign-waste">—</span></div>
-            <div class="result-row"><span>Estimated tool overspend</span><span id="r-tools">—</span></div>
-          </div>
-          <a href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener" class="calc-cta">Fix this. Talk to Afaao →</a>
+        <div class="svc">
+          <span class="svc-num">03</span>
+          <h3>Tracking &amp; attribution</h3>
+          <p>UTMs, campaigns, and a funnel that tells one story from click to closed-won.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WHO WE WORK WITH -->
-  <section class="who">
+  <!-- TOOLS -->
+  <div class="tools">
     <div class="container">
-      <h2 class="section-title">Who We Work With</h2>
-      <p class="section-sub">We work with teams that are scaling fast but don't yet have the internal ops infrastructure to keep up.</p>
-      <div class="who-grid">
-        <div class="who-card">
-          <div class="who-icon">🔁</div>
-          <h4>RevOps Teams</h4>
-          <p>Overloaded RevOps generalists who need a specialist to own the marketing ops layer while they focus on the bigger picture.</p>
+      <p class="tools-label">Tools we work with</p>
+    </div>
+    <div class="marquee">
+      <div class="marquee-track">
+        <span>HubSpot</span><span>Salesforce</span><span>Marketo</span><span>Leandata</span>
+        <span>Clay</span><span>6sense</span><span>ZoomInfo</span><span>Outreach</span>
+        <span>Chilipiper</span><span>Zapier</span><span>Cognism</span><span>Gong</span>
+        <span>Gainsight</span><span>Google Analytics</span>
+        <!-- duplicated for seamless loop -->
+        <span>HubSpot</span><span>Salesforce</span><span>Marketo</span><span>Leandata</span>
+        <span>Clay</span><span>6sense</span><span>ZoomInfo</span><span>Outreach</span>
+        <span>Chilipiper</span><span>Zapier</span><span>Cognism</span><span>Gong</span>
+        <span>Gainsight</span><span>Google Analytics</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="container">
+      <span class="label">How we work</span>
+      <h2 class="section-title">Four steps. No surprises.</h2>
+      <p class="section-sub">A focused engagement, end to end.</p>
+      <div class="process">
+        <div class="step">
+          <div class="step-num">01 · AUDIT</div>
+          <h4>Understand</h4>
+          <p>Review your CRM, lifecycle, and data flow before touching anything.</p>
         </div>
-        <div class="who-card">
-          <div class="who-icon">📣</div>
-          <h4>Growth & Demand Generation Teams</h4>
-          <p>Teams running campaigns who need systems that actually support their work: tracking, attribution, lifecycle stages that make sense and get out of the way.</p>
+        <div class="step">
+          <div class="step-num">02 · IDENTIFY</div>
+          <h4>Prioritise</h4>
+          <p>Pinpoint what's broken and agree on what to fix first.</p>
         </div>
-        <div class="who-card">
-          <div class="who-icon">🧩</div>
-          <h4>Marketing Teams Without a Dedicated Ops Function</h4>
-          <p>Companies that have invested in the tools but haven't had the bandwidth to set them up properly. That's exactly the gap we fill.</p>
+        <div class="step">
+          <div class="step-num">03 · IMPLEMENT</div>
+          <h4>Fix it</h4>
+          <p>Rebuild structure, workflows, and tracking — fully tested.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04 · OPTIMISE</div>
+          <h4>Hand off</h4>
+          <p>Reporting, training, and runbooks so your team owns it.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- HOW WE WORK -->
-  <section id="how-we-work" class="framework">
+  <!-- AUDIENCE -->
+  <section class="audience">
     <div class="container">
-      <h2 class="section-title">How We Work</h2>
-      <p class="section-sub">Four focused steps. Click each one to see exactly what we do and what you get at the end.</p>
-      <div class="timeline">
-
-        <div class="t-step open" data-step="0">
-          <div class="t-dot"></div>
-          <div class="t-header" onclick="toggleStep(0)">
-            <div class="t-num">01 · Audit</div>
-            <div class="t-title">Understand the setup</div>
-            <div class="t-arrow">›</div>
-          </div>
-          <div class="t-body">
-            <p>We review your CRM, lifecycle stages, and data flow before touching anything. No assumptions.</p>
-            <ul class="t-list">
-              <li>CRM field and object mapping</li>
-              <li>Lifecycle stage review</li>
-              <li>Enrichment tool configuration check</li>
-              <li>Campaign tracking audit</li>
-            </ul>
-            <div class="t-deliverable">Deliverable: MOPs health report with prioritised findings</div>
-          </div>
-        </div>
-
-        <div class="t-step" data-step="1">
-          <div class="t-dot"></div>
-          <div class="t-header" onclick="toggleStep(1)">
-            <div class="t-num">02 · Identify</div>
-            <div class="t-title">Find the gaps</div>
-            <div class="t-arrow">›</div>
-          </div>
-          <div class="t-body">
-            <p>We pinpoint exactly where data, enrichment, and workflows are breaking down, then agree on what to fix first.</p>
-            <ul class="t-list">
-              <li>Data quality and duplication gaps</li>
-              <li>Broken workflow triggers</li>
-              <li>Attribution blind spots</li>
-              <li>Integration failures between tools</li>
-            </ul>
-            <div class="t-deliverable">Deliverable: Prioritised fix list with effort and impact estimates</div>
-          </div>
-        </div>
-
-        <div class="t-step" data-step="2">
-          <div class="t-dot"></div>
-          <div class="t-header" onclick="toggleStep(2)">
-            <div class="t-num">03 · Implement</div>
-            <div class="t-title">Fix what matters</div>
-            <div class="t-arrow">›</div>
-          </div>
-          <div class="t-body">
-            <p>We rebuild CRM structure, enrichment logic, and campaign tracking, with clear documentation throughout.</p>
-            <ul class="t-list">
-              <li>CRM cleanup and restructuring</li>
-              <li>Enrichment workflow rebuild</li>
-              <li>Campaign tracking and UTM setup</li>
-              <li>Lifecycle stage definition and testing</li>
-            </ul>
-            <div class="t-deliverable">Deliverable: Working systems, fully tested and documented</div>
-          </div>
-        </div>
-
-        <div class="t-step" data-step="3">
-          <div class="t-dot"></div>
-          <div class="t-header" onclick="toggleStep(3)">
-            <div class="t-num">04 · Optimise</div>
-            <div class="t-title">Make it last</div>
-            <div class="t-arrow">›</div>
-          </div>
-          <div class="t-body">
-            <p>We set up reporting, train your team, and hand off clearly so you're not dependent on us to keep things running.</p>
-            <ul class="t-list">
-              <li>Reporting dashboard setup</li>
-              <li>Scalability and edge case review</li>
-              <li>Team training sessions</li>
-              <li>Clean handoff with runbooks</li>
-            </ul>
-            <div class="t-deliverable">Deliverable: Systems your team can own and maintain independently</div>
-          </div>
-        </div>
-
+      <span class="label">Who it's for</span>
+      <h2 class="section-title">Built for teams scaling fast — without an ops layer.</h2>
+      <div class="audience-row">
+        <span class="chip">RevOps teams</span>
+        <span class="chip">Growth &amp; demand gen</span>
+        <span class="chip">Marketing without an ops function</span>
+        <span class="chip">Early-stage B2B</span>
       </div>
     </div>
   </section>
 
-
-
-  <!-- WHY AFAAO -->
-  <section id="why" style="background: var(--card);">
+  <!-- FINAL CTA -->
+  <section class="final-cta">
     <div class="container">
-      <h2 class="section-title">Why Afaao</h2>
-      <p class="section-sub">We work in a specific order: AI first, tools second, MOPs outcomes third. Here is what that means in practice.</p>
-      <div class="why-grid">
-        <div class="why-item">
-          <h4>🤖 AI where it actually moves the needle</h4>
-          <p>We identify the highest-value AI use cases for your stack: enrichment automation, lead scoring, data normalization, routing logic. Then we implement them in ways that produce measurable results, not just impressive demos.</p>
-        </div>
-        <div class="why-item">
-          <h4>🔧 Tools optimized to perform</h4>
-          <p>Most teams have the right tools but the wrong setup. We configure what you already have so it performs the way it was designed to. HubSpot, Salesforce, Marketo, Clay, 6sense and more, all tuned to work together.</p>
-        </div>
-        <div class="why-item">
-          <h4>🎯 MOPs outcomes you can measure</h4>
-          <p>Smarter AI and better tools only matter if your marketing ops produces real results. We measure success by what counts: clean pipeline, trusted data, and campaigns that track correctly from click to close.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section id="contact" class="cta-section">
-    <div class="container">
-      <h2>Not sure what's broken in your setup?</h2>
-      <p>We'll walk through your CRM, data, and workflows and highlight where things can be improved. No commitment required.</p>
-      <a href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener" class="btn btn-primary">Book a 30-min Audit Call</a>
+      <h2>Ready to see what's broken?</h2>
+      <p>30 minutes, no commitment. We'll tell you exactly what to fix first.</p>
+      <a href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener" class="btn btn-primary">Book a 30-min call</a>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <div class="container">
-      <div class="footer-inner">
-        <div class="footer-col">
-          <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80" aria-label="Afaao" role="img"><text style="font-family:'Cormorant Garamond',Georgia,serif;font-size:52px;font-weight:700;fill:#1c3a28;letter-spacing:-0.5px" x="12" y="58">Afaao</text><line x1="12" y1="68" x2="248" y2="68" stroke="#c4943a" stroke-width="1.5"/></svg></div>
-          <p>Marketing Operations for growing B2B teams, without the full-time hire.</p>
-        </div>
-        <div class="footer-col">
-          <h5>Services</h5>
-          <a href="#services">CRM & Lifecycle Optimisation</a>
-          <a href="#services">Data & Enrichment Workflows</a>
-          <a href="#services">Campaign Tracking & Reporting</a>
-        </div>
-        <div class="footer-col">
-          <h5>Company</h5>
-          <a href="#how-we-work">How We Work</a>
-          <a href="#why">Why Afaao</a>
-        </div>
-        <div class="footer-col">
-          <h5>Get in touch</h5>
-          <a href="contact.html">hello@afaao.com</a>
-          <a href="https://www.linkedin.com/company/afaao/">LinkedIn</a>
-          <a href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book an Audit Call</a>
+      <div class="footer-row">
+        <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80" aria-label="Afaao" role="img"><text style="font-family:'Cormorant Garamond',Georgia,serif;font-size:52px;font-weight:700;fill:#1c3a28;letter-spacing:-0.5px" x="12" y="58">Afaao</text><line x1="12" y1="68" x2="248" y2="68" stroke="#c4943a" stroke-width="1.5"/></svg></div>
+        <div class="footer-links">
+          <a href="#services">What we do</a>
+          <a href="#process">How we work</a>
+          <a href="contact.html">Contact</a>
+          <a href="https://www.linkedin.com/company/afaao/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
-      <div class="footer-bottom">
-        © 2026 Afaao. All rights reserved. Toronto. Working with B2B teams globally.
-      </div>
+      <div class="footer-bottom">© 2026 Afaao · Toronto · Working with B2B teams globally.</div>
     </div>
   </footer>
 
@@ -890,70 +530,6 @@
       });
     })();
 
-    // Accordion
-    function toggleStep(index) {
-      document.querySelectorAll('.t-step').forEach((s, i) => s.classList.toggle('open', i === index));
-    }
-
-    // Typewriter
-    const phrases = [
-      'teams without a dedicated ops function.',
-      'growing B2B marketing teams.',
-      'companies that outgrew their CRM setup.',
-      'teams tired of manual data fixes.',
-    ];
-    let pi = 0, ci = 0, deleting = false, twActive = true;
-    const tw = document.getElementById('typewriter');
-    function type() {
-      if (!twActive) return;
-      const phrase = phrases[pi];
-      if (!deleting) {
-        tw.textContent = phrase.slice(0, ++ci);
-        if (ci === phrase.length) { deleting = true; setTimeout(type, 2000); return; }
-      } else {
-        tw.textContent = phrase.slice(0, --ci);
-        if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
-      }
-      setTimeout(type, deleting ? 35 : 65);
-    }
-    type();
-    new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting && !twActive) { twActive = true; type(); }
-        else if (!e.isIntersecting) { twActive = false; }
-      });
-    }, { threshold: 0 }).observe(document.querySelector('.hero'));
-
-    // ROI Calculator
-    const fmt = n => n >= 1000000 ? '$'+(n/1000000).toFixed(1)+'M' : n >= 1000 ? '$'+Math.round(n/1000)+'k' : '$'+n;
-    function calcROI() {
-      const team     = +document.getElementById('r-team').value;
-      const hours    = +document.getElementById('r-hours').value;
-      const salary   = +document.getElementById('r-salary').value;
-      const campaigns= +document.getElementById('r-campaigns').value;
-      const budget   = +document.getElementById('r-budget').value;
-
-      document.getElementById('v-team').textContent     = team + ' people';
-      document.getElementById('v-hours').textContent    = hours + ' hrs';
-      document.getElementById('v-salary').textContent   = fmt(salary);
-      document.getElementById('v-campaigns').textContent= campaigns;
-      document.getElementById('v-budget').textContent   = fmt(budget);
-
-      const staffWaste    = Math.round(team * hours * 52 * (salary / 2080));
-      const campaignWaste = Math.round(campaigns * 12 * budget * 0.2);
-      const toolWaste     = team * 2000;
-      const total         = staffWaste + campaignWaste + toolWaste;
-
-      document.getElementById('r-staff').textContent          = fmt(staffWaste);
-      document.getElementById('r-campaign-waste').textContent = fmt(campaignWaste);
-      document.getElementById('r-tools').textContent          = fmt(toolWaste);
-      document.getElementById('result-total').textContent     = fmt(total);
-    }
-    ['r-team','r-hours','r-salary','r-campaigns','r-budget'].forEach(id =>
-      document.getElementById(id).addEventListener('input', calcROI)
-    );
-    calcROI();
-
     // Animated counters
     const counters = document.querySelectorAll('.stat-num[data-target]');
     const cObs = new IntersectionObserver((entries) => {
@@ -963,7 +539,7 @@
         const target = +el.dataset.target;
         const suffix = el.dataset.suffix || '';
         let cur = 0;
-        const step = Math.max(1, Math.ceil(target / 40));
+        const step = Math.max(1, Math.ceil(target / 30));
         const t = setInterval(() => {
           cur = Math.min(cur + step, target);
           el.textContent = cur + suffix;
@@ -975,25 +551,12 @@
     counters.forEach(c => cObs.observe(c));
 
     // Scroll reveal
-    const srEls = document.querySelectorAll([
-      '.stats-inner > div', '.logos-strip p', '.logos-row',
-      '.section-title', '.section-sub',
-      '.problem-item', '.service-card', '.additional-support',
-      '.calc-controls', '.calc-result',
-      '.who-card', '.about-inner > div', '.why-item',
-      '.cta-section h2', '.cta-section p', '.cta-section a'
-    ].join(','));
-    srEls.forEach(el => {
-      el.classList.add('sr');
-      const siblings = [...el.parentElement.children].filter(c => c.classList.contains('sr'));
-      const idx = siblings.indexOf(el);
-      if (idx === 1) el.classList.add('d1');
-      else if (idx === 2) el.classList.add('d2');
-      else if (idx === 3) el.classList.add('d3');
-      else if (idx >= 4) el.classList.add('d4');
-    });
+    const srEls = document.querySelectorAll('.svc, .step, .chip, .stats > div, .section-title, .section-sub, .label');
+    srEls.forEach(el => el.classList.add('sr'));
     const srObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); srObs.unobserve(e.target); } });
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); srObs.unobserve(e.target); }
+      });
     }, { threshold: 0.1 });
     srEls.forEach(el => srObs.observe(el));
   </script>
