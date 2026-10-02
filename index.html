@@ -1,6 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Apollo website visitor tracking (company level) -->
+  <script>function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,o.onload=function(){window.trackingFunctions.onLoad({appId:"6ab45d322527f000206af2ee"})},document.head.appendChild(o)}initApollo();</script>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEZJ87GL90"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GEZJ87GL90');
+    // Track the clicks that show buying interest
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a');
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      if (href.indexOf('calendly.com') !== -1) {
+        gtag('event', 'book_call_click', { link_text: (a.textContent || '').trim(), page_path: location.pathname });
+      } else if (href.indexOf('mailto:') === 0) {
+        gtag('event', 'email_click', { page_path: location.pathname });
+      } else if (href.indexOf('linkedin.com') !== -1) {
+        gtag('event', 'linkedin_click', { page_path: location.pathname });
+      }
+    });
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Afaao sets up, fixes and connects your revenue stack for B2B teams. Salesforce, HubSpot, Gainsight, Marketo and 30+ tools across marketing, sales and CS." />
@@ -872,7 +895,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        © 2026 Afaao. All rights reserved. Toronto. Working with B2B teams globally.
+        © 2026 Afaao. All rights reserved. Toronto. Working with B2B teams globally. <a href="privacy.html" style="color:inherit">Privacy Policy</a>
       </div>
     </div>
   </footer>

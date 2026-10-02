@@ -26,10 +26,10 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Contact Afaao for RevOps, marketing ops or customer success ops help with Salesforce, HubSpot, Gainsight and the rest of your stack. Tell us what is broken." />
-  <link rel="canonical" href="https://afaao.com/contact.html" />
+  <meta name="description" content="How Afaao collects, uses and protects information from visitors to afaao.com and people who contact us." />
+  <link rel="canonical" href="https://afaao.com/privacy.html" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <title>Contact Us — Afaao</title>
+  <title>Privacy Policy | Afaao</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
@@ -247,6 +247,9 @@
     @media (max-width: 640px) {
       .nav-links a:not(.btn) { display: none; }
     }
+      .legal h2 { font-size: 22px; font-weight: 700; margin: 32px 0 10px; }
+    .legal p { color: var(--muted); font-size: 16px; line-height: 1.7; margin-bottom: 12px; }
+    .legal a { color: var(--accent); }
   </style>
 </head>
 <body>
@@ -265,129 +268,45 @@
     </div>
   </nav>
 
-  <!-- HERO -->
-  <div class="page-hero">
-    <div class="container">
-      <h1>Let's talk about your stack.</h1>
-      <p>Tell us what you're working on and we'll get back to you within one business day.</p>
+  <main class="legal">
+    <div class="container" style="max-width:760px;padding-top:64px;padding-bottom:64px">
+      <h1 style="font-size:40px;font-weight:800;letter-spacing:-1px;margin-bottom:8px">Privacy Policy</h1>
+      <p style="color:var(--muted);margin-bottom:32px">Last updated October 2, 2026</p>
+
+      <h2>Who we are</h2>
+      <p>Afaao is a revenue operations consultancy based in Toronto, Canada. In this policy, "we" and "us" mean Afaao. If you have any questions about your information, email us at <a href="mailto:hello@afaao.com">hello@afaao.com</a>.</p>
+
+      <h2>What we collect</h2>
+      <p><strong>Information you give us.</strong> When you use our contact form we collect your name, company, email, phone number if you add it, and your message. When you book a call through Calendly, Calendly collects the details you enter there and shares them with us.</p>
+      <p><strong>Information collected automatically.</strong> We use Google Analytics to understand how people use our website. It uses cookies to collect things like the pages you visit, how you found our site, your browser and device type, and your approximate location (city or region, never your exact address). We also record clicks on our booking, email and LinkedIn links so we know which parts of the site are useful.</p>
+      <p><strong>Business visitor insights.</strong> We use Apollo.io to see which companies visit our website. It matches the network you browse from to a company name and records the pages viewed, so we can understand which businesses are interested in our services. We use this at the company level and do not use it to identify individual visitors.</p>
+
+      <h2>How we use it</h2>
+      <p>We use your information to reply to you, set up and run calls you book, and improve our website and services. If you contact us about a project, we may follow up about that project. We don't add you to a newsletter or marketing list unless you ask us to.</p>
+
+      <h2>Who we share it with</h2>
+      <p>We never sell your information. We only share it with the service providers that help us run the site and our business: Web3Forms (delivers contact form messages to our inbox), Calendly (call booking), Google (analytics and email), Apollo.io (business visitor insights) and Netlify (website hosting). They process it on our behalf and some of them store data outside Canada, including in the United States.</p>
+
+      <h2>How long we keep it</h2>
+      <p>We keep contact and project emails for as long as we need them to work with you and meet our business and legal obligations. Google Analytics data is kept for the period set in our Google Analytics account and is then deleted automatically.</p>
+
+      <h2>Cookies and your choices</h2>
+      <p>You can block or delete cookies in your browser settings, or install Google's <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener" target="_blank">Google Analytics opt out browser add on</a>. The site works the same without them.</p>
+
+      <h2>Your rights</h2>
+      <p>Under Canadian privacy law (PIPEDA) and similar laws where you live, you can ask to see the personal information we hold about you, ask us to correct it, or ask us to delete it. Email <a href="mailto:hello@afaao.com">hello@afaao.com</a> and we'll reply within 30 days.</p>
+
+      <h2>Changes to this policy</h2>
+      <p>If we change this policy we'll update the date at the top of this page.</p>
     </div>
-  </div>
+  </main>
 
-  <!-- CONTACT LAYOUT -->
-  <div class="container">
-    <div class="contact-layout">
-
-      <!-- LEFT: info -->
-      <div class="contact-info">
-        <h2>Get in touch</h2>
-        <p>Whether you have a specific project in mind or just want to explore what's possible — we're happy to talk.</p>
-
-        <div class="info-item">
-          <span>Email</span>
-          <a href="mailto:hello@afaao.com">hello@afaao.com</a>
-        </div>
-        <div class="info-item">
-          <span>LinkedIn</span>
-          <a href="https://www.linkedin.com/company/afaao/" target="_blank" rel="noopener">Afaao on LinkedIn</a>
-        </div>
-        <div class="info-item">
-          <span>Based in</span>
-          <span>Toronto — working with B2B teams globally</span>
-        </div>
-
-        <hr class="divider" />
-
-        <div class="trust-note">
-          <strong>Prefer a call?</strong><br>
-          Book a 30-minute intro directly via
-          <a href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; font-weight: 600;">Calendly →</a>
-        </div>
-      </div>
-
-      <!-- RIGHT: form -->
-      <div class="contact-form">
-        <div class="form-message" id="form-message"></div>
-
-        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-          <input type="hidden" name="access_key" value="3fbc302a-4e8d-44cc-9960-1d47d0399a4e" />
-          <input type="hidden" name="subject" value="New enquiry from afaao.com" />
-          <input type="hidden" name="redirect" value="false" />
-          <input type="checkbox" name="botcheck" style="display:none" />
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Full name</label>
-              <input type="text" id="name" name="name" placeholder="Jane Smith" required />
-            </div>
-            <div class="form-group">
-              <label for="company">Company name</label>
-              <input type="text" id="company" name="company" placeholder="Acme Corp" required />
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="email">Email address</label>
-              <input type="email" id="email" name="email" placeholder="jane@acme.com" required />
-            </div>
-            <div class="form-group">
-              <label for="phone">Phone <span class="optional">(optional)</span></label>
-              <input type="tel" id="phone" name="phone" placeholder="+1 416 000 0000" />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="message">What can we help you with?</label>
-            <textarea id="message" name="message" placeholder="Tell us about your current stack, what's broken, or what you're trying to build..." required></textarea>
-          </div>
-
-          <button type="submit" class="submit-btn" id="submit-btn">Send message</button>
-        </form>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="footer-bottom">© 2026 Afaao. All rights reserved. <a href="privacy.html" style="color:inherit">Privacy Policy</a></div>
     </div>
   </footer>
 
-  <script>
-    const form = document.getElementById('contact-form');
-    const btn = document.getElementById('submit-btn');
-    const msg = document.getElementById('form-message');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      btn.disabled = true;
-      btn.textContent = 'Sending…';
-      msg.style.display = 'none';
-
-      const data = new FormData(form);
-      try {
-        const res = await fetch(form.action, { method: 'POST', body: data });
-        const json = await res.json();
-        if (json.success) {
-          msg.textContent = "Thanks! We've received your message and will be in touch within one business day.";
-          msg.className = 'form-message success';
-          if (typeof gtag === 'function') gtag('event', 'generate_lead', { form_name: 'contact' });
-          form.reset();
-        } else {
-          throw new Error('submission failed');
-        }
-      } catch {
-        msg.textContent = 'Something went wrong. Please email us directly at hello@afaao.com';
-        msg.className = 'form-message error';
-      }
-
-      msg.style.display = 'block';
-      btn.disabled = false;
-      btn.textContent = 'Send message';
-    });
-  </script>
 
 </body>
 </html>
