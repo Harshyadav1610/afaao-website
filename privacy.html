@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Apollo website visitor tracking (company level) -->
-  <script>function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,o.onload=function(){window.trackingFunctions.onLoad({appId:"6ab45d322527f000206af2ee"})},document.head.appendChild(o)}initApollo();</script>
-  <!-- Google Analytics 4 -->
+  <!-- Consent, Apollo and Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEZJ87GL90"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    // Consent: stored choice wins. With no choice yet, EU/UK visitors (strict privacy laws) start opted out; everyone else is opted in with a notice.
+    var AFAAO_CONSENT = (function(){ try { return localStorage.getItem('afaao_consent'); } catch (e) { return null; } })();
+    var AFAAO_STRICT = /^Europe\//.test((Intl.DateTimeFormat().resolvedOptions().timeZone) || '');
+    var AFAAO_GRANTED = AFAAO_CONSENT === 'granted' || (!AFAAO_CONSENT && !AFAAO_STRICT);
+    gtag('consent', 'default', {
+      analytics_storage: AFAAO_GRANTED ? 'granted' : 'denied',
+      ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'
+    });
+    // Apollo website visitor tracking (company level), only with consent
+    var AFAAO_APOLLO_LOADED = false;
+    function initApollo(){ if (AFAAO_APOLLO_LOADED) return; AFAAO_APOLLO_LOADED = true; var n=Math.random().toString(36).substring(7),o=document.createElement("script");o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,o.onload=function(){window.trackingFunctions.onLoad({appId:"6ab45d322527f000206af2ee"})},document.head.appendChild(o)}
+    if (AFAAO_GRANTED) initApollo();
     gtag('js', new Date());
     gtag('config', 'G-GEZJ87GL90');
     // Track the clicks that show buying interest
@@ -29,6 +39,17 @@
   <meta name="description" content="How Afaao collects, uses and protects information from visitors to afaao.com and people who contact us." />
   <link rel="canonical" href="https://afaao.com/privacy.html" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Afaao" />
+  <meta property="og:url" content="https://afaao.com/privacy.html" />
+  <meta property="og:title" content="Privacy Policy | Afaao" />
+  <meta property="og:description" content="How Afaao collects, uses and protects information from visitors to afaao.com." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:image" content="https://afaao.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Afaao: RevOps, Marketing Ops and CS Ops for growing B2B teams" />
+  <meta name="twitter:image" content="https://afaao.com/og-image.png" />
   <title>Privacy Policy | Afaao</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -291,7 +312,7 @@
       <p>We keep contact and project emails for as long as we need them to work with you and meet our business and legal obligations. Google Analytics data is kept for the period set in our Google Analytics account and is then deleted automatically.</p>
 
       <h2>Cookies and your choices</h2>
-      <p>You can block or delete cookies in your browser settings, or install Google's <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener" target="_blank">Google Analytics opt out browser add on</a>. The site works the same without them.</p>
+      <p>When you first visit, a cookie notice lets you accept or decline analytics and visitor insights, and we remember your choice. Visitors from the EU and UK are not tracked unless they click Accept. You can also block or delete cookies in your browser settings, or install Google's <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener" target="_blank">Google Analytics opt out browser add on</a>. The site works the same without them.</p>
 
       <h2>Your rights</h2>
       <p>Under Canadian privacy law (PIPEDA) and similar laws where you live, you can ask to see the personal information we hold about you, ask us to correct it, or ask us to delete it. Email <a href="mailto:hello@afaao.com">hello@afaao.com</a> and we'll reply within 30 days.</p>
@@ -308,5 +329,42 @@
   </footer>
 
 
+
+  <!-- Cookie notice -->
+  <style>
+    .consent-banner { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 1000; max-width: 640px; margin: 0 auto;
+      background: #0f172a; color: #e2e8f0; border-radius: 14px; padding: 16px 18px; box-shadow: 0 12px 40px rgba(15,23,42,0.25);
+      display: flex; gap: 16px; align-items: center; flex-wrap: wrap; font-size: 14px; line-height: 1.5; }
+    .consent-banner[hidden] { display: none; }
+    .consent-banner p { flex: 1 1 280px; margin: 0; }
+    .consent-banner a { color: #ffffff; text-decoration: underline; }
+    .consent-banner .consent-actions { display: flex; gap: 8px; }
+    .consent-banner button { font: inherit; font-weight: 600; border-radius: 8px; padding: 8px 16px; cursor: pointer; border: 1px solid #475569; background: transparent; color: #e2e8f0; }
+    .consent-banner button.consent-accept { background: #ffffff; color: #0f172a; border-color: #ffffff; }
+  </style>
+  <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie notice" hidden>
+    <p>We use cookies to see how people use our site and which companies visit, so we can make it more useful. <a href="privacy.html">Privacy Policy</a></p>
+    <div class="consent-actions">
+      <button type="button" id="consent-decline">Decline</button>
+      <button type="button" id="consent-accept" class="consent-accept">Accept</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var banner = document.getElementById('consent-banner');
+      if (!banner) return;
+      if (!AFAAO_CONSENT) banner.hidden = false;
+      function save(choice) { try { localStorage.setItem('afaao_consent', choice); } catch (e) {} banner.hidden = true; }
+      document.getElementById('consent-accept').addEventListener('click', function () {
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+        initApollo();
+        save('granted');
+      });
+      document.getElementById('consent-decline').addEventListener('click', function () {
+        gtag('consent', 'update', { analytics_storage: 'denied' });
+        save('denied');
+      });
+    })();
+  </script>
 </body>
 </html>
