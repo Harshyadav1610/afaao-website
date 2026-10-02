@@ -3,8 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Afaao delivers AI-driven marketing ops and CRM implementations for growing B2B teams, without the overhead of a full in-house ops hire." />
-  <title>Afaao — Marketing Operations for Growing Teams</title>
+  <meta name="description" content="Afaao sets up, fixes and connects your revenue stack for B2B teams. Salesforce, HubSpot, Gainsight, Marketo and 30+ tools across marketing, sales and CS." />
+  <title>Afaao: RevOps, Marketing Ops and CS Ops Consulting</title>
+  <link rel="canonical" href="https://afaao.com/" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Afaao" />
+  <meta property="og:url" content="https://afaao.com/" />
+  <meta property="og:title" content="Afaao: RevOps, Marketing Ops and CS Ops Consulting" />
+  <meta property="og:description" content="One partner for the systems behind your revenue engine. Salesforce, HubSpot, Gainsight, Marketo and 30+ tools, set up, fixed and connected." />
+  <meta name="twitter:card" content="summary" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Afaao",
+    "url": "https://afaao.com/",
+    "logo": "https://afaao.com/logo.svg",
+    "description": "Outsourced revenue operations for growing B2B teams across marketing ops, sales ops and customer success ops: CRM and marketing automation, Gainsight and CS platforms, data enrichment and routing, integrations, and reporting and attribution.",
+    "email": "hello@afaao.com",
+    "areaServed": ["Canada", "United States"],
+    "address": { "@type": "PostalAddress", "addressLocality": "Toronto", "addressRegion": "ON", "addressCountry": "CA" },
+    "knowsAbout": ["Revenue operations", "Marketing operations", "Sales operations", "Customer success operations", "Salesforce", "HubSpot", "Microsoft Dynamics 365", "Pipedrive", "Zoho CRM", "HubSpot Marketing Hub", "Marketo", "Pardot (Account Engagement)", "Gainsight", "ChurnZero", "Totango", "Vitally", "Zendesk", "Intercom", "ZoomInfo", "Cognism", "Clay", "Apollo.io", "6sense", "LeanData", "Chili Piper", "Calendly", "Outreach", "Salesloft", "LinkedIn Sales Navigator", "Gong", "Zapier", "Make", "Workato", "Segment", "Google Analytics", "Looker Studio", "Tableau", "Lead lifecycle management", "Lead routing", "Data enrichment", "Campaign attribution"],
+    "sameAs": ["https://www.linkedin.com/company/afaao/"]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
@@ -160,6 +183,13 @@
 
     /* Services */
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    @media (min-width: 1000px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
+    .tool-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+    .tool-chips span { font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-light); border-radius: 999px; padding: 4px 10px; white-space: nowrap; }
+    .stack-section { background: #f8fafc; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .stack-cat { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+    .stack-cat h4 { font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
     .service-card {
       padding: 32px; border: 1px solid var(--border); border-radius: 16px;
       background: white; transition: all 0.3s;
@@ -314,6 +344,7 @@
       <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80" aria-label="Afaao" role="img"><text style="font-family:'Cormorant Garamond',Georgia,serif;font-size:52px;font-weight:700;fill:#1c3a28;letter-spacing:-0.5px" x="12" y="58">Afaao</text><line x1="12" y1="68" x2="248" y2="68" stroke="#c4943a" stroke-width="1.5"/></svg></div>
       <div class="nav-links">
         <a href="#services">Services</a>
+        <a href="#tools">Tools</a>
         <a href="#how-we-work">How We Work</a>
         <a href="#why">Why Afaao</a>
         <a href="contact.html">Contact Us</a>
@@ -324,9 +355,9 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <span class="eyebrow">Your marketing stack, working the way it should</span>
-      <h1>Marketing Operations for <span class="hero-rotating" id="typewriter"></span><span class="cursor"></span></h1>
-      <p class="lead">Afaao delivers AI-driven marketing ops and CRM implementations for growing B2B teams. We build the systems, workflows, and data infrastructure your marketing needs to run at scale, without the overhead of a full in-house ops hire.</p>
+      <span class="eyebrow">Your revenue stack, working the way it should</span>
+      <h1>RevOps &amp; Marketing Ops for <span class="hero-rotating" id="typewriter">growing B2B teams.</span><span class="cursor"></span></h1>
+      <p class="lead">Afaao delivers AI-driven RevOps, marketing ops and customer success ops for growing B2B teams. We set up, fix and connect the tools behind your whole revenue engine, from CRM and marketing automation to Gainsight and reporting, without the overhead of full time ops hires.</p>
       <div class="hero-ctas">
         <a href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener" class="btn btn-primary">Book a 30-min Audit Call</a>
         <a href="#services" class="btn btn-secondary">See how we can help</a>
@@ -338,9 +369,9 @@
   <div class="stats-bar">
     <div class="container">
       <div class="stats-inner">
-        <div><div class="stat-num" data-target="10" data-suffix="+">0+</div><div class="stat-label">B2B teams</div></div>
-        <div><div class="stat-num" data-target="7" data-suffix="+">0+</div><div class="stat-label">Years MOPs experience</div></div>
-        <div><div class="stat-num" data-target="4" data-suffix="+">0+</div><div class="stat-label">Compliance regions covered</div></div>
+        <div><div class="stat-num" data-target="10" data-suffix="+">10+</div><div class="stat-label">B2B teams</div></div>
+        <div><div class="stat-num" data-target="7" data-suffix="+">7+</div><div class="stat-label">Years MOPs experience</div></div>
+        <div><div class="stat-num" data-target="30" data-suffix="+">30+</div><div class="stat-label">Tools we work with</div></div>
       </div>
     </div>
   </div>
@@ -348,39 +379,77 @@
   <!-- TOOLS STRIP -->
   <div class="logos-strip">
     <div class="container">
-      <p>Tools we work with</p>
+      <p>30+ tools we work with</p>
     </div>
     <div class="logos-marquee">
       <div class="logos-track">
-        <span>HubSpot</span>
         <span>Salesforce</span>
+        <span>HubSpot</span>
+        <span>Microsoft Dynamics 365</span>
+        <span>Pipedrive</span>
+        <span>Zoho CRM</span>
+        <span>HubSpot Marketing Hub</span>
         <span>Marketo</span>
-        <span>Leandata</span>
-        <span>Clay</span>
-        <span>6sense</span>
-        <span>ZoomInfo</span>
-        <span>Google Analytics</span>
-        <span>Outreach</span>
-        <span>Chilipiper</span>
-        <span>Zapier</span>
-        <span>Cognism</span>
-        <span>Gong</span>
+        <span>Pardot (Account Engagement)</span>
         <span>Gainsight</span>
+        <span>ChurnZero</span>
+        <span>Totango</span>
+        <span>Vitally</span>
+        <span>Zendesk</span>
+        <span>Intercom</span>
+        <span>ZoomInfo</span>
+        <span>Cognism</span>
+        <span>Clay</span>
+        <span>Apollo.io</span>
+        <span>6sense</span>
+        <span>LeanData</span>
+        <span>Chili Piper</span>
+        <span>Calendly</span>
+        <span>Outreach</span>
+        <span>Salesloft</span>
+        <span>LinkedIn Sales Navigator</span>
+        <span>Gong</span>
+        <span>Zapier</span>
+        <span>Make</span>
+        <span>Workato</span>
+        <span>Segment</span>
+        <span>Google Analytics</span>
+        <span>Looker Studio</span>
+        <span>Tableau</span>
         <!-- duplicate for seamless loop -->
-        <span>HubSpot</span>
         <span>Salesforce</span>
+        <span>HubSpot</span>
+        <span>Microsoft Dynamics 365</span>
+        <span>Pipedrive</span>
+        <span>Zoho CRM</span>
+        <span>HubSpot Marketing Hub</span>
         <span>Marketo</span>
-        <span>Leandata</span>
-        <span>Clay</span>
-        <span>6sense</span>
-        <span>ZoomInfo</span>
-        <span>Google Analytics</span>
-        <span>Outreach</span>
-        <span>Chilipiper</span>
-        <span>Zapier</span>
-        <span>Cognism</span>
-        <span>Gong</span>
+        <span>Pardot (Account Engagement)</span>
         <span>Gainsight</span>
+        <span>ChurnZero</span>
+        <span>Totango</span>
+        <span>Vitally</span>
+        <span>Zendesk</span>
+        <span>Intercom</span>
+        <span>ZoomInfo</span>
+        <span>Cognism</span>
+        <span>Clay</span>
+        <span>Apollo.io</span>
+        <span>6sense</span>
+        <span>LeanData</span>
+        <span>Chili Piper</span>
+        <span>Calendly</span>
+        <span>Outreach</span>
+        <span>Salesloft</span>
+        <span>LinkedIn Sales Navigator</span>
+        <span>Gong</span>
+        <span>Zapier</span>
+        <span>Make</span>
+        <span>Workato</span>
+        <span>Segment</span>
+        <span>Google Analytics</span>
+        <span>Looker Studio</span>
+        <span>Tableau</span>
       </div>
     </div>
   </div>
@@ -388,7 +457,7 @@
   <!-- PROBLEMS -->
   <section class="problem">
     <div class="container">
-      <h2 class="section-title">Common Marketing Ops Challenges We Fix</h2>
+      <h2 class="section-title">Common RevOps and Marketing Ops Challenges We Fix</h2>
       <p class="section-sub">Sound familiar? These are the problems most growing teams hit when they don't have a dedicated ops function.</p>
       <div class="problem-grid">
         <div class="problem-item">
@@ -458,56 +527,125 @@
   <!-- SERVICES -->
   <section id="services">
     <div class="container">
-      <h2 class="section-title">Marketing Operations Setup & Optimisation</h2>
-      <p class="section-sub">We help you build or fix the core systems your marketing and revenue teams rely on.</p>
+      <h2 class="section-title">RevOps, Marketing Ops and CS Ops, End to End</h2>
+      <p class="section-sub">One partner for the systems behind your whole revenue engine. We set up, fix and connect the tools your marketing, sales and customer success teams already use.</p>
       <div class="services-grid">
 
         <div class="service-card">
-          <div class="service-icon">⚙️</div>
-          <h3>CRM & Lifecycle Optimisation</h3>
-          <p>Get your CRM working the way your team actually operates. Clean data, clear stages, and a pipeline that reflects reality.</p>
+          <div class="service-icon">📣</div>
+          <h3>Marketing Ops</h3>
+          <div class="tool-chips"><span>HubSpot</span><span>Marketo</span><span>Pardot</span></div>
+          <p>Campaign ops that run cleanly from form fill to handoff. Lead scoring, nurture and lifecycle stages your sales team trusts.</p>
           <ul>
-            <li>Salesforce cleanup and restructuring</li>
-            <li>Lead lifecycle and stage definition</li>
-            <li>Pipeline and funnel alignment</li>
+            <li>Lifecycle stages and MQL to SQL definitions</li>
+            <li>Lead scoring and nurture programs</li>
+            <li>Campaign setup, forms and handoff to sales</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">⚙️</div>
+          <h3>Sales Ops &amp; CRM</h3>
+          <div class="tool-chips"><span>Salesforce</span><span>HubSpot</span><span>Dynamics 365</span><span>Pipedrive</span><span>Zoho</span></div>
+          <p>A CRM that reflects how your team actually sells. Clean data, clear stages and automation that saves reps time.</p>
+          <ul>
+            <li>CRM cleanup, restructuring and migrations</li>
+            <li>Pipeline stages, deal automation and workflows</li>
+            <li>Outreach and Salesloft setup and sync</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🤝</div>
+          <h3>Customer Success Ops</h3>
+          <div class="tool-chips"><span>Gainsight</span><span>ChurnZero</span><span>Totango</span><span>Vitally</span></div>
+          <p>Get your CS platform doing what your team bought it for. Health scores people trust and playbooks that fire at the right time.</p>
+          <ul>
+            <li>Gainsight setup, cleanup and admin support</li>
+            <li>Health scores, CTAs and playbooks</li>
+            <li>CRM and support data synced with Zendesk or Intercom</li>
           </ul>
         </div>
 
         <div class="service-card">
           <div class="service-icon">🔗</div>
-          <h3>Data & Enrichment Workflows</h3>
-          <p>Stop enrichment tools overwriting the wrong fields. Build clean, compliant workflows that actually improve your data.</p>
+          <h3>Data, Enrichment &amp; Routing</h3>
+          <div class="tool-chips"><span>ZoomInfo</span><span>Cognism</span><span>Clay</span><span>Apollo.io</span><span>6sense</span><span>LeanData</span><span>Chili Piper</span></div>
+          <p>The right data on the right records, and every lead routed to the right person fast.</p>
           <ul>
-            <li>ZoomInfo / Cognism integration</li>
-            <li>Lead routing and enrichment logic</li>
-            <li>Data normalisation and cleanup</li>
+            <li>Enrichment setup without overwriting good data</li>
+            <li>Lead to account matching and routing rules</li>
+            <li>Dedupe and data normalisation</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🔄</div>
+          <h3>Integrations &amp; Automation</h3>
+          <div class="tool-chips"><span>Zapier</span><span>Make</span><span>Workato</span><span>Segment</span></div>
+          <p>Your tools talking to each other properly, so nobody copies data between systems by hand.</p>
+          <ul>
+            <li>Tool to tool syncs and field mapping</li>
+            <li>Workflow automation across your stack</li>
+            <li>Fixing broken or duplicate integrations</li>
           </ul>
         </div>
 
         <div class="service-card">
           <div class="service-icon">📊</div>
-          <h3>Campaign Tracking & Reporting</h3>
-          <p>Know what's working. Build tracking and attribution that gives marketing and leadership a shared source of truth.</p>
+          <h3>Reporting &amp; Attribution</h3>
+          <div class="tool-chips"><span>Google Analytics</span><span>Looker Studio</span><span>Tableau</span></div>
+          <p>One set of numbers marketing, sales and leadership all agree on.</p>
           <ul>
-            <li>Campaign tracking setup</li>
-            <li>Attribution structure</li>
-            <li>Funnel visibility and reporting</li>
+            <li>UTM structure and campaign tracking</li>
+            <li>Attribution models and funnel reporting</li>
+            <li>Dashboards in your CRM or BI tool</li>
           </ul>
         </div>
 
       </div>
+    </div>
+  </section>
 
-      <!-- Additional RevOps Support -->
-      <div class="additional-support">
-        <h4>Additional Support Across Revenue Operations</h4>
-        <p>While our core focus is Marketing Operations, we also support adjacent areas where systems and data overlap:</p>
-        <ul>
-          <li>Customer Success workflows (Gainsight)</li>
-          <li>RevOps reporting and alignment</li>
-          <li>Cross-team process optimisation</li>
-        </ul>
+  <!-- TOOL STACK -->
+  <section id="tools" class="stack-section">
+    <div class="container">
+      <h2 class="section-title">Tools We Work With</h2>
+      <p class="section-sub">30+ tools across your revenue stack. If it touches your pipeline, your customers or your reporting, we've probably set it up, fixed it or connected it.</p>
+      <div class="stack-grid">
+        <div class="stack-cat">
+          <h4>CRM</h4>
+          <div class="tool-chips"><span>Salesforce</span><span>HubSpot</span><span>Microsoft Dynamics 365</span><span>Pipedrive</span><span>Zoho CRM</span></div>
+        </div>
+        <div class="stack-cat">
+          <h4>Marketing automation</h4>
+          <div class="tool-chips"><span>HubSpot Marketing Hub</span><span>Marketo</span><span>Pardot (Account Engagement)</span></div>
+        </div>
+        <div class="stack-cat">
+          <h4>Customer success</h4>
+          <div class="tool-chips"><span>Gainsight</span><span>ChurnZero</span><span>Totango</span><span>Vitally</span><span>Zendesk</span><span>Intercom</span></div>
+        </div>
+        <div class="stack-cat">
+          <h4>Data, enrichment &amp; intent</h4>
+          <div class="tool-chips"><span>ZoomInfo</span><span>Cognism</span><span>Clay</span><span>Apollo.io</span><span>6sense</span></div>
+        </div>
+        <div class="stack-cat">
+          <h4>Routing &amp; scheduling</h4>
+          <div class="tool-chips"><span>LeanData</span><span>Chili Piper</span><span>Calendly</span></div>
+        </div>
+        <div class="stack-cat">
+          <h4>Sales engagement</h4>
+          <div class="tool-chips"><span>Outreach</span><span>Salesloft</span><span>LinkedIn Sales Navigator</span><span>Gong</span></div>
+        </div>
+        <div class="stack-cat">
+          <h4>Integrations &amp; automation</h4>
+          <div class="tool-chips"><span>Zapier</span><span>Make</span><span>Workato</span><span>Segment</span></div>
+        </div>
+        <div class="stack-cat">
+          <h4>Analytics &amp; reporting</h4>
+          <div class="tool-chips"><span>Google Analytics</span><span>Looker Studio</span><span>Tableau</span></div>
+        </div>
       </div>
-
     </div>
   </section>
 
@@ -711,13 +849,15 @@
       <div class="footer-inner">
         <div class="footer-col">
           <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80" aria-label="Afaao" role="img"><text style="font-family:'Cormorant Garamond',Georgia,serif;font-size:52px;font-weight:700;fill:#1c3a28;letter-spacing:-0.5px" x="12" y="58">Afaao</text><line x1="12" y1="68" x2="248" y2="68" stroke="#c4943a" stroke-width="1.5"/></svg></div>
-          <p>Marketing Operations for growing B2B teams, without the full-time hire.</p>
+          <p>RevOps, Marketing Ops and CS Ops for growing B2B teams, without the full time hires.</p>
         </div>
         <div class="footer-col">
           <h5>Services</h5>
-          <a href="#services">CRM & Lifecycle Optimisation</a>
-          <a href="#services">Data & Enrichment Workflows</a>
-          <a href="#services">Campaign Tracking & Reporting</a>
+          <a href="#services">Marketing Ops</a>
+          <a href="#services">Sales Ops &amp; CRM</a>
+          <a href="#services">Customer Success Ops</a>
+          <a href="#services">Data, Enrichment &amp; Routing</a>
+          <a href="#tools">Tools We Work With</a>
         </div>
         <div class="footer-col">
           <h5>Company</h5>
