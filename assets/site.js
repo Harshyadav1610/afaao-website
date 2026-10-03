@@ -175,6 +175,24 @@
     update();
   }
 
+
+  /* Mobile sticky CTA: show after the hero, hide near the closing CTA and footer */
+  var mcta = d.getElementById('m-cta');
+  if (mcta) {
+    var endEls = d.querySelectorAll('.cta-band, .site-footer'), nearEnd = false;
+    if ('IntersectionObserver' in window) {
+      var eo = new IntersectionObserver(function (es) { es.forEach(function (x) { x.target._vis = x.isIntersecting; }); nearEnd = Array.prototype.some.call(endEls, function (el) { return el._vis; }); sync(); });
+      endEls.forEach(function (el) { eo.observe(el); });
+    }
+    function sync() {
+      var show = window.scrollY > 520 && !nearEnd;
+      mcta.classList.toggle('show', show); d.body.classList.toggle('mcta-on', show);
+      mcta.setAttribute('aria-hidden', show ? 'false' : 'true');
+      mcta.querySelector('a').tabIndex = show ? 0 : -1;
+    }
+    window.addEventListener('scroll', sync, { passive: true }); sync();
+  }
+
   /* Reveal on scroll */
   if ('IntersectionObserver' in window && !reduce) {
     var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });

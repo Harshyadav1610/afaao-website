@@ -493,3 +493,63 @@ td.flash{animation:flash .6s ease}
   .tl-chev{grid-column:3;grid-row:1/3}
   .tl-body{padding:10px 8px 4px 36px}
 }
+
+/* ===== v6: mobile first polish ===== */
+.m-cta,.swipe-hint{display:none}
+@media (max-width:760px){
+  /* sticky bottom CTA */
+  .m-cta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:90;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(251,250,247,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .25s ease}
+  .m-cta.show{transform:none}
+  .m-cta .btn{width:100%}
+  body.mcta-on .consent-banner{bottom:84px}
+  body{padding-bottom:0}
+  .site-footer{padding-bottom:96px}
+  /* hero */
+  .hero h1{font-size:40px}
+  .stack{max-width:300px}
+  .node{font-size:11px;padding:5px 9px}
+  .hero-visual .node-tip-box{margin-top:10px;padding:10px 14px;min-height:0;font-size:13px}
+  .node-tip-box strong{font-size:14px}
+  .trust{font-size:13px;gap:6px 14px}
+  /* problem chips: one swipeable row */
+  .chip-row{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px 20px;padding:2px 20px 6px;scrollbar-width:none}
+  .chip-row::-webkit-scrollbar{display:none}
+  .chip-btn{flex:none;scroll-snap-align:start;white-space:nowrap}
+  .fix-line{font-size:21px}
+  .fix-right{flex-direction:row;justify-content:space-between;text-align:left;gap:12px}
+  .fix-right .fix-k{display:none}
+  .fix-v{font-size:20px;margin:0}
+  /* swipeable tiles */
+  .tiles.swipe{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 -20px;padding:4px 20px 12px;scrollbar-width:none}
+  .tiles.swipe::-webkit-scrollbar{display:none}
+  .tiles.swipe>.tile{flex:0 0 78%;scroll-snap-align:start}
+  .swipe-hint{display:block;text-align:center;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:6px 0 0}
+  .plats{gap:8px}.plat{padding:8px 13px;font-size:14px}
+  /* health check: compact two column chips, gauge close by */
+  .hc-chips{grid-template-columns:1fr 1fr;gap:8px}
+  .hc-chip{font-size:13px;padding:11px 10px;gap:8px;align-items:flex-start;line-height:1.35}
+  .hc-chip svg{width:18px;height:18px}
+  .hc-chip:hover{transform:none}
+  .hc-q{font-size:14px;margin-bottom:10px}
+  .gauge{max-width:200px}
+  .g-val strong{font-size:36px}
+  .hc-plan li{font-size:14px}
+  /* demo section */
+  .demo-copy{font-size:16px}
+  .demo-stats{margin-top:16px}
+  /* service pages */
+  .page-hero.center{padding:32px 0 28px}
+  .page-hero.center h1{font-size:34px}
+  .page-hero.center .lead{font-size:17px}
+  .pills{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;margin:0 -20px;padding:4px 20px 8px;scrollbar-width:none}
+  .pills::-webkit-scrollbar{display:none}
+  .pill{flex:none;min-width:0}
+  .probs{grid-template-columns:1fr 1fr;gap:8px}
+  .prob{font-size:13px;padding:12px;gap:8px;align-items:flex-start}
+  .prob svg{width:18px;height:18px}
+  .proj{font-size:15px;padding:14px 16px;flex-wrap:wrap}
+  /* footer */
+  .foot{gap:22px}
+  .foot p{font-size:14px}
+}
+@media (max-width:380px){.hero h1{font-size:36px}.hc-chips{grid-template-columns:1fr}}
