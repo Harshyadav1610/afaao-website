@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Consent, Apollo and Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEZJ87GL90"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    // Consent: stored choice wins. With no choice yet, EU/UK visitors (strict privacy laws) start opted out; everyone else is opted in with a notice.
+    var AFAAO_CONSENT = (function(){ try { return localStorage.getItem('afaao_consent'); } catch (e) { return null; } })();
+    var AFAAO_STRICT = /^Europe\//.test((Intl.DateTimeFormat().resolvedOptions().timeZone) || '');
+    var AFAAO_GRANTED = AFAAO_CONSENT === 'granted' || (!AFAAO_CONSENT && !AFAAO_STRICT);
+    gtag('consent', 'default', {
+      analytics_storage: AFAAO_GRANTED ? 'granted' : 'denied',
+      ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'
+    });
+    // Apollo website visitor tracking (company level), only with consent
+    var AFAAO_APOLLO_LOADED = false;
+    function initApollo(){ if (AFAAO_APOLLO_LOADED) return; AFAAO_APOLLO_LOADED = true; var n=Math.random().toString(36).substring(7),o=document.createElement("script");o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,o.onload=function(){window.trackingFunctions.onLoad({appId:"6ab45d322527f000206af2ee"})},document.head.appendChild(o)}
+    if (AFAAO_GRANTED) initApollo();
+    gtag('js', new Date());
+    gtag('config', 'G-GEZJ87GL90');
+    // Track the clicks that show buying interest
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a');
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      if (href.indexOf('calendly.com') !== -1) {
+        gtag('event', 'book_call_click', { link_text: (a.textContent || '').trim(), page_path: location.pathname });
+      } else if (href.indexOf('mailto:') === 0) {
+        gtag('event', 'email_click', { page_path: location.pathname });
+      } else if (href.indexOf('linkedin.com') !== -1) {
+        gtag('event', 'linkedin_click', { page_path: location.pathname });
+      }
+    });
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Toronto based HubSpot consulting for B2B teams worldwide. Lifecycle stages, workflows, lead routing, integrations, cleanup and reporting." />
+  <link rel="canonical" href="https://afaao.com/hubspot-consulting/" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Afaao" />
+  <meta property="og:url" content="https://afaao.com/hubspot-consulting/" />
+  <meta property="og:title" content="HubSpot Consultant in Toronto for B2B Teams | Afaao" />
+  <meta property="og:description" content="Toronto based HubSpot consulting for B2B teams worldwide. Lifecycle stages, workflows, lead routing, integrations, cleanup and reporting." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:image" content="https://afaao.com/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Afaao: RevOps, Marketing Ops and CS Ops for growing B2B teams" />
+  <meta name="twitter:image" content="https://afaao.com/og-image.png" />
+  <title>HubSpot Consultant in Toronto for B2B Teams | Afaao</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --ink: #0a0f1e;
+      --muted: #5b6478;
+      --accent: #1e3a8a;
+      --accent-light: #eef2ff;
+      --border: #e5e7eb;
+      --card: #f9fafb;
+      --green: #1c3a28;
+      --gold: #c4943a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* Navigation */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+    .logo svg { height: 44px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a { color: var(--ink); text-decoration: none; font-size: 15px; font-weight: 500; }
+    .nav-links a:hover { color: var(--accent); }
+    .btn {
+      display: inline-block; padding: 10px 20px; border-radius: 8px;
+      font-weight: 600; text-decoration: none; font-size: 15px;
+      transition: all 0.2s;
+    }
+    .btn-primary { background: var(--ink); color: white; }
+    .btn-primary:hover { background: var(--accent); }
+
+    /* Page hero */
+    .page-hero {
+      padding: 72px 0 56px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .page-hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    /* Contact layout */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 64px;
+      padding: 72px 0 96px;
+    }
+    @media (max-width: 768px) {
+      .contact-layout { grid-template-columns: 1fr; gap: 40px; padding: 48px 0 64px; }
+    }
+
+    /* Side info */
+    .contact-info h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .contact-info p {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+    .info-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 24px;
+    }
+    .info-item span:first-child {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+    }
+    .info-item a, .info-item span:last-child {
+      font-size: 15px;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .info-item a:hover { color: var(--accent); }
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 32px 0;
+    }
+    .trust-note {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .trust-note strong { color: var(--ink); }
+
+    /* Form */
+    .contact-form {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+    }
+    @media (max-width: 480px) { .contact-form { padding: 24px; } }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .form-group label .optional {
+      font-weight: 400;
+      color: var(--muted);
+      margin-left: 4px;
+    }
+    .form-group input,
+    .form-group textarea {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--ink);
+      background: white;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(30,58,138,0.08);
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #b0b8c8; }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--ink);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 4px;
+    }
+    .submit-btn:hover { background: var(--accent); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* Success / error states */
+    .form-message {
+      display: none;
+      padding: 16px 20px;
+      border-radius: 10px;
+      font-size: 15px;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .form-message.success {
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #6ee7b7;
+    }
+    .form-message.error {
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fca5a5;
+    }
+
+    /* Footer */
+    footer { padding: 40px 0 28px; border-top: 1px solid var(--border); }
+    .footer-bottom { font-size: 13px; color: var(--muted); text-align: center; }
+
+    @media (max-width: 640px) {
+      .nav-links a:not(.btn) { display: none; }
+    }
+      .legal h2 { font-size: 22px; font-weight: 700; margin: 32px 0 10px; }
+    .legal p { color: var(--muted); font-size: 16px; line-height: 1.7; margin-bottom: 12px; }
+    .legal a { color: var(--accent); }
+      .svc-hero { padding: 72px 0 40px; }
+    .svc-eyebrow { display: inline-block; background: var(--accent-light); color: var(--accent); font-size: 13px; font-weight: 600; border-radius: 999px; padding: 6px 14px; margin-bottom: 20px; }
+    .svc-hero h1 { font-size: clamp(34px, 5vw, 52px); font-weight: 800; letter-spacing: -1.5px; line-height: 1.1; max-width: 860px; }
+    .svc-hero .lead { font-size: 19px; color: var(--muted); max-width: 760px; margin: 20px 0 28px; line-height: 1.6; }
+    .svc-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .svc-section { padding: 48px 0; border-top: 1px solid var(--border); }
+    .svc-section h2 { font-size: clamp(26px, 3.5vw, 34px); font-weight: 800; letter-spacing: -1px; margin-bottom: 24px; }
+    .svc-problems { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+    .svc-problems div { border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; font-weight: 600; background: white; }
+    .svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .svc-grid div { border: 1px solid var(--border); border-radius: 16px; padding: 24px; background: white; }
+    .svc-grid h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .svc-grid p { color: var(--muted); font-size: 15px; line-height: 1.6; }
+    .svc-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .svc-chips span { font-size: 14px; font-weight: 600; color: var(--accent); background: var(--accent-light); border-radius: 999px; padding: 6px 14px; }
+    .svc-note { color: var(--muted); }
+    .svc-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; counter-reset: step; }
+    .svc-steps div { padding: 20px; border-radius: 12px; background: #f8fafc; }
+    .svc-steps h3 { font-size: 17px; margin-bottom: 6px; }
+    .svc-steps p { color: var(--muted); font-size: 15px; line-height: 1.6; }
+    .svc-fit ul { list-style: none; display: grid; gap: 10px; margin-bottom: 18px; }
+    .svc-fit li { padding-left: 26px; position: relative; }
+    .svc-fit li:before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 800; }
+    .svc-fit p { color: var(--muted); max-width: 760px; }
+    .btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+    .svc-faq details { max-width: 860px;  border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; margin-bottom: 10px; background: white; }
+    .svc-faq summary { font-weight: 700; cursor: pointer; font-size: 17px; }
+    .svc-faq details p { color: var(--muted); margin-top: 10px; line-height: 1.7; }
+    .svc-cta { text-align: center; padding: 64px 0; border-top: 1px solid var(--border); }
+    .svc-cta h2 { font-size: clamp(26px, 3.5vw, 36px); font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+    .svc-cta p { color: var(--muted); margin-bottom: 24px; }
+    .svc-related { margin-top: 18px; font-size: 15px; }
+    .svc-related a { color: var(--accent); }
+  </style>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "HubSpot consulting", "serviceType": "HubSpot consulting", "provider": {"@type": "ProfessionalService", "name": "Afaao", "url": "https://afaao.com/"}, "areaServed": "Worldwide", "url": "https://afaao.com/hubspot-consulting/", "description": "Toronto based HubSpot consulting for B2B teams worldwide. Lifecycle stages, workflows, lead routing, integrations, cleanup and reporting."}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does a HubSpot consultant do?", "acceptedAnswer": {"@type": "Answer", "text": "A HubSpot consultant sets up and fixes your HubSpot portal so it matches how your team markets and sells. That includes lifecycle stages, lead scoring, workflows, lead routing, integrations with other tools, data cleanup and reporting."}}, {"@type": "Question", "name": "Can you work in our existing HubSpot portal?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Most of our work is fixing and improving portals that are already in use. We start with an audit, keep what works and clean up the rest, without disrupting your team's day to day work."}}, {"@type": "Question", "name": "Do you work with HubSpot and Salesforce together?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Many teams run HubSpot for marketing and Salesforce for sales. We set up the sync, field mapping and rules so data flows the right way and stops overwriting itself."}}, {"@type": "Question", "name": "Are you based in Toronto?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Afaao is based in Toronto and works remotely with B2B teams across the world, and we plan our working hours around your time zone."}}, {"@type": "Question", "name": "How do you price HubSpot consulting?", "acceptedAnswer": {"@type": "Answer", "text": "We work on fixed price projects for setups and cleanups, or hourly for ongoing support. You get a clear quote after a free 30 minute audit call, before any work starts."}}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://afaao.com/"}, {"@type": "ListItem", "position": 2, "name": "Hubspot consulting", "item": "https://afaao.com/hubspot-consulting/"}]}</script>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="container nav-inner">
+      <div class="logo"><a href="/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80" aria-label="Afaao" role="img"><text style="font-family:'Cormorant Garamond',Georgia,serif;font-size:52px;font-weight:700;fill:#1c3a28;letter-spacing:-0.5px" x="12" y="58">Afaao</text><line x1="12" y1="68" x2="248" y2="68" stroke="#c4943a" stroke-width="1.5"/></svg></a></div>
+      <div class="nav-links">
+        <a href="/#services">Services</a>
+        <a href="/#tools">Tools</a>
+        <a href="/#how-we-work">How We Work</a>
+        <a href="/#why">Why Afaao</a>
+        <a href="/contact.html">Contact Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="svc-hero">
+      <div class="container">
+        <span class="svc-eyebrow">Marketing Ops and Sales Ops</span>
+        <h1>HubSpot consulting for B2B teams that outgrew their setup</h1>
+        <p class="lead">HubSpot is easy to start with and easy to outgrow. If your lifecycle stages are a mess, workflows overlap, duplicates keep coming back or nobody trusts the reports, we fix it. We&#x27;re based in Toronto and work remotely with B2B teams across the world.</p>
+        <div class="svc-ctas">
+          <a href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener" class="btn btn-primary">Book a 30-min Audit Call</a>
+          <a href="/contact.html" class="btn btn-secondary">Send us a message</a>
+        </div>
+      </div>
+    </section>
+    <section class="svc-section"><div class="container">
+      <h2>Sound familiar?</h2>
+      <div class="svc-problems"><div>Nobody agrees on what an MQL or SQL actually is</div><div>Duplicate contacts and companies keep coming back</div><div>Dozens of workflows and nobody knows what each one does</div><div>New leads sit unassigned or go to the wrong rep</div><div>The HubSpot and Salesforce sync keeps overwriting good data</div><div>Dashboards that don&#x27;t match what sales or finance see</div></div>
+    </div></section>
+    <section class="svc-section"><div class="container">
+      <h2>What we do in HubSpot</h2>
+      <div class="svc-grid"><div><h3>Portal audit and cleanup</h3><p>Review your properties, workflows, lists and data, then clean up duplicates and old clutter so the portal is easy to work in.</p></div><div><h3>Lifecycle stages and lead scoring</h3><p>Define lifecycle stages and MQL to SQL rules your marketing and sales teams agree on, then build them into HubSpot.</p></div><div><h3>Workflows and automation</h3><p>Rebuild overlapping workflows into a clear set of automations for nurture, handoff, deal stages and notifications.</p></div><div><h3>Lead routing and enrichment</h3><p>Route every lead to the right owner fast and enrich records with tools like Clay, ZoomInfo or Apollo without overwriting good data.</p></div><div><h3>Integrations</h3><p>Connect HubSpot with Salesforce, Slack, calendars and the rest of your stack using native syncs, Zapier, Make or Workato.</p></div><div><h3>Reporting and attribution</h3><p>Set up UTM tracking, attribution and dashboards so marketing, sales and leadership look at the same numbers.</p></div></div>
+    </div></section>
+    <section class="svc-section"><div class="container">
+      <h2>Tools we work with</h2>
+      <div class="svc-chips"><span>HubSpot</span><span>Salesforce</span><span>Clay</span><span>ZoomInfo</span><span>Apollo.io</span><span>Chili Piper</span><span>Zapier</span><span>Make</span><span>Google Analytics</span></div>
+      <p class="svc-note">We work across Marketing Hub and Sales Hub, and with the tools around HubSpot that feed it data. <a href="/#tools" style="color:var(--accent)">See all 30+ tools</a>.</p>
+    </div></section>
+    <section class="svc-section"><div class="container">
+      <h2>How it works</h2>
+      <div class="svc-steps"><div><h3>1. Audit</h3><p>A free 30 minute call where we look at your setup and tell you what&#x27;s broken and what&#x27;s worth fixing first.</p></div><div><h3>2. Plan</h3><p>A short written plan with priorities and a clear quote. No 50 page strategy decks.</p></div><div><h3>3. Build</h3><p>We make the changes in your tools, test them and document what we did.</p></div><div><h3>4. Support</h3><p>Handover and training for your team, plus ongoing help if you want it.</p></div></div>
+    </div></section>
+    <section class="svc-section svc-fit"><div class="container">
+      <h2>Who this is for</h2>
+      <ul><li>B2B teams that use HubSpot for marketing, sales or both</li><li>Companies without a dedicated marketing ops or RevOps person</li><li>Teams moving between HubSpot and Salesforce, or running both</li><li>Teams in Toronto, across North America and around the world</li></ul>
+      <p>We&#x27;re not the right fit if you&#x27;re looking for ads, content writing or website design. We work on the systems behind your marketing and sales, not the campaigns themselves.</p>
+    </div></section>
+    <section class="svc-section svc-faq"><div class="container">
+      <h2>Frequently asked questions</h2>
+      <details><summary>What does a HubSpot consultant do?</summary><p>A HubSpot consultant sets up and fixes your HubSpot portal so it matches how your team markets and sells. That includes lifecycle stages, lead scoring, workflows, lead routing, integrations with other tools, data cleanup and reporting.</p></details><details><summary>Can you work in our existing HubSpot portal?</summary><p>Yes. Most of our work is fixing and improving portals that are already in use. We start with an audit, keep what works and clean up the rest, without disrupting your team&#x27;s day to day work.</p></details><details><summary>Do you work with HubSpot and Salesforce together?</summary><p>Yes. Many teams run HubSpot for marketing and Salesforce for sales. We set up the sync, field mapping and rules so data flows the right way and stops overwriting itself.</p></details><details><summary>Are you based in Toronto?</summary><p>Yes. Afaao is based in Toronto and works remotely with B2B teams across the world, and we plan our working hours around your time zone.</p></details><details><summary>How do you price HubSpot consulting?</summary><p>We work on fixed price projects for setups and cleanups, or hourly for ongoing support. You get a clear quote after a free 30 minute audit call, before any work starts.</p></details>
+    </div></section>
+    <section class="svc-cta"><div class="container">
+      <h2>Not sure what's broken in your setup?</h2>
+      <p>Book a free 30 minute audit call. We'll walk through it with you and tell you what we'd fix first.</p>
+      <a href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener" class="btn btn-primary">Book a 30-min Audit Call</a>
+      <p class="svc-related">Also see: <a href="/gainsight-consulting/">Gainsight consulting</a> and <a href="/#services">all our services</a>.</p>
+    </div></section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom">© 2026 Afaao. All rights reserved. <a href="/privacy.html" style="color:inherit">Privacy Policy</a></div>
+    </div>
+  </footer>
+
+
+
+  <!-- Cookie notice -->
+  <style>
+    .consent-banner { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 1000; max-width: 640px; margin: 0 auto;
+      background: #0f172a; color: #e2e8f0; border-radius: 14px; padding: 16px 18px; box-shadow: 0 12px 40px rgba(15,23,42,0.25);
+      display: flex; gap: 16px; align-items: center; flex-wrap: wrap; font-size: 14px; line-height: 1.5; }
+    .consent-banner[hidden] { display: none; }
+    .consent-banner p { flex: 1 1 280px; margin: 0; }
+    .consent-banner a { color: #ffffff; text-decoration: underline; }
+    .consent-banner .consent-actions { display: flex; gap: 8px; }
+    .consent-banner button { font: inherit; font-weight: 600; border-radius: 8px; padding: 8px 16px; cursor: pointer; border: 1px solid #475569; background: transparent; color: #e2e8f0; }
+    .consent-banner button.consent-accept { background: #ffffff; color: #0f172a; border-color: #ffffff; }
+  </style>
+  <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie notice" hidden>
+    <p>We use cookies to see how people use our site and which companies visit, so we can make it more useful. <a href="/privacy.html">Privacy Policy</a></p>
+    <div class="consent-actions">
+      <button type="button" id="consent-decline">Decline</button>
+      <button type="button" id="consent-accept" class="consent-accept">Accept</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var banner = document.getElementById('consent-banner');
+      if (!banner) return;
+      if (!AFAAO_CONSENT) banner.hidden = false;
+      function save(choice) { try { localStorage.setItem('afaao_consent', choice); } catch (e) {} banner.hidden = true; }
+      document.getElementById('consent-accept').addEventListener('click', function () {
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+        initApollo();
+        save('granted');
+      });
+      document.getElementById('consent-decline').addEventListener('click', function () {
+        gtag('consent', 'update', { analytics_storage: 'denied' });
+        save('denied');
+      });
+    })();
+  </script>
+</body>
+</html>

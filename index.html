@@ -60,7 +60,7 @@
     "logo": "https://afaao.com/logo.svg",
     "description": "Outsourced revenue operations for growing B2B teams across marketing ops, sales ops and customer success ops: CRM and marketing automation, Gainsight and CS platforms, data enrichment and routing, integrations, and reporting and attribution.",
     "email": "hello@afaao.com",
-    "areaServed": ["Canada", "United States"],
+    "areaServed": "Worldwide",
     "address": { "@type": "PostalAddress", "addressLocality": "Toronto", "addressRegion": "ON", "addressCountry": "CA" },
     "knowsAbout": ["Revenue operations", "Marketing operations", "Sales operations", "Customer success operations", "Salesforce", "HubSpot", "Microsoft Dynamics 365", "Pipedrive", "Zoho CRM", "HubSpot Marketing Hub", "Marketo", "Pardot (Account Engagement)", "Gainsight", "ChurnZero", "Totango", "Vitally", "Zendesk", "Intercom", "ZoomInfo", "Cognism", "Clay", "Apollo.io", "6sense", "LeanData", "Chili Piper", "Calendly", "Outreach", "Salesloft", "LinkedIn Sales Navigator", "Gong", "Zapier", "Make", "Workato", "Segment", "Google Analytics", "Looker Studio", "Tableau", "Lead lifecycle management", "Lead routing", "Data enrichment", "Campaign attribution"],
     "sameAs": ["https://www.linkedin.com/company/afaao/"]
@@ -222,6 +222,8 @@
     /* Services */
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
     @media (min-width: 1000px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
+    .svc-more { display: inline-block; margin-top: 14px; font-size: 14px; font-weight: 700; color: var(--accent); text-decoration: none; }
+    .svc-more:hover { text-decoration: underline; }
     .tool-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
     .tool-chips span { font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-light); border-radius: 999px; padding: 4px 10px; white-space: nowrap; }
     .stack-section { background: #f8fafc; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -579,6 +581,7 @@
             <li>Lead scoring and nurture programs</li>
             <li>Campaign setup, forms and handoff to sales</li>
           </ul>
+          <a class="svc-more" href="/hubspot-consulting/">HubSpot consulting &rarr;</a>
         </div>
 
         <div class="service-card">
@@ -591,6 +594,7 @@
             <li>Pipeline stages, deal automation and workflows</li>
             <li>Outreach and Salesloft setup and sync</li>
           </ul>
+          <a class="svc-more" href="/hubspot-consulting/">HubSpot consulting &rarr;</a>
         </div>
 
         <div class="service-card">
@@ -603,6 +607,7 @@
             <li>Health scores, CTAs and playbooks</li>
             <li>CRM and support data synced with Zendesk or Intercom</li>
           </ul>
+          <a class="svc-more" href="/gainsight-consulting/">Gainsight consulting &rarr;</a>
         </div>
 
         <div class="service-card">
@@ -894,6 +899,8 @@
           <a href="#services">Marketing Ops</a>
           <a href="#services">Sales Ops &amp; CRM</a>
           <a href="#services">Customer Success Ops</a>
+          <a href="/hubspot-consulting/">HubSpot Consulting</a>
+          <a href="/gainsight-consulting/">Gainsight Consulting</a>
           <a href="#services">Data, Enrichment &amp; Routing</a>
           <a href="#tools">Tools We Work With</a>
         </div>
