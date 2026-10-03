@@ -287,6 +287,12 @@
     .svc-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
     .svc-chips span { font-size: 14px; font-weight: 600; color: var(--accent); background: var(--accent-light); border-radius: 999px; padding: 6px 14px; }
     .svc-note { color: var(--muted); }
+    .svc-examples { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .svc-ex { border: 1px solid var(--border); border-radius: 16px; padding: 24px; background: white; }
+    .svc-ex h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .svc-ex p { color: var(--muted); font-size: 15px; line-height: 1.6; margin-bottom: 8px; }
+    .svc-ex strong { color: var(--ink); }
+    .svc-ex ul { margin: 0 0 10px 18px; color: var(--muted); font-size: 15px; line-height: 1.6; }
     .svc-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; counter-reset: step; }
     .svc-steps div { padding: 20px; border-radius: 12px; background: #f8fafc; }
     .svc-steps h3 { font-size: 17px; margin-bottom: 6px; }
@@ -350,6 +356,11 @@
       <h2>Tools we work with</h2>
       <div class="svc-chips"><span>HubSpot</span><span>Salesforce</span><span>Clay</span><span>ZoomInfo</span><span>Apollo.io</span><span>Chili Piper</span><span>Zapier</span><span>Make</span><span>Google Analytics</span></div>
       <p class="svc-note">We work across Marketing Hub and Sales Hub, and with the tools around HubSpot that feed it data. <a href="/#tools" style="color:var(--accent)">See all 30+ tools</a>.</p>
+    </div></section>
+    <section class="svc-section"><div class="container">
+      <h2>Example projects</h2>
+      <p class="svc-note" style="margin-bottom:20px">These are typical projects we take on, not specific client stories. Every engagement starts with an audit, so yours will be shaped around your setup.</p>
+      <div class="svc-examples"><div class="svc-ex"><h3>HubSpot portal cleanup</h3><p class="svc-ex-start"><strong>Typical starting point:</strong> A growing B2B team has years of old properties, overlapping workflows and thousands of duplicates. Nobody wants to touch anything in case it breaks.</p><p><strong>What we do:</strong></p><ul><li>Full portal audit with a prioritised fix list</li><li>Merge duplicates and archive unused properties and lists</li><li>Consolidate workflows and document what each one does</li></ul><p class="svc-ex-time"><strong>Typical timeline:</strong> 2 to 4 weeks</p></div><div class="svc-ex"><h3>Lifecycle stages sales and marketing agree on</h3><p class="svc-ex-start"><strong>Typical starting point:</strong> Marketing says leads are qualified, sales says they aren&#x27;t, and the funnel report changes depending on who builds it.</p><p><strong>What we do:</strong></p><ul><li>Workshop to agree MQL, SQL and opportunity rules</li><li>Build lifecycle and lead status automation in HubSpot</li><li>Funnel dashboard both teams use</li></ul><p class="svc-ex-time"><strong>Typical timeline:</strong> 2 to 3 weeks</p></div><div class="svc-ex"><h3>Fast, fair lead routing</h3><p class="svc-ex-start"><strong>Typical starting point:</strong> Inbound demo requests sit unassigned for hours and sometimes go to the wrong rep.</p><p><strong>What we do:</strong></p><ul><li>Routing rules by territory, segment or round robin</li><li>Enrichment so every lead has the data routing needs</li><li>Alerts in Slack or email so reps respond fast</li></ul><p class="svc-ex-time"><strong>Typical timeline:</strong> 1 to 3 weeks</p></div></div>
     </div></section>
     <section class="svc-section"><div class="container">
       <h2>How it works</h2>
