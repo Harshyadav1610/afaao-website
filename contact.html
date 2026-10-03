@@ -268,6 +268,12 @@
     @media (max-width: 640px) {
       .nav-links a:not(.btn) { display: none; }
     }
+      .nav-dd { position: relative; }
+    .nav-dd-menu { display: none; position: absolute; top: 100%; left: -14px; padding-top: 12px; z-index: 60; }
+    .nav-dd:hover .nav-dd-menu, .nav-dd:focus-within .nav-dd-menu { display: block; }
+    .nav-dd-box { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 8px; min-width: 230px; box-shadow: 0 12px 32px rgba(15,23,42,0.12); display: flex; flex-direction: column; }
+    .nav-dd-box a { padding: 9px 12px; border-radius: 8px; white-space: nowrap; }
+    .nav-dd-box a:hover { background: var(--accent-light); }
   </style>
 </head>
 <body>
@@ -277,7 +283,14 @@
     <div class="container nav-inner">
       <div class="logo"><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80" aria-label="Afaao" role="img"><text style="font-family:'Cormorant Garamond',Georgia,serif;font-size:52px;font-weight:700;fill:#1c3a28;letter-spacing:-0.5px" x="12" y="58">Afaao</text><line x1="12" y1="68" x2="248" y2="68" stroke="#c4943a" stroke-width="1.5"/></svg></a></div>
       <div class="nav-links">
-        <a href="index.html#services">Services</a>
+        <div class="nav-dd">
+          <a href="/#services" class="nav-dd-toggle">Services &#9662;</a>
+          <div class="nav-dd-menu"><div class="nav-dd-box">
+            <a href="/hubspot-consulting/">HubSpot Consulting</a>
+            <a href="/gainsight-consulting/">Gainsight Consulting</a>
+            <a href="/#services">All Services</a>
+          </div></div>
+        </div>
         <a href="index.html#tools">Tools</a>
         <a href="index.html#how-we-work">How We Work</a>
         <a href="index.html#why">Why Afaao</a>
