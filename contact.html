@@ -1,464 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Consent, Apollo and Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEZJ87GL90"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    // Consent: stored choice wins. With no choice yet, EU/UK visitors (strict privacy laws) start opted out; everyone else is opted in with a notice.
-    var AFAAO_CONSENT = (function(){ try { return localStorage.getItem('afaao_consent'); } catch (e) { return null; } })();
-    var AFAAO_STRICT = /^Europe\//.test((Intl.DateTimeFormat().resolvedOptions().timeZone) || '');
-    var AFAAO_GRANTED = AFAAO_CONSENT === 'granted' || (!AFAAO_CONSENT && !AFAAO_STRICT);
-    gtag('consent', 'default', {
-      analytics_storage: AFAAO_GRANTED ? 'granted' : 'denied',
-      ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'
-    });
-    // Apollo website visitor tracking (company level), only with consent
-    var AFAAO_APOLLO_LOADED = false;
-    function initApollo(){ if (AFAAO_APOLLO_LOADED) return; AFAAO_APOLLO_LOADED = true; var n=Math.random().toString(36).substring(7),o=document.createElement("script");o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,o.onload=function(){window.trackingFunctions.onLoad({appId:"6ab45d322527f000206af2ee"})},document.head.appendChild(o)}
-    if (AFAAO_GRANTED) initApollo();
-    gtag('js', new Date());
-    gtag('config', 'G-GEZJ87GL90');
-    // Track the clicks that show buying interest
-    document.addEventListener('click', function (e) {
-      var a = e.target.closest('a');
-      if (!a) return;
-      var href = a.getAttribute('href') || '';
-      if (href.indexOf('calendly.com') !== -1) {
-        gtag('event', 'book_call_click', { link_text: (a.textContent || '').trim(), page_path: location.pathname });
-      } else if (href.indexOf('mailto:') === 0) {
-        gtag('event', 'email_click', { page_path: location.pathname });
-      } else if (href.indexOf('linkedin.com') !== -1) {
-        gtag('event', 'linkedin_click', { page_path: location.pathname });
-      }
-    });
-  </script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Contact Afaao for RevOps, marketing ops or customer success ops help with Salesforce, HubSpot, Gainsight and the rest of your stack. Tell us what is broken." />
-  <link rel="canonical" href="https://afaao.com/contact.html" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Afaao" />
-  <meta property="og:url" content="https://afaao.com/contact.html" />
-  <meta property="og:title" content="Contact Afaao" />
-  <meta property="og:description" content="Tell us what is broken in your stack. Salesforce, HubSpot, Gainsight and 30+ tools across marketing, sales and customer success." />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta property="og:image" content="https://afaao.com/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Afaao: RevOps, Marketing Ops and CS Ops for growing B2B teams" />
-  <meta name="twitter:image" content="https://afaao.com/og-image.png" />
-  <title>Contact Us — Afaao</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #ffffff;
-      --ink: #0a0f1e;
-      --muted: #5b6478;
-      --accent: #1e3a8a;
-      --accent-light: #eef2ff;
-      --border: #e5e7eb;
-      --card: #f9fafb;
-      --green: #1c3a28;
-      --gold: #c4943a;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: var(--ink);
-      background: var(--bg);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-
-    /* Navigation */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 0;
-    }
-    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
-    .logo svg { height: 44px; width: auto; display: block; }
-    .nav-links { display: flex; gap: 28px; align-items: center; }
-    .nav-links a { color: var(--ink); text-decoration: none; font-size: 15px; font-weight: 500; }
-    .nav-links a:hover { color: var(--accent); }
-    .btn {
-      display: inline-block; padding: 10px 20px; border-radius: 8px;
-      font-weight: 600; text-decoration: none; font-size: 15px;
-      transition: all 0.2s;
-    }
-    .btn-primary { background: var(--ink); color: white; }
-    .btn-primary:hover { background: var(--accent); }
-
-    /* Page hero */
-    .page-hero {
-      padding: 72px 0 56px;
-      border-bottom: 1px solid var(--border);
-    }
-    .page-hero h1 {
-      font-size: clamp(32px, 5vw, 52px);
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
-    .page-hero p {
-      font-size: 18px;
-      color: var(--muted);
-      max-width: 560px;
-    }
-
-    /* Contact layout */
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 64px;
-      padding: 72px 0 96px;
-    }
-    @media (max-width: 768px) {
-      .contact-layout { grid-template-columns: 1fr; gap: 40px; padding: 48px 0 64px; }
-    }
-
-    /* Side info */
-    .contact-info h2 {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-    .contact-info p {
-      font-size: 15px;
-      color: var(--muted);
-      margin-bottom: 32px;
-    }
-    .info-item {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      margin-bottom: 24px;
-    }
-    .info-item span:first-child {
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--muted);
-    }
-    .info-item a, .info-item span:last-child {
-      font-size: 15px;
-      color: var(--ink);
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .info-item a:hover { color: var(--accent); }
-    .divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 32px 0;
-    }
-    .trust-note {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-    .trust-note strong { color: var(--ink); }
-
-    /* Form */
-    .contact-form {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 40px;
-    }
-    @media (max-width: 480px) { .contact-form { padding: 24px; } }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-bottom: 20px;
-    }
-    .form-group label {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--ink);
-    }
-    .form-group label .optional {
-      font-weight: 400;
-      color: var(--muted);
-      margin-left: 4px;
-    }
-    .form-group input,
-    .form-group textarea {
-      padding: 12px 14px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 15px;
-      font-family: inherit;
-      color: var(--ink);
-      background: white;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(30,58,138,0.08);
-    }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: #b0b8c8; }
-    .form-group textarea { resize: vertical; min-height: 120px; }
-    .submit-btn {
-      width: 100%;
-      padding: 14px;
-      background: var(--ink);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 600;
-      font-family: inherit;
-      cursor: pointer;
-      transition: background 0.2s;
-      margin-top: 4px;
-    }
-    .submit-btn:hover { background: var(--accent); }
-    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-
-    /* Success / error states */
-    .form-message {
-      display: none;
-      padding: 16px 20px;
-      border-radius: 10px;
-      font-size: 15px;
-      margin-bottom: 20px;
-      font-weight: 500;
-    }
-    .form-message.success {
-      background: #ecfdf5;
-      color: #065f46;
-      border: 1px solid #6ee7b7;
-    }
-    .form-message.error {
-      background: #fef2f2;
-      color: #991b1b;
-      border: 1px solid #fca5a5;
-    }
-
-    /* Footer */
-    footer { padding: 40px 0 28px; border-top: 1px solid var(--border); }
-    .footer-bottom { font-size: 13px; color: var(--muted); text-align: center; }
-
-    @media (max-width: 640px) {
-      .nav-links a:not(.btn) { display: none; }
-    }
-      .nav-dd { position: relative; }
-    .nav-dd-menu { display: none; position: absolute; top: 100%; left: -14px; padding-top: 12px; z-index: 60; }
-    .nav-dd:hover .nav-dd-menu, .nav-dd:focus-within .nav-dd-menu { display: block; }
-    .nav-dd-box { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 8px; min-width: 230px; box-shadow: 0 12px 32px rgba(15,23,42,0.12); display: flex; flex-direction: column; }
-    .nav-dd-box a { padding: 9px 12px; border-radius: 8px; white-space: nowrap; }
-    .nav-dd-box a:hover { background: var(--accent-light); }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact Afaao | RevOps and Marketing Ops Help</title>
+<meta name="description" content="Contact Afaao for RevOps, marketing ops or customer success ops help with Salesforce, HubSpot, Gainsight and the rest of your stack." />
+<link rel="canonical" href="https://afaao.com/contact.html" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta name="theme-color" content="#1c3a28" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Afaao" />
+<meta property="og:url" content="https://afaao.com/contact.html" />
+<meta property="og:title" content="Contact Afaao" />
+<meta property="og:description" content="Contact Afaao for RevOps, marketing ops or customer success ops help with Salesforce, HubSpot, Gainsight and the rest of your stack." />
+<meta property="og:image" content="https://afaao.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Afaao: RevOps, Marketing Ops and CS Ops for growing B2B teams" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://afaao.com/og-image.png" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEZJ87GL90"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+var AFAAO_CONSENT=(function(){try{return localStorage.getItem('afaao_consent');}catch(e){return null;}})();
+var AFAAO_STRICT=/^Europe\//.test((Intl.DateTimeFormat().resolvedOptions().timeZone)||'');
+var AFAAO_GRANTED=AFAAO_CONSENT==='granted'||(!AFAAO_CONSENT&&!AFAAO_STRICT);
+gtag('consent','default',{analytics_storage:AFAAO_GRANTED?'granted':'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
+var AFAAO_APOLLO_LOADED=false;
+function initApollo(){if(AFAAO_APOLLO_LOADED)return;AFAAO_APOLLO_LOADED=true;var n=Math.random().toString(36).substring(7),o=document.createElement("script");o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,o.onload=function(){window.trackingFunctions.onLoad({appId:"6ab45d322527f000206af2ee"})},document.head.appendChild(o)}
+if(AFAAO_GRANTED)initApollo();
+gtag('js',new Date());gtag('config','G-GEZJ87GL90');
+document.documentElement.className+=' js';
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap&text=Afao" />
+<link rel="stylesheet" href="/assets/site.css?v=20261003" />
 </head>
 <body>
-
-  <!-- NAVIGATION -->
-  <nav>
-    <div class="container nav-inner">
-      <div class="logo"><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80" aria-label="Afaao" role="img"><text style="font-family:'Cormorant Garamond',Georgia,serif;font-size:52px;font-weight:700;fill:#1c3a28;letter-spacing:-0.5px" x="12" y="58">Afaao</text><line x1="12" y1="68" x2="248" y2="68" stroke="#c4943a" stroke-width="1.5"/></svg></a></div>
-      <div class="nav-links">
-        <div class="nav-dd">
-          <a href="/#services" class="nav-dd-toggle">Services &#9662;</a>
-          <div class="nav-dd-menu"><div class="nav-dd-box">
-            <a href="/hubspot-consulting/">HubSpot Consulting</a>
-            <a href="/gainsight-consulting/">Gainsight Consulting</a>
-            <a href="/#services">All Services</a>
-          </div></div>
-        </div>
-        <a href="index.html#tools">Tools</a>
-        <a href="index.html#how-we-work">How We Work</a>
-        <a href="index.html#why">Why Afaao</a>
-        <a href="contact.html">Contact Us</a>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container nav">
+    <a class="logo" href="/" aria-label="Afaao home"><span>Afaao</span><i></i></a>
+    <nav class="nav-links" aria-label="Main">
+      <div class="dd">
+        <button type="button" aria-expanded="false" aria-haspopup="true">Services <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="dd-menu"><a href="/hubspot-consulting/"><strong>HubSpot Consulting</strong><small>Portal cleanup, lifecycle stages, workflows, lead routing and reporting.</small></a><a href="/salesforce-consulting/"><strong>Salesforce Consulting</strong><small>Org cleanup, Flow automation, lead to account matching, Pardot and HubSpot sync.</small></a><a href="/gainsight-consulting/"><strong>Gainsight Consulting</strong><small>Health scores, CTAs and playbooks, CRM sync and ongoing admin support.</small></a><hr /><a href="/#services"><strong>All services</strong><small>Marketing Ops, Sales Ops, CS Ops, data, integrations and reporting</small></a></div>
       </div>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <div class="page-hero">
-    <div class="container">
-      <h1>Let's talk about your stack.</h1>
-      <p>Tell us what you're working on and we'll get back to you within one business day.</p>
+      <a href="/#fix">What we fix</a>
+      <a href="/#how-we-work">How we work</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free audit</a>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-panel"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
   </div>
-
-  <!-- CONTACT LAYOUT -->
+</header>
+<div class="mobile-panel" id="mobile-panel">
+  <a href="/#services">Services</a>
+  <div class="sub"><a href="/hubspot-consulting/">HubSpot Consulting</a><a href="/salesforce-consulting/">Salesforce Consulting</a><a href="/gainsight-consulting/">Gainsight Consulting</a></div>
+  <a href="/#fix">What we fix</a>
+  <a href="/#tools">Tools</a>
+  <a href="/#how-we-work">How we work</a>
+  <a href="/#faq">FAQ</a>
+  <a href="/contact.html">Contact</a>
+  <a class="btn btn-primary" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free 30 minute audit</a>
+</div>
+<main id="main">
+<section class="page-hero"><div class="container">
+  <div class="page-hero-grid">
+    <div>
+      <div class="eyebrow">Contact</div>
+      <h1 style="font-size:clamp(34px,4.6vw,52px)">Let's talk about your stack.</h1>
+      <p class="lead">Tell us what's broken. We'll take it from there.</p>
+      <div style="margin-top:28px"><div style="display:flex;gap:14px;margin-bottom:18px"><span style="flex:none;width:32px;height:32px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center">1</span><div><strong>Send a note</strong><div class="muted" style="font-size:15px">Or book a call right away.</div></div></div><div style="display:flex;gap:14px;margin-bottom:18px"><span style="flex:none;width:32px;height:32px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center">2</span><div><strong>We reply in one business day</strong><div class="muted" style="font-size:15px"></div></div></div><div style="display:flex;gap:14px;margin-bottom:18px"><span style="flex:none;width:32px;height:32px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center">3</span><div><strong>Free 30 minute audit</strong><div class="muted" style="font-size:15px">We tell you what we'd fix first.</div></div></div></div>
+      <div class="card" style="margin-top:8px">
+        <strong>Prefer to talk now?</strong>
+        <p style="margin:6px 0 14px">Book a free 30 minute audit call directly.</p>
+        <a class="btn btn-primary" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Book a call</a>
+        <p style="margin:16px 0 0;font-size:15px">Or email <a href="mailto:hello@afaao.com">hello@afaao.com</a></p>
+      </div>
+    </div>
+    <div class="card" style="padding:32px">
+      <h2 style="font-size:26px">Send us a message</h2>
+      <form id="contact-form" class="form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="3fbc302a-4e8d-44cc-9960-1d47d0399a4e" />
+        <input type="hidden" name="subject" value="New enquiry from afaao.com" />
+        <input type="hidden" name="source_page" value="" />
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+        <div class="row">
+          <div><label for="name">Name</label><input id="name" name="name" autocomplete="name" required /></div>
+          <div><label for="company">Company</label><input id="company" name="company" autocomplete="organization" required /></div>
+        </div>
+        <div class="row">
+          <div><label for="email">Work email</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
+          <div><label for="phone">Phone <span class="hint">(optional)</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" /></div>
+        </div>
+        <div><label for="message">What do you need help with?</label><textarea id="message" name="message" placeholder="Your current stack, what's broken, or what you're trying to build" required></textarea></div>
+        <button type="submit" class="btn btn-primary">Send message</button>
+        <div id="form-message" class="form-msg" role="status"></div>
+        <p class="hint" style="margin:0">We only use your details to reply to you. See our <a href="/privacy.html">Privacy Policy</a>.</p>
+      </form>
+    </div>
+  </div>
+</div></section>
+</main><footer class="site-footer">
   <div class="container">
-    <div class="contact-layout">
-
-      <!-- LEFT: info -->
-      <div class="contact-info">
-        <h2>Get in touch</h2>
-        <p>Whether you have a specific project in mind or just want to explore what's possible — we're happy to talk.</p>
-
-        <div class="info-item">
-          <span>Email</span>
-          <a href="mailto:hello@afaao.com">hello@afaao.com</a>
-        </div>
-        <div class="info-item">
-          <span>LinkedIn</span>
-          <a href="https://www.linkedin.com/company/afaao/" target="_blank" rel="noopener">Afaao on LinkedIn</a>
-        </div>
-        <div class="info-item">
-          <span>Based in</span>
-          <span>Toronto — working with B2B teams globally</span>
-        </div>
-
-        <hr class="divider" />
-
-        <div class="trust-note">
-          <strong>Prefer a call?</strong><br>
-          Book a 30-minute intro directly via
-          <a href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; font-weight: 600;">Calendly →</a>
-        </div>
+    <div class="foot">
+      <div>
+        <a class="logo" href="/" aria-label="Afaao home"><span>Afaao</span><i></i></a>
+        <p style="margin-top:14px">RevOps, Marketing Ops and CS Ops for growing B2B teams, without the cost of full time ops hires.</p>
       </div>
-
-      <!-- RIGHT: form -->
-      <div class="contact-form">
-        <div class="form-message" id="form-message"></div>
-
-        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-          <input type="hidden" name="access_key" value="3fbc302a-4e8d-44cc-9960-1d47d0399a4e" />
-          <input type="hidden" name="subject" value="New enquiry from afaao.com" />
-          <input type="hidden" name="redirect" value="false" />
-          <input type="checkbox" name="botcheck" style="display:none" />
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name">Full name</label>
-              <input type="text" id="name" name="name" placeholder="Jane Smith" required />
-            </div>
-            <div class="form-group">
-              <label for="company">Company name</label>
-              <input type="text" id="company" name="company" placeholder="Acme Corp" required />
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="email">Email address</label>
-              <input type="email" id="email" name="email" placeholder="jane@acme.com" required />
-            </div>
-            <div class="form-group">
-              <label for="phone">Phone <span class="optional">(optional)</span></label>
-              <input type="tel" id="phone" name="phone" placeholder="+1 416 000 0000" />
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="message">What can we help you with?</label>
-            <textarea id="message" name="message" placeholder="Tell us about your current stack, what's broken, or what you're trying to build..." required></textarea>
-          </div>
-
-          <button type="submit" class="submit-btn" id="submit-btn">Send message</button>
-        </form>
-      </div>
-
+      <div><h5>Services</h5><a href="/hubspot-consulting/">HubSpot Consulting</a><a href="/salesforce-consulting/">Salesforce Consulting</a><a href="/gainsight-consulting/">Gainsight Consulting</a><a href="/#services">All services</a><a href="/#tools">Tools we work with</a></div>
+      <div><h5>Company</h5><a href="/#how-we-work">How we work</a><a href="/#fix">What we fix</a><a href="/#faq">FAQ</a><a href="/contact.html">Contact</a></div>
+      <div><h5>Get in touch</h5><a href="mailto:hello@afaao.com">hello@afaao.com</a><a href="https://www.linkedin.com/company/afaao/" target="_blank" rel="noopener">LinkedIn</a><a href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free audit</a></div>
     </div>
+    <div class="foot-bottom"><span>&copy; 2026 Afaao. Toronto, working with B2B teams worldwide.</span><a href="/privacy.html">Privacy Policy</a></div>
   </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <div class="footer-bottom">© 2026 Afaao. All rights reserved. <a href="privacy.html" style="color:inherit">Privacy Policy</a></div>
-    </div>
-  </footer>
-
-  <script>
-    const form = document.getElementById('contact-form');
-    const btn = document.getElementById('submit-btn');
-    const msg = document.getElementById('form-message');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      btn.disabled = true;
-      btn.textContent = 'Sending…';
-      msg.style.display = 'none';
-
-      const data = new FormData(form);
-      try {
-        const res = await fetch(form.action, { method: 'POST', body: data });
-        const json = await res.json();
-        if (json.success) {
-          msg.textContent = "Thanks! We've received your message and will be in touch within one business day.";
-          msg.className = 'form-message success';
-          if (typeof gtag === 'function') gtag('event', 'generate_lead', { form_name: 'contact' });
-          form.reset();
-        } else {
-          throw new Error('submission failed');
-        }
-      } catch {
-        msg.textContent = 'Something went wrong. Please email us directly at hello@afaao.com';
-        msg.className = 'form-message error';
-      }
-
-      msg.style.display = 'block';
-      btn.disabled = false;
-      btn.textContent = 'Send message';
-    });
-  </script>
-
-
-  <!-- Cookie notice -->
-  <style>
-    .consent-banner { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 1000; max-width: 640px; margin: 0 auto;
-      background: #0f172a; color: #e2e8f0; border-radius: 14px; padding: 16px 18px; box-shadow: 0 12px 40px rgba(15,23,42,0.25);
-      display: flex; gap: 16px; align-items: center; flex-wrap: wrap; font-size: 14px; line-height: 1.5; }
-    .consent-banner[hidden] { display: none; }
-    .consent-banner p { flex: 1 1 280px; margin: 0; }
-    .consent-banner a { color: #ffffff; text-decoration: underline; }
-    .consent-banner .consent-actions { display: flex; gap: 8px; }
-    .consent-banner button { font: inherit; font-weight: 600; border-radius: 8px; padding: 8px 16px; cursor: pointer; border: 1px solid #475569; background: transparent; color: #e2e8f0; }
-    .consent-banner button.consent-accept { background: #ffffff; color: #0f172a; border-color: #ffffff; }
-  </style>
-  <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie notice" hidden>
-    <p>We use cookies to see how people use our site and which companies visit, so we can make it more useful. <a href="privacy.html">Privacy Policy</a></p>
-    <div class="consent-actions">
-      <button type="button" id="consent-decline">Decline</button>
-      <button type="button" id="consent-accept" class="consent-accept">Accept</button>
-    </div>
-  </div>
-  <script>
-    (function () {
-      var banner = document.getElementById('consent-banner');
-      if (!banner) return;
-      if (!AFAAO_CONSENT) banner.hidden = false;
-      function save(choice) { try { localStorage.setItem('afaao_consent', choice); } catch (e) {} banner.hidden = true; }
-      document.getElementById('consent-accept').addEventListener('click', function () {
-        gtag('consent', 'update', { analytics_storage: 'granted' });
-        initApollo();
-        save('granted');
-      });
-      document.getElementById('consent-decline').addEventListener('click', function () {
-        gtag('consent', 'update', { analytics_storage: 'denied' });
-        save('denied');
-      });
-    })();
-  </script>
+</footer>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie notice" hidden>
+  <p>We use cookies to see how people use our site and which companies visit, so we can make it more useful. <a href="/privacy.html">Privacy Policy</a></p>
+  <div class="acts"><button type="button" id="consent-decline">Decline</button><button type="button" id="consent-accept" class="accept">Accept</button></div>
+</div>
+<script src="/assets/site.js?v=20261003" defer></script>
 </body>
 </html>

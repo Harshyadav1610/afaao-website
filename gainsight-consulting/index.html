@@ -1,444 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Consent, Apollo and Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GEZJ87GL90"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    // Consent: stored choice wins. With no choice yet, EU/UK visitors (strict privacy laws) start opted out; everyone else is opted in with a notice.
-    var AFAAO_CONSENT = (function(){ try { return localStorage.getItem('afaao_consent'); } catch (e) { return null; } })();
-    var AFAAO_STRICT = /^Europe\//.test((Intl.DateTimeFormat().resolvedOptions().timeZone) || '');
-    var AFAAO_GRANTED = AFAAO_CONSENT === 'granted' || (!AFAAO_CONSENT && !AFAAO_STRICT);
-    gtag('consent', 'default', {
-      analytics_storage: AFAAO_GRANTED ? 'granted' : 'denied',
-      ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'
-    });
-    // Apollo website visitor tracking (company level), only with consent
-    var AFAAO_APOLLO_LOADED = false;
-    function initApollo(){ if (AFAAO_APOLLO_LOADED) return; AFAAO_APOLLO_LOADED = true; var n=Math.random().toString(36).substring(7),o=document.createElement("script");o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,o.onload=function(){window.trackingFunctions.onLoad({appId:"6ab45d322527f000206af2ee"})},document.head.appendChild(o)}
-    if (AFAAO_GRANTED) initApollo();
-    gtag('js', new Date());
-    gtag('config', 'G-GEZJ87GL90');
-    // Track the clicks that show buying interest
-    document.addEventListener('click', function (e) {
-      var a = e.target.closest('a');
-      if (!a) return;
-      var href = a.getAttribute('href') || '';
-      if (href.indexOf('calendly.com') !== -1) {
-        gtag('event', 'book_call_click', { link_text: (a.textContent || '').trim(), page_path: location.pathname });
-      } else if (href.indexOf('mailto:') === 0) {
-        gtag('event', 'email_click', { page_path: location.pathname });
-      } else if (href.indexOf('linkedin.com') !== -1) {
-        gtag('event', 'linkedin_click', { page_path: location.pathname });
-      }
-    });
-  </script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Gainsight consulting for growing customer success teams. Health scores, CTAs, playbooks, Salesforce and HubSpot sync, and ongoing admin support without a full time hire." />
-  <link rel="canonical" href="https://afaao.com/gainsight-consulting/" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Afaao" />
-  <meta property="og:url" content="https://afaao.com/gainsight-consulting/" />
-  <meta property="og:title" content="Gainsight Consulting and Admin Support | Afaao" />
-  <meta property="og:description" content="Gainsight consulting for growing customer success teams. Health scores, CTAs, playbooks, Salesforce and HubSpot sync, and ongoing admin support without a full time hire." />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta property="og:image" content="https://afaao.com/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Afaao: RevOps, Marketing Ops and CS Ops for growing B2B teams" />
-  <meta name="twitter:image" content="https://afaao.com/og-image.png" />
-  <title>Gainsight Consulting and Admin Support | Afaao</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #ffffff;
-      --ink: #0a0f1e;
-      --muted: #5b6478;
-      --accent: #1e3a8a;
-      --accent-light: #eef2ff;
-      --border: #e5e7eb;
-      --card: #f9fafb;
-      --green: #1c3a28;
-      --gold: #c4943a;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: var(--ink);
-      background: var(--bg);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-
-    /* Navigation */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 0;
-    }
-    .nav-inner { display: flex; justify-content: space-between; align-items: center; }
-    .logo svg { height: 44px; width: auto; display: block; }
-    .nav-links { display: flex; gap: 28px; align-items: center; }
-    .nav-links a { color: var(--ink); text-decoration: none; font-size: 15px; font-weight: 500; }
-    .nav-links a:hover { color: var(--accent); }
-    .btn {
-      display: inline-block; padding: 10px 20px; border-radius: 8px;
-      font-weight: 600; text-decoration: none; font-size: 15px;
-      transition: all 0.2s;
-    }
-    .btn-primary { background: var(--ink); color: white; }
-    .btn-primary:hover { background: var(--accent); }
-
-    /* Page hero */
-    .page-hero {
-      padding: 72px 0 56px;
-      border-bottom: 1px solid var(--border);
-    }
-    .page-hero h1 {
-      font-size: clamp(32px, 5vw, 52px);
-      font-weight: 800;
-      letter-spacing: -1.5px;
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
-    .page-hero p {
-      font-size: 18px;
-      color: var(--muted);
-      max-width: 560px;
-    }
-
-    /* Contact layout */
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 64px;
-      padding: 72px 0 96px;
-    }
-    @media (max-width: 768px) {
-      .contact-layout { grid-template-columns: 1fr; gap: 40px; padding: 48px 0 64px; }
-    }
-
-    /* Side info */
-    .contact-info h2 {
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-    .contact-info p {
-      font-size: 15px;
-      color: var(--muted);
-      margin-bottom: 32px;
-    }
-    .info-item {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      margin-bottom: 24px;
-    }
-    .info-item span:first-child {
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--muted);
-    }
-    .info-item a, .info-item span:last-child {
-      font-size: 15px;
-      color: var(--ink);
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .info-item a:hover { color: var(--accent); }
-    .divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 32px 0;
-    }
-    .trust-note {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-    .trust-note strong { color: var(--ink); }
-
-    /* Form */
-    .contact-form {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 40px;
-    }
-    @media (max-width: 480px) { .contact-form { padding: 24px; } }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-bottom: 20px;
-    }
-    .form-group label {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--ink);
-    }
-    .form-group label .optional {
-      font-weight: 400;
-      color: var(--muted);
-      margin-left: 4px;
-    }
-    .form-group input,
-    .form-group textarea {
-      padding: 12px 14px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 15px;
-      font-family: inherit;
-      color: var(--ink);
-      background: white;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .form-group input:focus,
-    .form-group textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(30,58,138,0.08);
-    }
-    .form-group input::placeholder,
-    .form-group textarea::placeholder { color: #b0b8c8; }
-    .form-group textarea { resize: vertical; min-height: 120px; }
-    .submit-btn {
-      width: 100%;
-      padding: 14px;
-      background: var(--ink);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 600;
-      font-family: inherit;
-      cursor: pointer;
-      transition: background 0.2s;
-      margin-top: 4px;
-    }
-    .submit-btn:hover { background: var(--accent); }
-    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-
-    /* Success / error states */
-    .form-message {
-      display: none;
-      padding: 16px 20px;
-      border-radius: 10px;
-      font-size: 15px;
-      margin-bottom: 20px;
-      font-weight: 500;
-    }
-    .form-message.success {
-      background: #ecfdf5;
-      color: #065f46;
-      border: 1px solid #6ee7b7;
-    }
-    .form-message.error {
-      background: #fef2f2;
-      color: #991b1b;
-      border: 1px solid #fca5a5;
-    }
-
-    /* Footer */
-    footer { padding: 40px 0 28px; border-top: 1px solid var(--border); }
-    .footer-bottom { font-size: 13px; color: var(--muted); text-align: center; }
-
-    @media (max-width: 640px) {
-      .nav-links a:not(.btn) { display: none; }
-    }
-      .legal h2 { font-size: 22px; font-weight: 700; margin: 32px 0 10px; }
-    .legal p { color: var(--muted); font-size: 16px; line-height: 1.7; margin-bottom: 12px; }
-    .legal a { color: var(--accent); }
-      .nav-dd { position: relative; }
-    .nav-dd-menu { display: none; position: absolute; top: 100%; left: -14px; padding-top: 12px; z-index: 60; }
-    .nav-dd:hover .nav-dd-menu, .nav-dd:focus-within .nav-dd-menu { display: block; }
-    .nav-dd-box { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 8px; min-width: 230px; box-shadow: 0 12px 32px rgba(15,23,42,0.12); display: flex; flex-direction: column; }
-    .nav-dd-box a { padding: 9px 12px; border-radius: 8px; white-space: nowrap; }
-    .nav-dd-box a:hover { background: var(--accent-light); }
-      .svc-hero { padding: 72px 0 40px; }
-    .svc-eyebrow { display: inline-block; background: var(--accent-light); color: var(--accent); font-size: 13px; font-weight: 600; border-radius: 999px; padding: 6px 14px; margin-bottom: 20px; }
-    .svc-hero h1 { font-size: clamp(34px, 5vw, 52px); font-weight: 800; letter-spacing: -1.5px; line-height: 1.1; max-width: 860px; }
-    .svc-hero .lead { font-size: 19px; color: var(--muted); max-width: 760px; margin: 20px 0 28px; line-height: 1.6; }
-    .svc-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-    .svc-section { padding: 48px 0; border-top: 1px solid var(--border); }
-    .svc-section h2 { font-size: clamp(26px, 3.5vw, 34px); font-weight: 800; letter-spacing: -1px; margin-bottom: 24px; }
-    .svc-problems { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
-    .svc-problems div { border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; font-weight: 600; background: white; }
-    .svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-    .svc-grid div { border: 1px solid var(--border); border-radius: 16px; padding: 24px; background: white; }
-    .svc-grid h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
-    .svc-grid p { color: var(--muted); font-size: 15px; line-height: 1.6; }
-    .svc-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
-    .svc-chips span { font-size: 14px; font-weight: 600; color: var(--accent); background: var(--accent-light); border-radius: 999px; padding: 6px 14px; }
-    .svc-note { color: var(--muted); }
-    .svc-examples { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-    .svc-ex { border: 1px solid var(--border); border-radius: 16px; padding: 24px; background: white; }
-    .svc-ex h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-    .svc-ex p { color: var(--muted); font-size: 15px; line-height: 1.6; margin-bottom: 8px; }
-    .svc-ex strong { color: var(--ink); }
-    .svc-ex ul { margin: 0 0 10px 18px; color: var(--muted); font-size: 15px; line-height: 1.6; }
-    .svc-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; counter-reset: step; }
-    .svc-steps div { padding: 20px; border-radius: 12px; background: #f8fafc; }
-    .svc-steps h3 { font-size: 17px; margin-bottom: 6px; }
-    .svc-steps p { color: var(--muted); font-size: 15px; line-height: 1.6; }
-    .svc-fit ul { list-style: none; display: grid; gap: 10px; margin-bottom: 18px; }
-    .svc-fit li { padding-left: 26px; position: relative; }
-    .svc-fit li:before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 800; }
-    .svc-fit p { color: var(--muted); max-width: 760px; }
-    .btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--border); }
-    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
-    .svc-faq details { max-width: 860px;  border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; margin-bottom: 10px; background: white; }
-    .svc-faq summary { font-weight: 700; cursor: pointer; font-size: 17px; }
-    .svc-faq details p { color: var(--muted); margin-top: 10px; line-height: 1.7; }
-    .svc-cta { text-align: center; padding: 64px 0; border-top: 1px solid var(--border); }
-    .svc-cta h2 { font-size: clamp(26px, 3.5vw, 36px); font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
-    .svc-cta p { color: var(--muted); margin-bottom: 24px; }
-    .svc-related { margin-top: 18px; font-size: 15px; }
-    .svc-related a { color: var(--accent); }
-  </style>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Gainsight consulting and admin support", "serviceType": "Gainsight consulting and admin support", "provider": {"@type": "ProfessionalService", "name": "Afaao", "url": "https://afaao.com/"}, "areaServed": "Worldwide", "url": "https://afaao.com/gainsight-consulting/", "description": "Gainsight consulting for growing customer success teams. Health scores, CTAs, playbooks, Salesforce and HubSpot sync, and ongoing admin support without a full time hire."}</script>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does a Gainsight consultant do?", "acceptedAnswer": {"@type": "Answer", "text": "A Gainsight consultant sets up, fixes and maintains your Gainsight instance. That usually means designing health scores, building CTAs and playbooks, connecting Gainsight to your CRM, cleaning up data and rules, and building the reports your CS leaders use for renewals and churn."}}, {"@type": "Question", "name": "Do we need a full time Gainsight admin?", "acceptedAnswer": {"@type": "Answer", "text": "Many growing teams don't. If your instance is set up well, a few hours of admin help a month is often enough to handle changes, fix rules and keep data clean. We can be that support until you're big enough to hire someone full time."}}, {"@type": "Question", "name": "Can you fix our existing Gainsight setup instead of starting over?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, and that's usually the better option. We start with an audit of your current setup, keep what works, and fix the parts that cause bad data, noisy CTAs or health scores nobody trusts."}}, {"@type": "Question", "name": "Do you work with Salesforce and HubSpot as well?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Most Gainsight problems start with the data coming in from the CRM, so we work on both sides of the sync. We set up and fix Salesforce and HubSpot as part of the same work."}}, {"@type": "Question", "name": "How do you price Gainsight work?", "acceptedAnswer": {"@type": "Answer", "text": "We work on fixed price projects for setups and cleanups, or hourly for ongoing admin support. You get a clear quote after a free 30 minute audit call, before any work starts."}}]}</script>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://afaao.com/"}, {"@type": "ListItem", "position": 2, "name": "Gainsight consulting and admin support", "item": "https://afaao.com/gainsight-consulting/"}]}</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gainsight Consulting and Admin Support | Afaao</title>
+<meta name="description" content="Gainsight consulting for growing CS teams. Health scores, CTAs, playbooks, Salesforce and HubSpot sync, and ongoing admin support without a full time hire." />
+<link rel="canonical" href="https://afaao.com/gainsight-consulting/" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta name="theme-color" content="#1c3a28" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Afaao" />
+<meta property="og:url" content="https://afaao.com/gainsight-consulting/" />
+<meta property="og:title" content="Gainsight Consulting and Admin Support | Afaao" />
+<meta property="og:description" content="Gainsight consulting for growing CS teams. Health scores, CTAs, playbooks, Salesforce and HubSpot sync, and ongoing admin support without a full time hire." />
+<meta property="og:image" content="https://afaao.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Afaao: RevOps, Marketing Ops and CS Ops for growing B2B teams" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://afaao.com/og-image.png" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEZJ87GL90"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+var AFAAO_CONSENT=(function(){try{return localStorage.getItem('afaao_consent');}catch(e){return null;}})();
+var AFAAO_STRICT=/^Europe\//.test((Intl.DateTimeFormat().resolvedOptions().timeZone)||'');
+var AFAAO_GRANTED=AFAAO_CONSENT==='granted'||(!AFAAO_CONSENT&&!AFAAO_STRICT);
+gtag('consent','default',{analytics_storage:AFAAO_GRANTED?'granted':'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
+var AFAAO_APOLLO_LOADED=false;
+function initApollo(){if(AFAAO_APOLLO_LOADED)return;AFAAO_APOLLO_LOADED=true;var n=Math.random().toString(36).substring(7),o=document.createElement("script");o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,o.onload=function(){window.trackingFunctions.onLoad({appId:"6ab45d322527f000206af2ee"})},document.head.appendChild(o)}
+if(AFAAO_GRANTED)initApollo();
+gtag('js',new Date());gtag('config','G-GEZJ87GL90');
+document.documentElement.className+=' js';
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap&text=Afao" />
+<link rel="stylesheet" href="/assets/site.css?v=20261003" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Gainsight consulting and admin support", "serviceType": "Gainsight consulting and admin support", "provider": {"@id": "https://afaao.com/#org", "@type": "ProfessionalService", "name": "Afaao", "url": "https://afaao.com/"}, "areaServed": "Worldwide", "url": "https://afaao.com/gainsight-consulting/", "description": "Gainsight consulting for growing CS teams. Health scores, CTAs, playbooks, Salesforce and HubSpot sync, and ongoing admin support without a full time hire."}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does a Gainsight consultant do?", "acceptedAnswer": {"@type": "Answer", "text": "Sets up, fixes and maintains Gainsight: health scores, CTAs, playbooks, CRM sync and renewal reporting."}}, {"@type": "Question", "name": "Do we need a full time Gainsight admin?", "acceptedAnswer": {"@type": "Answer", "text": "Often not. A few hours of admin help a month is usually enough for a growing team."}}, {"@type": "Question", "name": "Can you fix our existing setup?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We audit first, keep what works and fix the rest."}}, {"@type": "Question", "name": "How do you price it?", "acceptedAnswer": {"@type": "Answer", "text": "Fixed price projects or hourly admin support, quoted after a free 30 minute audit."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://afaao.com/"}, {"@type": "ListItem", "position": 2, "name": "Gainsight Consulting", "item": "https://afaao.com/gainsight-consulting/"}]}</script>
 </head>
 <body>
-
-  <!-- NAVIGATION -->
-  <nav>
-    <div class="container nav-inner">
-      <div class="logo"><a href="/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 80" aria-label="Afaao" role="img"><text style="font-family:'Cormorant Garamond',Georgia,serif;font-size:52px;font-weight:700;fill:#1c3a28;letter-spacing:-0.5px" x="12" y="58">Afaao</text><line x1="12" y1="68" x2="248" y2="68" stroke="#c4943a" stroke-width="1.5"/></svg></a></div>
-      <div class="nav-links">
-        <div class="nav-dd">
-          <a href="/#services" class="nav-dd-toggle">Services &#9662;</a>
-          <div class="nav-dd-menu"><div class="nav-dd-box">
-            <a href="/hubspot-consulting/">HubSpot Consulting</a>
-            <a href="/gainsight-consulting/">Gainsight Consulting</a>
-            <a href="/#services">All Services</a>
-          </div></div>
-        </div>
-        <a href="/#tools">Tools</a>
-        <a href="/#how-we-work">How We Work</a>
-        <a href="/#why">Why Afaao</a>
-        <a href="/contact.html">Contact Us</a>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container nav">
+    <a class="logo" href="/" aria-label="Afaao home"><span>Afaao</span><i></i></a>
+    <nav class="nav-links" aria-label="Main">
+      <div class="dd">
+        <button type="button" aria-expanded="false" aria-haspopup="true">Services <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="dd-menu"><a href="/hubspot-consulting/"><strong>HubSpot Consulting</strong><small>Portal cleanup, lifecycle stages, workflows, lead routing and reporting.</small></a><a href="/salesforce-consulting/"><strong>Salesforce Consulting</strong><small>Org cleanup, Flow automation, lead to account matching, Pardot and HubSpot sync.</small></a><a href="/gainsight-consulting/"><strong>Gainsight Consulting</strong><small>Health scores, CTAs and playbooks, CRM sync and ongoing admin support.</small></a><hr /><a href="/#services"><strong>All services</strong><small>Marketing Ops, Sales Ops, CS Ops, data, integrations and reporting</small></a></div>
       </div>
-    </div>
-  </nav>
-
-  <main>
-    <section class="svc-hero">
-      <div class="container">
-        <span class="svc-eyebrow">Customer Success Ops</span>
-        <h1>Gainsight consulting and admin support for growing CS teams</h1>
-        <p class="lead">You bought Gainsight to see which customers are healthy and which ones are about to leave. If your health scores don&#x27;t match reality, CTAs pile up unread, or the data in Gainsight doesn&#x27;t match your CRM, we fix it. Setup, cleanup and ongoing admin support, without hiring a full time Gainsight admin.</p>
-        <div class="svc-ctas">
-          <a href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener" class="btn btn-primary">Book a 30-min Audit Call</a>
-          <a href="/contact.html" class="btn btn-secondary">Send us a message</a>
-        </div>
-      </div>
-    </section>
-    <section class="svc-section"><div class="container">
-      <h2>Sound familiar?</h2>
-      <div class="svc-problems"><div>Health scores nobody on the team actually trusts</div><div>CTAs and playbooks that fire too often, too late, or not at all</div><div>Customer data in Gainsight that doesn&#x27;t match Salesforce or HubSpot</div><div>Your Gainsight admin left and now nobody really owns it</div><div>Rules and data jobs failing quietly in the background</div><div>Renewal and churn reports leadership can&#x27;t rely on</div></div>
-    </div></section>
-    <section class="svc-section"><div class="container">
-      <h2>What we do in Gainsight</h2>
-      <div class="svc-grid"><div><h3>Implementation and setup</h3><p>Get a new Gainsight instance set up around how your CS team actually works, from data model to user access.</p></div><div><h3>Health score design</h3><p>Build scorecards from the signals that really predict churn and expansion, so the colour on the account means something.</p></div><div><h3>CTAs and playbooks</h3><p>Clean up noisy CTAs and build playbooks your CSMs follow, with the right timing and owners.</p></div><div><h3>Journeys and automation</h3><p>Set up Journey Orchestrator programs and rules so onboarding, check ins and renewals run on time.</p></div><div><h3>CRM data sync</h3><p>Connect Gainsight with Salesforce or HubSpot and fix field mapping, so everyone works from the same customer data.</p></div><div><h3>Ongoing admin support</h3><p>Fractional Gainsight admin help each month: user changes, rule fixes, new requests and release updates.</p></div></div>
-    </div></section>
-    <section class="svc-section"><div class="container">
-      <h2>Tools we work with</h2>
-      <div class="svc-chips"><span>Gainsight</span><span>Salesforce</span><span>HubSpot</span><span>ChurnZero</span><span>Totango</span><span>Vitally</span><span>Zendesk</span><span>Intercom</span></div>
-      <p class="svc-note">Not on Gainsight? We also work with ChurnZero, Totango and Vitally, and connect support data from Zendesk and Intercom. <a href="/#tools" style="color:var(--accent)">See all 30+ tools</a>.</p>
-    </div></section>
-    <section class="svc-section"><div class="container">
-      <h2>Example projects</h2>
-      <p class="svc-note" style="margin-bottom:20px">These are typical projects we take on, not specific client stories. Every engagement starts with an audit, so yours will be shaped around your setup.</p>
-      <div class="svc-examples"><div class="svc-ex"><h3>Gainsight cleanup after an admin leaves</h3><p class="svc-ex-start"><strong>Typical starting point:</strong> A CS team of around 10 CSMs inherited a Gainsight instance nobody fully understands. Rules fail quietly, CTAs pile up and nobody trusts the health scores.</p><p><strong>What we do:</strong></p><ul><li>Audit of rules, data jobs, CTAs and scorecards</li><li>Turn off or rebuild what is broken or unused</li><li>Simple documentation so the next person can run it</li></ul><p class="svc-ex-time"><strong>Typical timeline:</strong> 2 to 4 weeks</p></div><div class="svc-ex"><h3>Health scores that predict churn</h3><p class="svc-ex-start"><strong>Typical starting point:</strong> Leadership wants to know which accounts are at risk before renewal, but today&#x27;s scores are mostly based on gut feel.</p><p><strong>What we do:</strong></p><ul><li>Pick the signals that matter: usage, support, engagement, sentiment</li><li>Build and weight the scorecard in Gainsight</li><li>Renewal and risk dashboard for CS leaders</li></ul><p class="svc-ex-time"><strong>Typical timeline:</strong> 3 to 5 weeks</p></div><div class="svc-ex"><h3>Gainsight and CRM in sync</h3><p class="svc-ex-start"><strong>Typical starting point:</strong> Account owners, ARR and renewal dates in Gainsight don&#x27;t match Salesforce or HubSpot, so CSMs keep checking two systems.</p><p><strong>What we do:</strong></p><ul><li>Map fields and decide which system owns what</li><li>Fix the connector and rules that move data</li><li>Checks that flag mismatches before they spread</li></ul><p class="svc-ex-time"><strong>Typical timeline:</strong> 1 to 3 weeks</p></div></div>
-    </div></section>
-    <section class="svc-section"><div class="container">
-      <h2>How it works</h2>
-      <div class="svc-steps"><div><h3>1. Audit</h3><p>A free 30 minute call where we look at your setup and tell you what&#x27;s broken and what&#x27;s worth fixing first.</p></div><div><h3>2. Plan</h3><p>A short written plan with priorities and a clear quote. No 50 page strategy decks.</p></div><div><h3>3. Build</h3><p>We make the changes in your tools, test them and document what we did.</p></div><div><h3>4. Support</h3><p>Handover and training for your team, plus ongoing help if you want it.</p></div></div>
-    </div></section>
-    <section class="svc-section svc-fit"><div class="container">
-      <h2>Who this is for</h2>
-      <ul><li>CS teams of a few people up to around 30 CSMs</li><li>Companies without a dedicated Gainsight admin</li><li>Teams that inherited a messy Gainsight instance</li><li>Leaders who want renewal and churn numbers they can trust</li></ul>
-      <p>We&#x27;re not the right fit if you&#x27;re looking for someone to run your customer calls or write your CS content. We work on the systems behind your customer success team.</p>
-    </div></section>
-    <section class="svc-section svc-faq"><div class="container">
-      <h2>Frequently asked questions</h2>
-      <details><summary>What does a Gainsight consultant do?</summary><p>A Gainsight consultant sets up, fixes and maintains your Gainsight instance. That usually means designing health scores, building CTAs and playbooks, connecting Gainsight to your CRM, cleaning up data and rules, and building the reports your CS leaders use for renewals and churn.</p></details><details><summary>Do we need a full time Gainsight admin?</summary><p>Many growing teams don&#x27;t. If your instance is set up well, a few hours of admin help a month is often enough to handle changes, fix rules and keep data clean. We can be that support until you&#x27;re big enough to hire someone full time.</p></details><details><summary>Can you fix our existing Gainsight setup instead of starting over?</summary><p>Yes, and that&#x27;s usually the better option. We start with an audit of your current setup, keep what works, and fix the parts that cause bad data, noisy CTAs or health scores nobody trusts.</p></details><details><summary>Do you work with Salesforce and HubSpot as well?</summary><p>Yes. Most Gainsight problems start with the data coming in from the CRM, so we work on both sides of the sync. We set up and fix Salesforce and HubSpot as part of the same work.</p></details><details><summary>How do you price Gainsight work?</summary><p>We work on fixed price projects for setups and cleanups, or hourly for ongoing admin support. You get a clear quote after a free 30 minute audit call, before any work starts.</p></details>
-    </div></section>
-    <section class="svc-cta"><div class="container">
-      <h2>Not sure what's broken in your setup?</h2>
-      <p>Book a free 30 minute audit call. We'll walk through it with you and tell you what we'd fix first.</p>
-      <a href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener" class="btn btn-primary">Book a 30-min Audit Call</a>
-      <p class="svc-related">Also see: <a href="/hubspot-consulting/">HubSpot consulting</a> and <a href="/#services">all our services</a>.</p>
-    </div></section>
-  </main>
-
-  <footer>
-    <div class="container">
-      <div class="footer-bottom">© 2026 Afaao. All rights reserved. <a href="/privacy.html" style="color:inherit">Privacy Policy</a></div>
-    </div>
-  </footer>
-
-
-
-  <!-- Cookie notice -->
-  <style>
-    .consent-banner { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 1000; max-width: 640px; margin: 0 auto;
-      background: #0f172a; color: #e2e8f0; border-radius: 14px; padding: 16px 18px; box-shadow: 0 12px 40px rgba(15,23,42,0.25);
-      display: flex; gap: 16px; align-items: center; flex-wrap: wrap; font-size: 14px; line-height: 1.5; }
-    .consent-banner[hidden] { display: none; }
-    .consent-banner p { flex: 1 1 280px; margin: 0; }
-    .consent-banner a { color: #ffffff; text-decoration: underline; }
-    .consent-banner .consent-actions { display: flex; gap: 8px; }
-    .consent-banner button { font: inherit; font-weight: 600; border-radius: 8px; padding: 8px 16px; cursor: pointer; border: 1px solid #475569; background: transparent; color: #e2e8f0; }
-    .consent-banner button.consent-accept { background: #ffffff; color: #0f172a; border-color: #ffffff; }
-  </style>
-  <div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie notice" hidden>
-    <p>We use cookies to see how people use our site and which companies visit, so we can make it more useful. <a href="/privacy.html">Privacy Policy</a></p>
-    <div class="consent-actions">
-      <button type="button" id="consent-decline">Decline</button>
-      <button type="button" id="consent-accept" class="consent-accept">Accept</button>
+      <a href="/#fix">What we fix</a>
+      <a href="/#how-we-work">How we work</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free audit</a>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-panel"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
   </div>
-  <script>
-    (function () {
-      var banner = document.getElementById('consent-banner');
-      if (!banner) return;
-      if (!AFAAO_CONSENT) banner.hidden = false;
-      function save(choice) { try { localStorage.setItem('afaao_consent', choice); } catch (e) {} banner.hidden = true; }
-      document.getElementById('consent-accept').addEventListener('click', function () {
-        gtag('consent', 'update', { analytics_storage: 'granted' });
-        initApollo();
-        save('granted');
-      });
-      document.getElementById('consent-decline').addEventListener('click', function () {
-        gtag('consent', 'update', { analytics_storage: 'denied' });
-        save('denied');
-      });
-    })();
-  </script>
+</header>
+<div class="mobile-panel" id="mobile-panel">
+  <a href="/#services">Services</a>
+  <div class="sub"><a href="/hubspot-consulting/">HubSpot Consulting</a><a href="/salesforce-consulting/">Salesforce Consulting</a><a href="/gainsight-consulting/">Gainsight Consulting</a></div>
+  <a href="/#fix">What we fix</a>
+  <a href="/#tools">Tools</a>
+  <a href="/#how-we-work">How we work</a>
+  <a href="/#faq">FAQ</a>
+  <a href="/contact.html">Contact</a>
+  <a class="btn btn-primary" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free 30 minute audit</a>
+</div>
+<main id="main">
+<section class="page-hero center"><div class="container">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/#services">Services</a> / Gainsight</nav>
+  <div class="eyebrow">Gainsight Consulting</div>
+  <h1>Gainsight your CS team actually trusts.</h1>
+  <p class="lead">Health scores, CTAs, playbooks and admin support, without a full time Gainsight admin.</p>
+  <div class="cta-row center-row"><a class="btn btn-primary" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free audit <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+  <div class="pills"><div class="pill"><span>Timeline</span><strong>1 to 5 weeks</strong></div><div class="pill"><span>Pricing</span><strong>Fixed or hourly</strong></div><div class="pill"><span>Best for</span><strong>2 to 30 CSMs</strong></div></div>
+</div></section>
+
+<section class="section-sm band"><div class="container">
+  <div class="section-head center reveal"><h2>Sound familiar?</h2></div>
+  <div class="probs"><div class="prob reveal"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg><span>Health scores nobody trusts</span></div><div class="prob reveal"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg><span>Too many CTAs</span></div><div class="prob reveal"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg><span>Data that doesn&#x27;t match the CRM</span></div><div class="prob reveal"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg><span>Admin left, nobody owns it</span></div><div class="prob reveal"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg><span>Rules failing quietly</span></div><div class="prob reveal"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg><span>Shaky renewal reports</span></div></div>
+</div></section>
+
+<section class="section-sm"><div class="container">
+  <div class="section-head center reveal"><div class="eyebrow">What we do</div><h2>What we fix in Gainsight</h2></div>
+  <div class="tiles"><div class="tile static reveal"><div class="icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></div><h3>Setup</h3><p>Built around how your CS team works.</p></div><div class="tile static reveal"><div class="icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg></div><h3>Health scores</h3><p>Signals that actually predict churn.</p></div><div class="tile static reveal"><div class="icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div><h3>CTAs and playbooks</h3><p>Right timing, right owner.</p></div><div class="tile static reveal"><div class="icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></div><h3>Journeys</h3><p>Onboarding and renewals on autopilot.</p></div><div class="tile static reveal"><div class="icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.7-4 3-9 3s-9-1.3-9-3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/></svg></div><h3>CRM sync</h3><p>Gainsight and Salesforce or HubSpot agree.</p></div><div class="tile static reveal"><div class="icon"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg></div><h3>Admin support</h3><p>A few hours a month, on call.</p></div></div>
+  <div class="center" style="margin-top:28px"><ul class="chips"><li>Gainsight</li><li>Salesforce</li><li>HubSpot</li><li>ChurnZero</li><li>Totango</li><li>Vitally</li><li>Zendesk</li><li>Intercom</li></ul></div>
+</div></section>
+
+<section class="section-sm band" id="examples"><div class="container" style="max-width:860px">
+  <div class="section-head center reveal"><div class="eyebrow">Typical projects</div><h2>Where teams usually start</h2></div>
+  <div class="projs"><div class="proj reveal"><span>Gainsight cleanup after an admin leaves</span><strong>2 to 4 weeks</strong></div><div class="proj reveal"><span>Health scores that predict churn</span><strong>3 to 5 weeks</strong></div><div class="proj reveal"><span>Gainsight and CRM in sync</span><strong>1 to 3 weeks</strong></div></div>
+</div></section>
+
+<section class="section-sm"><div class="container">
+  <div class="section-head center reveal"><div class="eyebrow">How it works</div><h2>Four steps. No surprises.</h2><p>Tap a step to see what we do and what you get.</p></div>
+  <div class="timeline"><details class="tl-step reveal"><summary><span class="tl-dot" aria-hidden="true"></span><span class="tl-num">01 <b>Audit</b></span><span class="tl-title">Understand the setup</span><span class="tl-chev" aria-hidden="true"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+<div class="tl-body"><p>We review your CRM, lifecycle stages and data flow before touching anything. No assumptions.</p><ul class="checks"><li>CRM field and object mapping</li><li>Lifecycle stage review</li><li>Enrichment tool configuration check</li><li>Campaign tracking audit</li></ul><div class="tl-deliv"><strong>Deliverable:</strong> Ops health report with prioritised findings</div></div></details><details class="tl-step reveal"><summary><span class="tl-dot" aria-hidden="true"></span><span class="tl-num">02 <b>Identify</b></span><span class="tl-title">Find the gaps</span><span class="tl-chev" aria-hidden="true"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+<div class="tl-body"><p>We pinpoint exactly where data, enrichment and workflows are breaking down, then agree on what to fix first.</p><ul class="checks"><li>Data quality and duplication gaps</li><li>Broken workflow triggers</li><li>Attribution blind spots</li><li>Integration failures between tools</li></ul><div class="tl-deliv"><strong>Deliverable:</strong> Prioritised fix list with effort and impact estimates</div></div></details><details class="tl-step reveal"><summary><span class="tl-dot" aria-hidden="true"></span><span class="tl-num">03 <b>Implement</b></span><span class="tl-title">Fix what matters</span><span class="tl-chev" aria-hidden="true"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+<div class="tl-body"><p>We rebuild CRM structure, enrichment logic and campaign tracking, with clear documentation throughout.</p><ul class="checks"><li>CRM cleanup and restructuring</li><li>Enrichment workflow rebuild</li><li>Campaign tracking and UTM setup</li><li>Lifecycle stage definition and testing</li></ul><div class="tl-deliv"><strong>Deliverable:</strong> Working systems, fully tested and documented</div></div></details><details class="tl-step reveal"><summary><span class="tl-dot" aria-hidden="true"></span><span class="tl-num">04 <b>Optimise</b></span><span class="tl-title">Make it last</span><span class="tl-chev" aria-hidden="true"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+<div class="tl-body"><p>We set up reporting, train your team and hand off clearly, so you&#x27;re not dependent on us to keep things running.</p><ul class="checks"><li>Reporting dashboard setup</li><li>Scalability and edge case review</li><li>Team training sessions</li><li>Clean handoff with runbooks</li></ul><div class="tl-deliv"><strong>Deliverable:</strong> Systems your team can own and maintain independently</div></div></details></div>
+</div></section>
+
+<section class="section-sm band"><div class="container">
+  <div class="section-head center reveal"><div class="eyebrow">FAQ</div><h2>Quick answers</h2></div>
+  <div class="faq"><details><summary>What does a Gainsight consultant do?</summary><p>Sets up, fixes and maintains Gainsight: health scores, CTAs, playbooks, CRM sync and renewal reporting.</p></details><details><summary>Do we need a full time Gainsight admin?</summary><p>Often not. A few hours of admin help a month is usually enough for a growing team.</p></details><details><summary>Can you fix our existing setup?</summary><p>Yes. We audit first, keep what works and fix the rest.</p></details><details><summary>How do you price it?</summary><p>Fixed price projects or hourly admin support, quoted after a free 30 minute audit.</p></details></div>
+</div></section>
+
+<section class="section-sm"><div class="container">
+  <div class="cta-band reveal">
+    <div><h2>Not sure what&#x27;s broken?</h2><p>Free 30 minute audit. We&#x27;ll tell you what we&#x27;d fix first.</p></div>
+    <div class="actions">
+      <a class="btn btn-gold" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free audit</a>
+      <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.35)" href="/contact.html">Send a message</a>
+    </div>
+  </div>
+</div></section>
+
+<section class="section-sm" style="padding-top:0"><div class="container"><div class="plats"><span class="muted">Also see</span><a class="plat" href="/hubspot-consulting/"><span>HubSpot</span><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="plat" href="/salesforce-consulting/"><span>Salesforce</span><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="plat" href="/#services"><span>All services</span><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></div></section>
+</main><footer class="site-footer">
+  <div class="container">
+    <div class="foot">
+      <div>
+        <a class="logo" href="/" aria-label="Afaao home"><span>Afaao</span><i></i></a>
+        <p style="margin-top:14px">RevOps, Marketing Ops and CS Ops for growing B2B teams, without the cost of full time ops hires.</p>
+      </div>
+      <div><h5>Services</h5><a href="/hubspot-consulting/">HubSpot Consulting</a><a href="/salesforce-consulting/">Salesforce Consulting</a><a href="/gainsight-consulting/">Gainsight Consulting</a><a href="/#services">All services</a><a href="/#tools">Tools we work with</a></div>
+      <div><h5>Company</h5><a href="/#how-we-work">How we work</a><a href="/#fix">What we fix</a><a href="/#faq">FAQ</a><a href="/contact.html">Contact</a></div>
+      <div><h5>Get in touch</h5><a href="mailto:hello@afaao.com">hello@afaao.com</a><a href="https://www.linkedin.com/company/afaao/" target="_blank" rel="noopener">LinkedIn</a><a href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free audit</a></div>
+    </div>
+    <div class="foot-bottom"><span>&copy; 2026 Afaao. Toronto, working with B2B teams worldwide.</span><a href="/privacy.html">Privacy Policy</a></div>
+  </div>
+</footer>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie notice" hidden>
+  <p>We use cookies to see how people use our site and which companies visit, so we can make it more useful. <a href="/privacy.html">Privacy Policy</a></p>
+  <div class="acts"><button type="button" id="consent-decline">Decline</button><button type="button" id="consent-accept" class="accept">Accept</button></div>
+</div>
+<script src="/assets/site.js?v=20261003" defer></script>
 </body>
 </html>
