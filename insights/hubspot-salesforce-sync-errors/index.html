@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HubSpot Salesforce Sync Errors: Causes and Fixes | Afaao</title>
+<meta name="description" content="Picklists, validation rules, duplicates and permissions. A plain guide to the most common HubSpot and Salesforce sync errors and how to fix them." />
+<link rel="canonical" href="https://afaao.com/insights/hubspot-salesforce-sync-errors/" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta name="theme-color" content="#1c3a28" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Afaao" />
+<meta property="og:url" content="https://afaao.com/insights/hubspot-salesforce-sync-errors/" />
+<meta property="og:title" content="HubSpot and Salesforce sync errors: what causes them and how to fix them" />
+<meta property="og:description" content="Picklists, validation rules, duplicates and permissions. A plain guide to the most common HubSpot and Salesforce sync errors and how to fix them." />
+<meta property="og:image" content="https://afaao.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Afaao: RevOps, Marketing Ops and CS Ops for growing B2B teams" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://afaao.com/og-image.png" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEZJ87GL90"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+var AFAAO_CONSENT=(function(){try{return localStorage.getItem('afaao_consent');}catch(e){return null;}})();
+var AFAAO_STRICT=/^Europe\//.test((Intl.DateTimeFormat().resolvedOptions().timeZone)||'');
+var AFAAO_GRANTED=AFAAO_CONSENT==='granted'||(!AFAAO_CONSENT&&!AFAAO_STRICT);
+gtag('consent','default',{analytics_storage:AFAAO_GRANTED?'granted':'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
+var AFAAO_APOLLO_LOADED=false;
+function initApollo(){if(AFAAO_APOLLO_LOADED)return;AFAAO_APOLLO_LOADED=true;var n=Math.random().toString(36).substring(7),o=document.createElement("script");o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,o.onload=function(){window.trackingFunctions.onLoad({appId:"6ab45d322527f000206af2ee"})},document.head.appendChild(o)}
+if(AFAAO_GRANTED)initApollo();
+gtag('js',new Date());gtag('config','G-GEZJ87GL90');
+document.documentElement.className+=' js';
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap&text=Afao" />
+<link rel="stylesheet" href="/assets/site.css?v=20261012" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "HubSpot and Salesforce sync errors: what causes them and how to fix them", "description": "Picklists, validation rules, duplicates and permissions. A plain guide to the most common HubSpot and Salesforce sync errors and how to fix them.", "datePublished": "2026-10-12", "dateModified": "2026-10-12", "author": {"@id": "https://afaao.com/#org", "@type": "Organization", "name": "Afaao", "url": "https://afaao.com/"}, "publisher": {"@id": "https://afaao.com/#org", "@type": "Organization", "name": "Afaao", "logo": {"@type": "ImageObject", "url": "https://afaao.com/logo.svg"}}, "image": "https://afaao.com/og-image.png", "mainEntityOfPage": "https://afaao.com/insights/hubspot-salesforce-sync-errors/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Should every HubSpot contact sync to Salesforce?", "acceptedAnswer": {"@type": "Answer", "text": "Usually not. Most teams use an inclusion list so only sales ready contacts, customers and open opportunities sync. It keeps Salesforce clean and saves API calls."}}, {"@type": "Question", "name": "Can sync errors fix themselves?", "acceptedAnswer": {"@type": "Answer", "text": "Some clear on the next sync after you fix the cause, but the cause has to be fixed first. Retrying the same record without changing anything will fail again."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://afaao.com/"}, {"@type": "ListItem", "position": 2, "name": "Insights", "item": "https://afaao.com/insights/"}, {"@type": "ListItem", "position": 3, "name": "HubSpot and Salesforce sync errors: what causes them and how to fix them", "item": "https://afaao.com/insights/hubspot-salesforce-sync-errors/"}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container nav">
+    <a class="logo" href="/" aria-label="Afaao home"><span>Afaao</span><i></i></a>
+    <nav class="nav-links" aria-label="Main">
+      <div class="dd">
+        <button type="button" aria-expanded="false" aria-haspopup="true">Services <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="dd-menu"><a href="/hubspot-consulting/"><strong>HubSpot Consulting</strong><small>Portal cleanup, lifecycle stages, workflows, lead routing and reporting.</small></a><a href="/salesforce-consulting/"><strong>Salesforce Consulting</strong><small>Org cleanup, Flow automation, lead to account matching, Pardot and HubSpot sync.</small></a><a href="/gainsight-consulting/"><strong>Gainsight Consulting</strong><small>Health scores, CTAs and playbooks, CRM sync and ongoing admin support.</small></a><hr /><a href="/#services"><strong>All services</strong><small>Marketing Ops, Sales Ops, CS Ops, data, integrations and reporting</small></a></div>
+      </div>
+      <a href="/#fix">What we fix</a>
+      <a href="/#how-we-work">How we work</a>
+      <a href="/insights/">Insights</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free audit</a>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-panel"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-panel" id="mobile-panel">
+  <a href="/#services">Services</a>
+  <div class="sub"><a href="/hubspot-consulting/">HubSpot Consulting</a><a href="/salesforce-consulting/">Salesforce Consulting</a><a href="/gainsight-consulting/">Gainsight Consulting</a></div>
+  <a href="/#fix">What we fix</a>
+  <a href="/#tools">Tools</a>
+  <a href="/#how-we-work">How we work</a>
+  <a href="/#faq">FAQ</a>
+  <a href="/insights/">Insights</a>
+  <a href="/contact.html">Contact</a>
+  <a class="btn btn-primary" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free 30 minute audit</a>
+</div>
+<main id="main">
+<article>
+<section class="page-hero art-hero"><div class="container prose-wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/insights/">Insights</a> / Salesforce + HubSpot</nav>
+  <div class="eyebrow">Salesforce + HubSpot</div>
+  <h1>HubSpot and Salesforce sync errors: what causes them and how to fix them</h1>
+  <p class="art-byline">By the Afaao team &middot; October 12, 2026 &middot; 7 min read</p>
+  <p class="lead">Running HubSpot for marketing and Salesforce for sales is one of the most common setups in B2B. It is also one of the most common sources of messy data. Records that do not sync, fields that overwrite each other, and a sync error count that only ever goes up. The good news is that almost every sync error falls into a handful of groups, and each group has a clear fix.</p>
+</div></section>
+<section class="section-sm" style="padding-top:8px"><div class="container prose-wrap"><div class="prose"><h2>Start with the sync health screen</h2><p>In HubSpot, open the Salesforce integration settings and go to sync health. Errors are grouped by type, with the affected records listed under each one. Export them, sort by error type, and fix the biggest group first. Fixing the cause of one group often clears hundreds of records at once.</p><h2>1. Picklist mismatches</h2><p>This is usually the largest group. A HubSpot dropdown value does not exist in the matching Salesforce picklist, or the Salesforce picklist is restricted. Country and state fields are the classic example, along with lead source, industry and lifecycle related fields.</p><ul><li>Make the options match exactly on both sides, including spelling and capital letters.</li><li>If Salesforce uses state and country picklists, use the same standard values in HubSpot forms.</li><li>When you add a new value in one system, add it in the other on the same day. Put that rule in your change process.</li></ul><h2>2. Validation rules and required fields</h2><p>Salesforce validation rules exist for good reasons, but they were usually written with a sales rep in mind, not an integration. If a rule needs a phone number or an industry before a lead can be saved, every HubSpot contact without that value will fail.</p><p>Either make sure HubSpot always sends the value, or add a bypass for the integration user in the rule. A common pattern is a custom permission assigned to the integration user that the validation rule checks for.</p><h2>3. Duplicate rules</h2><p>HubSpot deduplicates on email. Salesforce deduplicates on whatever your duplicate rules say. When those disagree, the sync gets blocked. You might also have one HubSpot contact matching both a lead and a contact in Salesforce.</p><ul><li>Decide on one matching logic and make both systems follow it.</li><li>Set duplicate rules to allow with an alert for the integration user, or adjust them so the sync is not blocked.</li><li>Merge existing duplicates in Salesforce first, then let HubSpot catch up.</li></ul><aside class="art-help"><strong>Want this fixed without the trial and error?</strong><p>This is exactly the kind of work we do. Book a free 30 minute audit and we will tell you what we would fix first.</p><a class="btn btn-primary" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free audit <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a> <a class="btn btn-ghost" href="/salesforce-consulting/">Salesforce consulting</a></aside><h2>4. Permissions on the integration user</h2><p>The HubSpot integration connects as one Salesforce user. If that user cannot see a field, edit an object, or own records of a certain type, you get permission errors. This often appears after someone adds a new field and forgets field level security for the integration user. Give the integration user its own profile or permission set, and update it every time you add a mapped field.</p><h2>5. Field mapping problems</h2><p>Mappings break when field types do not match, when a field is deleted on one side, or when a text value is too long for the target field. Review the mappings at least once a quarter. Remove anything nobody uses, and for each mapped field decide which system wins when both have a value. HubSpot lets you choose a sync rule per field, such as Prefer Salesforce unless blank, Always use Salesforce, or Two way. Pick each one on purpose rather than leaving the default.</p><h2>6. Custom code and automation in Salesforce</h2><p>Flows and Apex triggers can fail when a record arrives from the integration in a state they did not expect. The error message in HubSpot will often point to a flow or a trigger by name. Fix the automation so it handles missing values, or exclude the integration user where the automation is not needed.</p><h2>7. API limits</h2><p>Every Salesforce org has a daily API call limit, shared between every connected tool. Big imports, enrichment tools and bulk updates in HubSpot can eat through it and delay the sync. Check the API usage setting in the integration, and schedule large data jobs outside business hours.</p><h2>Keep it clean after the fix</h2><ul><li>Use an inclusion list so only the contacts sales needs go to Salesforce.</li><li>Review sync health weekly for a month after a cleanup, then monthly.</li><li>Keep a simple mapping document: field, direction, which system wins, and who owns it.</li><li>Make any new field or picklist value a change on both sides, never just one.</li></ul></div></div></section>
+</article>
+<section class="section-sm band"><div class="container">
+  <div class="section-head center reveal"><div class="eyebrow">FAQ</div><h2>Quick answers</h2></div>
+  <div class="faq"><details><summary>Should every HubSpot contact sync to Salesforce?</summary><p>Usually not. Most teams use an inclusion list so only sales ready contacts, customers and open opportunities sync. It keeps Salesforce clean and saves API calls.</p></details><details><summary>Can sync errors fix themselves?</summary><p>Some clear on the next sync after you fix the cause, but the cause has to be fixed first. Retrying the same record without changing anything will fail again.</p></details></div>
+</div></section>
+<section class="section-sm"><div class="container">
+  <div class="cta-band reveal">
+    <div><h2>Not sure what&#x27;s broken?</h2><p>Free 30 minute audit. We&#x27;ll tell you what we&#x27;d fix first.</p></div>
+    <div class="actions">
+      <a class="btn btn-gold" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free audit</a>
+      <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.35)" href="/contact.html">Send a message</a>
+    </div>
+  </div>
+</div></section>
+<section class="section-sm" style="padding-top:0"><div class="container"><div class="section-head center reveal"><h2>Keep reading</h2></div><div class="art-grid"><a class="art-card reveal" href="/insights/hubspot-leads-unassigned/"><span class="art-tag">HubSpot</span><h3>Why your HubSpot leads go unassigned, and how to fix lead routing</h3><p>New leads sitting in HubSpot with no owner? The usual reasons lead routing breaks, and how to fix triggers, rotation rules and fallbacks.</p><span class="art-meta">6 min read <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="art-card reveal" href="/insights/gainsight-health-score-setup/"><span class="art-tag">Gainsight</span><h3>How to build a Gainsight health score your CS team actually trusts</h3><p>A practical guide to Gainsight scorecards: picking measures, weighting, CSM sentiment and checking the score against real churn so your team trusts it.</p><span class="art-meta">6 min read <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></div></section>
+</main><footer class="site-footer">
+  <div class="container">
+    <div class="foot">
+      <div>
+        <a class="logo" href="/" aria-label="Afaao home"><span>Afaao</span><i></i></a>
+        <p style="margin-top:14px">RevOps, Marketing Ops and CS Ops for growing B2B teams, without the cost of full time ops hires.</p>
+      </div>
+      <div><h5>Services</h5><a href="/hubspot-consulting/">HubSpot Consulting</a><a href="/salesforce-consulting/">Salesforce Consulting</a><a href="/gainsight-consulting/">Gainsight Consulting</a><a href="/#services">All services</a><a href="/#tools">Tools we work with</a></div>
+      <div><h5>Company</h5><a href="/#how-we-work">How we work</a><a href="/#fix">What we fix</a><a href="/#faq">FAQ</a><a href="/insights/">Insights</a><a href="/contact.html">Contact</a></div>
+      <div><h5>Get in touch</h5><a href="mailto:hello@afaao.com">hello@afaao.com</a><a href="https://www.linkedin.com/company/afaao/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.google.com/maps?cid=9788339617219025915" target="_blank" rel="noopener">Google Business Profile</a><a href="https://clutch.co/profile/afaao" target="_blank" rel="noopener">Clutch</a><a href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free audit</a></div>
+    </div>
+    <div class="foot-bottom"><span>&copy; 2026 Afaao. Toronto, working with B2B teams worldwide.</span><a href="/privacy.html">Privacy Policy</a></div>
+  </div>
+</footer>
+<div class="m-cta" id="m-cta" aria-hidden="true"><a class="btn btn-primary" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener" tabindex="-1">Book a free 30 minute audit</a></div>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie notice" hidden>
+  <p>We use cookies to see how people use our site and which companies visit, so we can make it more useful. <a href="/privacy.html">Privacy Policy</a></p>
+  <div class="acts"><button type="button" id="consent-decline">Decline</button><button type="button" id="consent-accept" class="accept">Accept</button></div>
+</div>
+<script src="/assets/site.js?v=20261012" defer></script>
+</body>
+</html>

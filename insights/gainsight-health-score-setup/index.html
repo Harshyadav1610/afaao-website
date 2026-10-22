@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gainsight Health Score Setup: A Practical Guide | Afaao</title>
+<meta name="description" content="A practical guide to Gainsight scorecards: picking measures, weighting, CSM sentiment and checking the score against real churn so your team trusts it." />
+<link rel="canonical" href="https://afaao.com/insights/gainsight-health-score-setup/" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta name="theme-color" content="#1c3a28" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Afaao" />
+<meta property="og:url" content="https://afaao.com/insights/gainsight-health-score-setup/" />
+<meta property="og:title" content="How to build a Gainsight health score your CS team actually trusts" />
+<meta property="og:description" content="A practical guide to Gainsight scorecards: picking measures, weighting, CSM sentiment and checking the score against real churn so your team trusts it." />
+<meta property="og:image" content="https://afaao.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Afaao: RevOps, Marketing Ops and CS Ops for growing B2B teams" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://afaao.com/og-image.png" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEZJ87GL90"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+var AFAAO_CONSENT=(function(){try{return localStorage.getItem('afaao_consent');}catch(e){return null;}})();
+var AFAAO_STRICT=/^Europe\//.test((Intl.DateTimeFormat().resolvedOptions().timeZone)||'');
+var AFAAO_GRANTED=AFAAO_CONSENT==='granted'||(!AFAAO_CONSENT&&!AFAAO_STRICT);
+gtag('consent','default',{analytics_storage:AFAAO_GRANTED?'granted':'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
+var AFAAO_APOLLO_LOADED=false;
+function initApollo(){if(AFAAO_APOLLO_LOADED)return;AFAAO_APOLLO_LOADED=true;var n=Math.random().toString(36).substring(7),o=document.createElement("script");o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,o.onload=function(){window.trackingFunctions.onLoad({appId:"6ab45d322527f000206af2ee"})},document.head.appendChild(o)}
+if(AFAAO_GRANTED)initApollo();
+gtag('js',new Date());gtag('config','G-GEZJ87GL90');
+document.documentElement.className+=' js';
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap&text=Afao" />
+<link rel="stylesheet" href="/assets/site.css?v=20261012" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How to build a Gainsight health score your CS team actually trusts", "description": "A practical guide to Gainsight scorecards: picking measures, weighting, CSM sentiment and checking the score against real churn so your team trusts it.", "datePublished": "2026-10-12", "dateModified": "2026-10-12", "author": {"@id": "https://afaao.com/#org", "@type": "Organization", "name": "Afaao", "url": "https://afaao.com/"}, "publisher": {"@id": "https://afaao.com/#org", "@type": "Organization", "name": "Afaao", "logo": {"@type": "ImageObject", "url": "https://afaao.com/logo.svg"}}, "image": "https://afaao.com/og-image.png", "mainEntityOfPage": "https://afaao.com/insights/gainsight-health-score-setup/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How many measures should a Gainsight scorecard have?", "acceptedAnswer": {"@type": "Answer", "text": "There is no fixed number, but five to eight is a practical start. It keeps the score easy to explain while covering usage, support, relationship and sentiment."}}, {"@type": "Question", "name": "How often should we change scorecard weights?", "acceptedAnswer": {"@type": "Answer", "text": "Review quarterly against real renewals and churn. Changing weights too often makes it hard for the team to learn what the score means."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://afaao.com/"}, {"@type": "ListItem", "position": 2, "name": "Insights", "item": "https://afaao.com/insights/"}, {"@type": "ListItem", "position": 3, "name": "How to build a Gainsight health score your CS team actually trusts", "item": "https://afaao.com/insights/gainsight-health-score-setup/"}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container nav">
+    <a class="logo" href="/" aria-label="Afaao home"><span>Afaao</span><i></i></a>
+    <nav class="nav-links" aria-label="Main">
+      <div class="dd">
+        <button type="button" aria-expanded="false" aria-haspopup="true">Services <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="dd-menu"><a href="/hubspot-consulting/"><strong>HubSpot Consulting</strong><small>Portal cleanup, lifecycle stages, workflows, lead routing and reporting.</small></a><a href="/salesforce-consulting/"><strong>Salesforce Consulting</strong><small>Org cleanup, Flow automation, lead to account matching, Pardot and HubSpot sync.</small></a><a href="/gainsight-consulting/"><strong>Gainsight Consulting</strong><small>Health scores, CTAs and playbooks, CRM sync and ongoing admin support.</small></a><hr /><a href="/#services"><strong>All services</strong><small>Marketing Ops, Sales Ops, CS Ops, data, integrations and reporting</small></a></div>
+      </div>
+      <a href="/#fix">What we fix</a>
+      <a href="/#how-we-work">How we work</a>
+      <a href="/insights/">Insights</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free audit</a>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-panel"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-panel" id="mobile-panel">
+  <a href="/#services">Services</a>
+  <div class="sub"><a href="/hubspot-consulting/">HubSpot Consulting</a><a href="/salesforce-consulting/">Salesforce Consulting</a><a href="/gainsight-consulting/">Gainsight Consulting</a></div>
+  <a href="/#fix">What we fix</a>
+  <a href="/#tools">Tools</a>
+  <a href="/#how-we-work">How we work</a>
+  <a href="/#faq">FAQ</a>
+  <a href="/insights/">Insights</a>
+  <a href="/contact.html">Contact</a>
+  <a class="btn btn-primary" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free 30 minute audit</a>
+</div>
+<main id="main">
+<article>
+<section class="page-hero art-hero"><div class="container prose-wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/insights/">Insights</a> / Gainsight</nav>
+  <div class="eyebrow">Gainsight</div>
+  <h1>How to build a Gainsight health score your CS team actually trusts</h1>
+  <p class="art-byline">By the Afaao team &middot; October 12, 2026 &middot; 6 min read</p>
+  <p class="lead">Most customer success teams have a health score. Far fewer have one their CSMs believe. The usual story: the score says green, the customer churns, and the team goes back to gut feel. A health score earns trust when it is simple, uses data people recognise, and gets checked against what actually happened.</p>
+</div></section>
+<section class="section-sm" style="padding-top:8px"><div class="container prose-wrap"><div class="prose"><h2>Decide what the score is for</h2><p>Before touching the scorecard, agree on the question it answers. Is it how likely is this customer to renew, or where should a CSM spend time this week? Those lead to different measures. A renewal risk score leans on usage, support and stakeholder signals. A prioritisation score might weigh contract value and upcoming renewal dates too. Pick one primary purpose.</p><h2>Choose a small set of measures</h2><p>Five to eight measures is a good starting point. More than that and nobody can explain why a customer is red. A balanced scorecard usually mixes a few groups:</p><ul><li>Product usage: logins, active users against licences, use of the features that matter most.</li><li>Support: open ticket volume, escalations, time to resolve.</li><li>Relationship: whether you have an engaged sponsor and champion, and recent executive contact.</li><li>Customer voice: NPS or survey responses where you have them.</li><li>CSM sentiment: a manual measure the CSM updates, with a required comment.</li><li>Commercial: payment issues or downgrade requests.</li></ul><h2>Make every measure explainable</h2><p>For each measure, write one sentence a CSM could say to a customer. For example, usage is red because fewer than half of your licences logged in last month. If you cannot write that sentence, the rule is too clever. Use Gainsight rules to calculate measures from your data, and keep thresholds simple at first: green, yellow and red bands are enough.</p><h2>Weight it, then leave it alone for a quarter</h2><p>Give more weight to the measures you believe predict churn best, usually usage and relationship. Do not overthink the first version. Launch it, let the team use it for a quarter, then adjust. Changing weights every week teaches people to ignore the score.</p><aside class="art-help"><strong>Want this fixed without the trial and error?</strong><p>This is exactly the kind of work we do. Book a free 30 minute audit and we will tell you what we would fix first.</p><a class="btn btn-primary" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free audit <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a> <a class="btn btn-ghost" href="/gainsight-consulting/">Gainsight consulting</a></aside><h2>Fix the data before you blame the score</h2><p>A lot of distrust comes from bad inputs rather than bad logic. Usage data that is a week late, support tickets matched to the wrong company, or CRM accounts that do not match Gainsight companies will all make the score wrong. Check that the company ID mapping between your CRM, product data and support tool is clean, and that data loads run on the schedule you think they do.</p><h2>Keep CSM sentiment, but make it accountable</h2><p>CSMs know things the data does not, like a new VP who wants to switch vendors. Keep a manual sentiment measure, but require a short comment whenever it changes, and show when it was last updated. A sentiment score that has not changed in six months is not a signal.</p><h2>Check the score against what happened</h2><p>Every quarter, pull the customers who churned or downgraded and look at what their score was 90 days before. Then look at the reds that renewed happily. If churned customers were mostly green, a measure is missing or weighted wrong. Gainsight also offers tools to help analyse scorecard measures against outcomes. This simple review is what turns a score into something people trust.</p><h2>Connect the score to action</h2><p>A score that does not trigger anything is just a colour. Use rules to create CTAs when a measure drops, attach a playbook for the most common risks, and review red accounts in your weekly team meeting. When CSMs see the score helping them act earlier, they start to trust it.</p><h2>A quick checklist</h2><ol><li>Agree on one purpose for the score.</li><li>Pick five to eight explainable measures.</li><li>Set simple thresholds and sensible weights.</li><li>Clean the company ID mapping and data loads.</li><li>Keep CSM sentiment with required comments.</li><li>Review against churn and renewals every quarter.</li><li>Trigger CTAs and playbooks from score drops.</li></ol></div></div></section>
+</article>
+<section class="section-sm band"><div class="container">
+  <div class="section-head center reveal"><div class="eyebrow">FAQ</div><h2>Quick answers</h2></div>
+  <div class="faq"><details><summary>How many measures should a Gainsight scorecard have?</summary><p>There is no fixed number, but five to eight is a practical start. It keeps the score easy to explain while covering usage, support, relationship and sentiment.</p></details><details><summary>How often should we change scorecard weights?</summary><p>Review quarterly against real renewals and churn. Changing weights too often makes it hard for the team to learn what the score means.</p></details></div>
+</div></section>
+<section class="section-sm"><div class="container">
+  <div class="cta-band reveal">
+    <div><h2>Not sure what&#x27;s broken?</h2><p>Free 30 minute audit. We&#x27;ll tell you what we&#x27;d fix first.</p></div>
+    <div class="actions">
+      <a class="btn btn-gold" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free audit</a>
+      <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.35)" href="/contact.html">Send a message</a>
+    </div>
+  </div>
+</div></section>
+<section class="section-sm" style="padding-top:0"><div class="container"><div class="section-head center reveal"><h2>Keep reading</h2></div><div class="art-grid"><a class="art-card reveal" href="/insights/hubspot-leads-unassigned/"><span class="art-tag">HubSpot</span><h3>Why your HubSpot leads go unassigned, and how to fix lead routing</h3><p>New leads sitting in HubSpot with no owner? The usual reasons lead routing breaks, and how to fix triggers, rotation rules and fallbacks.</p><span class="art-meta">6 min read <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="art-card reveal" href="/insights/hubspot-salesforce-sync-errors/"><span class="art-tag">Salesforce + HubSpot</span><h3>HubSpot and Salesforce sync errors: what causes them and how to fix them</h3><p>Picklists, validation rules, duplicates and permissions. A plain guide to the most common HubSpot and Salesforce sync errors and how to fix them.</p><span class="art-meta">7 min read <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></div></section>
+</main><footer class="site-footer">
+  <div class="container">
+    <div class="foot">
+      <div>
+        <a class="logo" href="/" aria-label="Afaao home"><span>Afaao</span><i></i></a>
+        <p style="margin-top:14px">RevOps, Marketing Ops and CS Ops for growing B2B teams, without the cost of full time ops hires.</p>
+      </div>
+      <div><h5>Services</h5><a href="/hubspot-consulting/">HubSpot Consulting</a><a href="/salesforce-consulting/">Salesforce Consulting</a><a href="/gainsight-consulting/">Gainsight Consulting</a><a href="/#services">All services</a><a href="/#tools">Tools we work with</a></div>
+      <div><h5>Company</h5><a href="/#how-we-work">How we work</a><a href="/#fix">What we fix</a><a href="/#faq">FAQ</a><a href="/insights/">Insights</a><a href="/contact.html">Contact</a></div>
+      <div><h5>Get in touch</h5><a href="mailto:hello@afaao.com">hello@afaao.com</a><a href="https://www.linkedin.com/company/afaao/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.google.com/maps?cid=9788339617219025915" target="_blank" rel="noopener">Google Business Profile</a><a href="https://clutch.co/profile/afaao" target="_blank" rel="noopener">Clutch</a><a href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free audit</a></div>
+    </div>
+    <div class="foot-bottom"><span>&copy; 2026 Afaao. Toronto, working with B2B teams worldwide.</span><a href="/privacy.html">Privacy Policy</a></div>
+  </div>
+</footer>
+<div class="m-cta" id="m-cta" aria-hidden="true"><a class="btn btn-primary" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener" tabindex="-1">Book a free 30 minute audit</a></div>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie notice" hidden>
+  <p>We use cookies to see how people use our site and which companies visit, so we can make it more useful. <a href="/privacy.html">Privacy Policy</a></p>
+  <div class="acts"><button type="button" id="consent-decline">Decline</button><button type="button" id="consent-accept" class="accept">Accept</button></div>
+</div>
+<script src="/assets/site.js?v=20261012" defer></script>
+</body>
+</html>

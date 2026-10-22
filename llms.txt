@@ -1,0 +1,22 @@
+# Afaao
+
+> Afaao is a Toronto based revenue operations consultancy that works remotely with growing B2B teams worldwide. We set up, fix and connect the revenue stack across Marketing Ops, Sales Ops and Customer Success Ops, without the cost of full time ops hires.
+
+Core platforms: Salesforce, HubSpot and Gainsight. We also work across Marketo, Pardot, Microsoft Dynamics 365, Pipedrive, Zoho CRM, ChurnZero, Totango, Vitally, Zendesk, Intercom, ZoomInfo, Cognism, Clay, Apollo.io, 6sense, LeanData, Chili Piper, Calendly, Outreach, Salesloft, LinkedIn Sales Navigator, Gong, Zapier, Make, Workato, Segment, Google Analytics, Looker Studio, Tableau.
+
+## Services
+- [Salesforce Consulting for B2B Teams](https://afaao.com/salesforce-consulting/): Salesforce consulting for growing B2B teams. Org cleanup, Flow automation, lead routing, Pardot and HubSpot sync, reporting and ongoing admin support.
+- [HubSpot Consultant in Toronto for B2B Teams](https://afaao.com/hubspot-consulting/): Toronto based HubSpot consulting for B2B teams worldwide. Lifecycle stages, workflows, lead routing, integrations, cleanup and reporting.
+- [Gainsight Consulting and Admin Support](https://afaao.com/gainsight-consulting/): Gainsight consulting for growing CS teams. Health scores, CTAs, playbooks, Salesforce and HubSpot sync, and ongoing admin support without a full time hire.
+
+## Insights
+- [Why your HubSpot leads go unassigned, and how to fix lead routing](https://afaao.com/insights/hubspot-leads-unassigned/): New leads sitting in HubSpot with no owner? The usual reasons lead routing breaks, and how to fix triggers, rotation rules and fallbacks.
+- [HubSpot and Salesforce sync errors: what causes them and how to fix them](https://afaao.com/insights/hubspot-salesforce-sync-errors/): Picklists, validation rules, duplicates and permissions. A plain guide to the most common HubSpot and Salesforce sync errors and how to fix them.
+- [How to build a Gainsight health score your CS team actually trusts](https://afaao.com/insights/gainsight-health-score-setup/): A practical guide to Gainsight scorecards: picking measures, weighting, CSM sentiment and checking the score against real churn so your team trusts it.
+
+## Company
+- [Home](https://afaao.com/): What we fix, how we work, free stack health check and cost calculator
+- [Contact](https://afaao.com/contact.html): Email hello@afaao.com or book a free 30 minute audit call at https://calendly.com/harsh1610yadav/afaao-intro-call-30-min
+- [LinkedIn](https://www.linkedin.com/company/afaao/)
+- [Google Business Profile](https://www.google.com/maps?cid=9788339617219025915)
+- [Clutch](https://clutch.co/profile/afaao)
