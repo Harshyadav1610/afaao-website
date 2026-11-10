@@ -589,3 +589,13 @@ td.flash{animation:flash .6s ease}
   .art-help{padding:20px}
   .art-help .btn{width:100%;justify-content:center;margin:6px 0 0}
 }
+
+/* ---------- v8: Testimonials (renders only when 2+ real ones exist) ---------- */
+.tms{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tm{margin:0;background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:16px}
+.tm blockquote{margin:0;font-size:17px;line-height:1.6;color:var(--ink)}
+.tm blockquote::before{content:"\201C";display:block;font-family:var(--serif);font-size:48px;line-height:.6;color:var(--gold);margin-bottom:6px}
+.tm figcaption strong{display:block}
+.tm figcaption span{color:var(--muted);font-size:14px}
+@media (max-width:980px){.tms{grid-template-columns:1fr 1fr}}
+@media (max-width:760px){.tms{grid-template-columns:1fr}}

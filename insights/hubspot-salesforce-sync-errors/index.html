@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>HubSpot Salesforce Sync Errors: Causes and Fixes | Afaao</title>
+<title>Fix HubSpot Salesforce Integration and Sync Issues | Afaao</title>
 <meta name="description" content="Picklists, validation rules, duplicates and permissions. A plain guide to the most common HubSpot and Salesforce sync errors and how to fix them." />
 <link rel="canonical" href="https://afaao.com/insights/hubspot-salesforce-sync-errors/" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -11,7 +11,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Afaao" />
 <meta property="og:url" content="https://afaao.com/insights/hubspot-salesforce-sync-errors/" />
-<meta property="og:title" content="HubSpot and Salesforce sync errors: what causes them and how to fix them" />
+<meta property="og:title" content="How to fix HubSpot and Salesforce integration and sync issues" />
 <meta property="og:description" content="Picklists, validation rules, duplicates and permissions. A plain guide to the most common HubSpot and Salesforce sync errors and how to fix them." />
 <meta property="og:image" content="https://afaao.com/og-image.png" />
 <meta property="og:image:width" content="1200" />
@@ -36,10 +36,10 @@ document.documentElement.className+=' js';
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap&text=Afao" />
-<link rel="stylesheet" href="/assets/site.css?v=20261012" />
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "HubSpot and Salesforce sync errors: what causes them and how to fix them", "description": "Picklists, validation rules, duplicates and permissions. A plain guide to the most common HubSpot and Salesforce sync errors and how to fix them.", "datePublished": "2026-10-12", "dateModified": "2026-10-12", "author": {"@id": "https://afaao.com/#org", "@type": "Organization", "name": "Afaao", "url": "https://afaao.com/"}, "publisher": {"@id": "https://afaao.com/#org", "@type": "Organization", "name": "Afaao", "logo": {"@type": "ImageObject", "url": "https://afaao.com/logo.svg"}}, "image": "https://afaao.com/og-image.png", "mainEntityOfPage": "https://afaao.com/insights/hubspot-salesforce-sync-errors/"}</script>
+<link rel="stylesheet" href="/assets/site.css?v=20261110" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How to fix HubSpot and Salesforce integration and sync issues", "description": "Picklists, validation rules, duplicates and permissions. A plain guide to the most common HubSpot and Salesforce sync errors and how to fix them.", "datePublished": "2026-10-12", "dateModified": "2026-11-10", "author": {"@id": "https://afaao.com/#org", "@type": "Organization", "name": "Afaao", "url": "https://afaao.com/"}, "publisher": {"@id": "https://afaao.com/#org", "@type": "Organization", "name": "Afaao", "logo": {"@type": "ImageObject", "url": "https://afaao.com/logo.svg"}}, "image": "https://afaao.com/og-image.png", "mainEntityOfPage": "https://afaao.com/insights/hubspot-salesforce-sync-errors/"}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Should every HubSpot contact sync to Salesforce?", "acceptedAnswer": {"@type": "Answer", "text": "Usually not. Most teams use an inclusion list so only sales ready contacts, customers and open opportunities sync. It keeps Salesforce clean and saves API calls."}}, {"@type": "Question", "name": "Can sync errors fix themselves?", "acceptedAnswer": {"@type": "Answer", "text": "Some clear on the next sync after you fix the cause, but the cause has to be fixed first. Retrying the same record without changing anything will fail again."}}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://afaao.com/"}, {"@type": "ListItem", "position": 2, "name": "Insights", "item": "https://afaao.com/insights/"}, {"@type": "ListItem", "position": 3, "name": "HubSpot and Salesforce sync errors: what causes them and how to fix them", "item": "https://afaao.com/insights/hubspot-salesforce-sync-errors/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://afaao.com/"}, {"@type": "ListItem", "position": 2, "name": "Insights", "item": "https://afaao.com/insights/"}, {"@type": "ListItem", "position": 3, "name": "How to fix HubSpot and Salesforce integration and sync issues", "item": "https://afaao.com/insights/hubspot-salesforce-sync-errors/"}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -78,7 +78,7 @@ document.documentElement.className+=' js';
 <section class="page-hero art-hero"><div class="container prose-wrap">
   <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/insights/">Insights</a> / Salesforce + HubSpot</nav>
   <div class="eyebrow">Salesforce + HubSpot</div>
-  <h1>HubSpot and Salesforce sync errors: what causes them and how to fix them</h1>
+  <h1>How to fix HubSpot and Salesforce integration and sync issues</h1>
   <p class="art-byline">By the Afaao team &middot; October 12, 2026 &middot; 7 min read</p>
   <p class="lead">Running HubSpot for marketing and Salesforce for sales is one of the most common setups in B2B. It is also one of the most common sources of messy data. Records that do not sync, fields that overwrite each other, and a sync error count that only ever goes up. The good news is that almost every sync error falls into a handful of groups, and each group has a clear fix.</p>
 </div></section>
@@ -97,7 +97,7 @@ document.documentElement.className+=' js';
     </div>
   </div>
 </div></section>
-<section class="section-sm" style="padding-top:0"><div class="container"><div class="section-head center reveal"><h2>Keep reading</h2></div><div class="art-grid"><a class="art-card reveal" href="/insights/hubspot-leads-unassigned/"><span class="art-tag">HubSpot</span><h3>Why your HubSpot leads go unassigned, and how to fix lead routing</h3><p>New leads sitting in HubSpot with no owner? The usual reasons lead routing breaks, and how to fix triggers, rotation rules and fallbacks.</p><span class="art-meta">6 min read <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="art-card reveal" href="/insights/gainsight-health-score-setup/"><span class="art-tag">Gainsight</span><h3>How to build a Gainsight health score your CS team actually trusts</h3><p>A practical guide to Gainsight scorecards: picking measures, weighting, CSM sentiment and checking the score against real churn so your team trusts it.</p><span class="art-meta">6 min read <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></div></section>
+<section class="section-sm" style="padding-top:0"><div class="container"><div class="section-head center reveal"><h2>Keep reading</h2></div><div class="art-grid"><a class="art-card reveal" href="/insights/hubspot-leads-unassigned/"><span class="art-tag">HubSpot</span><h3>Why your HubSpot leads go unassigned, and how to fix lead routing</h3><p>New leads sitting in HubSpot with no owner? The usual reasons lead routing breaks, and how to fix triggers, rotation rules and fallbacks.</p><span class="art-meta">6 min read <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="art-card reveal" href="/insights/gainsight-health-score-setup/"><span class="art-tag">Gainsight</span><h3>How to build a Gainsight health score your CS team actually trusts</h3><p>A practical guide to Gainsight scorecards: picking measures, weighting, CSM sentiment and checking the score against real churn so your team trusts it.</p><span class="art-meta">6 min read <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="art-card reveal" href="/insights/gainsight-admin-options/"><span class="art-tag">Gainsight</span><h3>Do you need a full time Gainsight admin? Your options for a growing CS team</h3><p>Hiring a full time Gainsight admin, sharing the job with ops, or using a part time partner. What each option costs you, and how to pick the right one.</p><span class="art-meta">5 min read <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="art-card reveal" href="/insights/fix-messy-hubspot-portal/"><span class="art-tag">HubSpot</span><h3>How to fix a messy HubSpot portal or a failed HubSpot implementation</h3><p>HubSpot set up in a rush and now nobody trusts it? A step by step way to rescue a failed HubSpot implementation without starting from scratch.</p><span class="art-meta">6 min read <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="art-card reveal" href="/insights/hubspot-customer-health-score/"><span class="art-tag">HubSpot</span><h3>How to build a customer health score in HubSpot</h3><p>A practical way to build a customer health score in HubSpot: what to measure, where the data lives, and how to make CSMs act on it.</p><span class="art-meta">6 min read <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></div></section>
 </main><footer class="site-footer">
   <div class="container">
     <div class="foot">
@@ -117,6 +117,6 @@ document.documentElement.className+=' js';
   <p>We use cookies to see how people use our site and which companies visit, so we can make it more useful. <a href="/privacy.html">Privacy Policy</a></p>
   <div class="acts"><button type="button" id="consent-decline">Decline</button><button type="button" id="consent-accept" class="accept">Accept</button></div>
 </div>
-<script src="/assets/site.js?v=20261012" defer></script>
+<script src="/assets/site.js?v=20261110" defer></script>
 </body>
 </html>
