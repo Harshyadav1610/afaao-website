@@ -9,6 +9,12 @@ Core platforms: Salesforce, HubSpot and Gainsight. We also work across Marketo, 
 - [HubSpot Consultant in Toronto for B2B Teams](https://afaao.com/hubspot-consulting/): Toronto based HubSpot consulting for B2B teams worldwide. Lifecycle stages, workflows, lead routing, integrations, cleanup and reporting.
 - [Gainsight Consultant and Admin Support for CS Teams](https://afaao.com/gainsight-consulting/): Gainsight consultant and part time admin for growing CS teams. Health scores, CTAs, playbooks, CRM sync and admin support, remote from Toronto.
 
+## Pricing
+- Free 30 minute audit call
+- Fix projects from $900 (fixed price, 1 to 4 weeks)
+- Monthly support from $500 a month (about 5 hours)
+- Prices are in CAD for clients in Canada and USD everywhere else. You get a fixed quote before any work starts.
+
 ## Insights
 - [Why your HubSpot leads go unassigned, and how to fix lead routing](https://afaao.com/insights/hubspot-leads-unassigned/): New leads sitting in HubSpot with no owner? The usual reasons lead routing breaks, and how to fix triggers, rotation rules and fallbacks.
 - [How to fix HubSpot and Salesforce integration and sync issues](https://afaao.com/insights/hubspot-salesforce-sync-errors/): Picklists, validation rules, duplicates and permissions. A plain guide to the most common HubSpot and Salesforce sync errors and how to fix them.

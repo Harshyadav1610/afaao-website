@@ -617,3 +617,15 @@ td.flash{animation:flash .6s ease}
 .hc-form>*{min-width:0}
 .hc-form-row input{width:100%}
 @media (max-width:560px){.hc-form-row{flex-direction:column}.hc-form-row .btn{width:100%;justify-content:center}}
+
+/* ---------- v10: pricing ---------- */
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1040px;margin:0 auto}
+.price{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;display:flex;flex-direction:column;min-width:0}
+.price.hot{border-color:var(--brand);box-shadow:var(--shadow)}
+.price h3{font-size:18px;margin:0 0 10px}
+.price-amt{font-size:38px;font-weight:800;letter-spacing:-.02em;line-height:1.1;color:var(--brand)}
+.price-sub{color:var(--muted);font-size:14px;margin:6px 0 18px}
+.price .checks{flex:1;margin:0 0 20px}
+.price .checks li{font-size:15px}
+.price .btn{justify-content:center}
+@media (max-width:900px){.prices{grid-template-columns:1fr;max-width:460px}}
