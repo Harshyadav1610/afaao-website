@@ -152,7 +152,7 @@
   var hc = d.getElementById('hc');
   if (hc) {
     var fg = hc.querySelector('.g-fg'), scoreEl = d.getElementById('hc-score'), label = d.getElementById('hc-label'),
-        plan = d.getElementById('hc-plan'), cta = d.getElementById('hc-cta'), weeks = d.getElementById('hc-weeks'), used = false;
+        plan = d.getElementById('hc-plan'), cta = d.getElementById('hc-cta'), weeks = d.getElementById('hc-weeks'), used = false, hcf = d.getElementById('hc-form');
     function update() {
       var on = Array.prototype.filter.call(hc.querySelectorAll('.hc-chip'), function (c) { return c.getAttribute('aria-pressed') === 'true'; });
       var sc = Math.max(12, 100 - on.length * 15);
@@ -160,11 +160,12 @@
       fg.style.strokeDasharray = sc + ' 100';
       hc.setAttribute('data-level', sc >= 80 ? 'good' : sc >= 50 ? 'mid' : 'bad');
       label.textContent = sc >= 80 ? 'Healthy stack' : sc >= 50 ? 'Needs attention' : 'At risk';
-      if (!on.length) { plan.innerHTML = '<li class="hc-empty">Your fix plan builds here as you tick.</li>'; cta.hidden = true; return; }
+      if (!on.length) { plan.innerHTML = '<li class="hc-empty">Your fix plan builds here as you tick.</li>'; cta.hidden = true; if (hcf) hcf.hidden = true; return; }
       plan.innerHTML = on.map(function (c) { return '<li class="fade-in"><a href="' + c.dataset.href + '">' + c.dataset.fix + '</a></li>'; }).join('');
       var w = on.reduce(function (a, c) { return a + (+c.dataset.w); }, 0);
       var lo = Math.max(1, Math.round(w * 0.6)), hi = Math.max(lo + 1, w);
       weeks.textContent = lo + ' to ' + hi + ' weeks'; cta.hidden = false;
+      if (hcf) { hcf.hidden = false; hcf.elements.score.value = sc; hcf.elements.issues.value = on.map(function (c) { return c.textContent.trim(); }).join('; '); }
     }
     hc.querySelectorAll('.hc-chip').forEach(function (c) {
       c.addEventListener('click', function () {
@@ -173,6 +174,19 @@
       });
     });
     update();
+    if (hcf) {
+      var hbtn = hcf.querySelector('button[type=submit]'), hmsg = d.getElementById('hc-form-msg');
+      hcf.addEventListener('submit', function (e) {
+        e.preventDefault(); hbtn.disabled = true; hmsg.className = 'form-msg';
+        fetch(hcf.action, { method: 'POST', body: new FormData(hcf) }).then(function (r) { return r.json(); }).then(function (j) {
+          if (!j.success) throw new Error('fail');
+          hmsg.textContent = "Got it. We'll reply within one business day."; hmsg.className = 'form-msg ok';
+          track('generate_lead', { form_name: 'health_check' }); hcf.elements.email.value = '';
+        }).catch(function () {
+          hmsg.textContent = 'Something went wrong. Please email hello@afaao.com'; hmsg.className = 'form-msg err';
+        }).then(function () { hbtn.disabled = false; });
+      });
+    }
   }
 
 

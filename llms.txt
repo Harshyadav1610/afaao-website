@@ -16,9 +16,13 @@ Core platforms: Salesforce, HubSpot and Gainsight. We also work across Marketo, 
 - [Do you need a full time Gainsight admin? Your options for a growing CS team](https://afaao.com/insights/gainsight-admin-options/): Hiring a full time Gainsight admin, sharing the job with ops, or using a part time partner. What each option costs you, and how to pick the right one.
 - [How to fix a messy HubSpot portal or a failed HubSpot implementation](https://afaao.com/insights/fix-messy-hubspot-portal/): HubSpot set up in a rush and now nobody trusts it? A step by step way to rescue a failed HubSpot implementation without starting from scratch.
 - [How to build a customer health score in HubSpot](https://afaao.com/insights/hubspot-customer-health-score/): A practical way to build a customer health score in HubSpot: what to measure, where the data lives, and how to make CSMs act on it.
+- [Should you hire a RevOps person or outsource it?](https://afaao.com/insights/hire-revops-or-outsource/): In house RevOps hire, a freelancer, or an outsourced RevOps partner. What each option is good at, where it falls short, and how a small B2B team should choose.
+- [Lead to account matching in HubSpot: how it works and how to fix it](https://afaao.com/insights/hubspot-lead-to-account-matching/): How HubSpot matches contacts to companies, why leads end up on the wrong account or none at all, and practical ways to fix lead to account matching.
+- [Pipedrive to HubSpot migration: a practical checklist](https://afaao.com/insights/pipedrive-to-hubspot-migration/): A step by step checklist for moving from Pipedrive to HubSpot without losing history: cleanup, field mapping, import order, original create dates and testing.
 
 ## Company
 - [Home](https://afaao.com/): What we fix, how we work, free stack health check and cost calculator
+- [About](https://afaao.com/about/): Who we are, how we work and who we are a fit for
 - [Contact](https://afaao.com/contact.html): Email hello@afaao.com or book a free 30 minute audit call at https://calendly.com/harsh1610yadav/afaao-intro-call-30-min
 - [LinkedIn](https://www.linkedin.com/company/afaao/)
 - [Google Business Profile](https://www.google.com/maps?cid=9788339617219025915)
