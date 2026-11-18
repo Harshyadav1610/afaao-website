@@ -5,8 +5,8 @@
 Core platforms: Salesforce, HubSpot and Gainsight. We also work across Marketo, Pardot, Microsoft Dynamics 365, Pipedrive, Zoho CRM, ChurnZero, Totango, Vitally, Zendesk, Intercom, ZoomInfo, Cognism, Clay, Apollo.io, 6sense, LeanData, Chili Piper, Calendly, Outreach, Salesloft, LinkedIn Sales Navigator, Gong, Zapier, Make, Workato, Segment, Google Analytics, Looker Studio, Tableau.
 
 ## Services
-- [Salesforce Consultant in Toronto for B2B Teams](https://afaao.com/salesforce-consulting/): Toronto based Salesforce consulting for B2B teams worldwide. Org cleanup, Flow automation, lead routing, Pardot and HubSpot sync, reporting and admin help.
-- [HubSpot Consultant in Toronto for B2B Teams](https://afaao.com/hubspot-consulting/): Toronto based HubSpot consulting for B2B teams worldwide. Lifecycle stages, workflows, lead routing, integrations, cleanup and reporting.
+- [Salesforce Consultant in Toronto for B2B Teams](https://afaao.com/salesforce-consulting/): Toronto based Salesforce consultant for B2B teams across Canada and the US. Org cleanup, Flow automation, lead routing, Pardot and HubSpot sync, reporting and admin help.
+- [HubSpot Consultant in Toronto for B2B Teams](https://afaao.com/hubspot-consulting/): Toronto based HubSpot consultant for B2B teams across Canada and the US. Lifecycle stages, workflows, lead routing, integrations, cleanup and reporting.
 - [Gainsight Consultant and Admin Support for CS Teams](https://afaao.com/gainsight-consulting/): Gainsight consultant and part time admin for growing CS teams. Health scores, CTAs, playbooks, CRM sync and admin support, remote from Toronto.
 
 ## Pricing
@@ -25,6 +25,7 @@ Core platforms: Salesforce, HubSpot and Gainsight. We also work across Marketo, 
 - [Should you hire a RevOps person or outsource it?](https://afaao.com/insights/hire-revops-or-outsource/): In house RevOps hire, a freelancer, or an outsourced RevOps partner. What each option is good at, where it falls short, and how a small B2B team should choose.
 - [Lead to account matching in HubSpot: how it works and how to fix it](https://afaao.com/insights/hubspot-lead-to-account-matching/): How HubSpot matches contacts to companies, why leads end up on the wrong account or none at all, and practical ways to fix lead to account matching.
 - [Pipedrive to HubSpot migration: a practical checklist](https://afaao.com/insights/pipedrive-to-hubspot-migration/): A step by step checklist for moving from Pipedrive to HubSpot without losing history: cleanup, field mapping, import order, original create dates and testing.
+- [HubSpot connector for Claude and ChatGPT: what it can read, what it can change, and why access gets blocked](https://afaao.com/insights/hubspot-claude-chatgpt-connector/): What the HubSpot connectors for Claude and ChatGPT can read and change, and how to fix blocked write access, approvals and permissions.
 
 ## Company
 - [Home](https://afaao.com/): What we fix, how we work, free stack health check and cost calculator
