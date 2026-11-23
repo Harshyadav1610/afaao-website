@@ -629,3 +629,28 @@ td.flash{animation:flash .6s ease}
 .price .checks li{font-size:15px}
 .price .btn{justify-content:center}
 @media (max-width:900px){.prices{grid-template-columns:1fr;max-width:460px}}
+
+/* ---------- v11: checklist resource ---------- */
+.ck-sec{margin:0 0 28px}
+.ck-sec h2{font-size:22px;margin:0 0 10px}
+.ck-list{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.ck-list label{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:16px;line-height:1.5;cursor:pointer}
+.ck-list input{width:18px;height:18px;margin-top:3px;flex:none;accent-color:var(--brand)}
+.ck-list input:checked+span{color:var(--muted);text-decoration:line-through}
+.ck-foot{color:var(--muted);font-size:14px;margin-top:20px}
+.ck-promo{display:grid;gap:6px;text-decoration:none;color:var(--ink);background:var(--gold-tint);border:1px solid #ecdcb8;border-radius:18px;padding:20px 22px;margin:0 0 22px}
+.ck-promo strong{font-size:19px}
+.ck-promo span:last-child{color:var(--muted)}
+@media print{.site-header,.site-footer,.m-cta,.consent-banner,.mobile-panel,.no-print{display:none!important}body{background:#fff}.ck-list label{border:1px solid #ccc;break-inside:avoid}.page-hero{padding:0 0 10px}}
+
+/* ---------- v12: topic clusters ---------- */
+.art-topic{font-size:14px;color:var(--muted);margin:0 0 14px}
+.art-topic a{color:var(--brand);font-weight:600}
+.prose a{color:var(--brand);text-decoration:underline;text-underline-offset:3px}
+.topic-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:36px 0 16px;flex-wrap:wrap}
+.topic-head:first-of-type{margin-top:12px}
+.topic-head h2{font-size:clamp(22px,2.6vw,28px);margin:0}
+.topic-head a{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--brand);text-decoration:none}
+.topic-head a svg{width:16px;height:16px}
+#guides .ck-promo{max-width:none}
+.ck-promo .art-tag{justify-self:start}

@@ -8,6 +8,8 @@ Core platforms: Salesforce, HubSpot and Gainsight. We also work across Marketo, 
 - [Salesforce Consultant in Toronto for B2B Teams](https://afaao.com/salesforce-consulting/): Toronto based Salesforce consultant for B2B teams across Canada and the US. Org cleanup, Flow automation, lead routing, Pardot and HubSpot sync, reporting and admin help.
 - [HubSpot Consultant in Toronto for B2B Teams](https://afaao.com/hubspot-consulting/): Toronto based HubSpot consultant for B2B teams across Canada and the US. Lifecycle stages, workflows, lead routing, integrations, cleanup and reporting.
 - [Gainsight Consultant and Admin Support for CS Teams](https://afaao.com/gainsight-consulting/): Gainsight consultant and part time admin for growing CS teams. Health scores, CTAs, playbooks, CRM sync and admin support, remote from Toronto.
+- [CRM Consultant for B2B Teams: Setup and Migration](https://afaao.com/crm-consulting/): CRM consultant for growing B2B teams. CRM implementation, cleanup, audits and migrations across HubSpot, Salesforce, Pipedrive, Zoho and Dynamics, from Toronto.
+- [Revenue Operations Consulting for B2B Teams](https://afaao.com/revops-consulting/): Outsourced revenue operations and marketing operations consulting for growing B2B teams: funnel rules, MQL and SQL, lead routing, data, integrations and reporting.
 
 ## Pricing
 - Free 30 minute audit call
@@ -26,9 +28,13 @@ Core platforms: Salesforce, HubSpot and Gainsight. We also work across Marketo, 
 - [Lead to account matching in HubSpot: how it works and how to fix it](https://afaao.com/insights/hubspot-lead-to-account-matching/): How HubSpot matches contacts to companies, why leads end up on the wrong account or none at all, and practical ways to fix lead to account matching.
 - [Pipedrive to HubSpot migration: a practical checklist](https://afaao.com/insights/pipedrive-to-hubspot-migration/): A step by step checklist for moving from Pipedrive to HubSpot without losing history: cleanup, field mapping, import order, original create dates and testing.
 - [HubSpot connector for Claude and ChatGPT: what it can read, what it can change, and why access gets blocked](https://afaao.com/insights/hubspot-claude-chatgpt-connector/): What the HubSpot connectors for Claude and ChatGPT can read and change, and how to fix blocked write access, approvals and permissions.
+- [HubSpot vs Salesforce for small B2B teams: how to choose](https://afaao.com/insights/hubspot-vs-salesforce/): HubSpot or Salesforce for a small B2B team? An honest comparison of setup, admin effort, reporting, flexibility and when it makes sense to run both.
+- [MQL vs SQL: what the difference is and how to set the rules](https://afaao.com/insights/mql-vs-sql/): What an MQL and an SQL are, how they differ, example criteria for B2B teams, and how to build the handoff in your CRM so sales and marketing stop arguing.
+- [HubSpot lifecycle stages: how to set them up properly](https://afaao.com/insights/hubspot-lifecycle-stages/): How HubSpot lifecycle stages work, what each default stage should mean for a B2B team, how to automate them and the mistakes that break reporting.
 
 ## Company
 - [Home](https://afaao.com/): What we fix, how we work, free stack health check and cost calculator
+- [Free HubSpot audit checklist](https://afaao.com/resources/hubspot-audit-checklist/): printable checklist across data, lifecycle, routing, pipelines, automation, integrations, reporting and governance
 - [About](https://afaao.com/about/): Who we are, how we work and who we are a fit for
 - [Contact](https://afaao.com/contact.html): Email hello@afaao.com or book a free 30 minute audit call at https://calendly.com/harsh1610yadav/afaao-intro-call-30-min
 - [LinkedIn](https://www.linkedin.com/company/afaao/)
