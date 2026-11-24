@@ -18,8 +18,8 @@ Core platforms: Salesforce, HubSpot and Gainsight. We also work across Marketo, 
 - Prices are in CAD for clients in Canada and USD everywhere else. You get a fixed quote before any work starts.
 
 ## Insights
-- [Why your HubSpot leads go unassigned, and how to fix lead routing](https://afaao.com/insights/hubspot-leads-unassigned/): New leads sitting in HubSpot with no owner? The usual reasons lead routing breaks, and how to fix triggers, rotation rules and fallbacks.
-- [How to fix HubSpot and Salesforce integration and sync issues](https://afaao.com/insights/hubspot-salesforce-sync-errors/): Picklists, validation rules, duplicates and permissions. A plain guide to the most common HubSpot and Salesforce sync errors and how to fix them.
+- [Why your HubSpot leads go unassigned, and how to fix lead routing](https://afaao.com/insights/hubspot-leads-unassigned/): HubSpot lead routing broken? Why new leads go unassigned or land in the wrong workflow branch, and how to fix triggers, rotation rules and fallbacks.
+- [How to fix HubSpot and Salesforce integration and sync issues](https://afaao.com/insights/hubspot-salesforce-sync-errors/): How to fix HubSpot and Salesforce integration and data sync issues: picklists, validation rules, duplicates, permissions and missing data, with a fix for each.
 - [How to build a Gainsight health score your CS team actually trusts](https://afaao.com/insights/gainsight-health-score-setup/): A practical guide to Gainsight scorecards: picking measures, weighting, CSM sentiment and checking the score against real churn so your team trusts it.
 - [Do you need a full time Gainsight admin? Your options for a growing CS team](https://afaao.com/insights/gainsight-admin-options/): Hiring a full time Gainsight admin, sharing the job with ops, or using a part time partner. What each option costs you, and how to pick the right one.
 - [How to fix a messy HubSpot portal or a failed HubSpot implementation](https://afaao.com/insights/fix-messy-hubspot-portal/): HubSpot set up in a rush and now nobody trusts it? A step by step way to rescue a failed HubSpot implementation without starting from scratch.
