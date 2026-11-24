@@ -5,7 +5,7 @@
 Core platforms: Salesforce, HubSpot and Gainsight. We also work across Marketo, Pardot, Microsoft Dynamics 365, Pipedrive, Zoho CRM, ChurnZero, Totango, Vitally, Zendesk, Intercom, ZoomInfo, Cognism, Clay, Apollo.io, 6sense, LeanData, Chili Piper, Calendly, Outreach, Salesloft, LinkedIn Sales Navigator, Gong, Zapier, Make, Workato, Segment, Google Analytics, Looker Studio, Tableau.
 
 ## Services
-- [Salesforce Consultant in Toronto for B2B Teams](https://afaao.com/salesforce-consulting/): Toronto based Salesforce consultant for B2B teams across Canada and the US. Org cleanup, Flow automation, lead routing, Pardot and HubSpot sync, reporting and admin help.
+- [Salesforce Consultant in Toronto for B2B Teams](https://afaao.com/salesforce-consulting/): Toronto based Salesforce consultant for B2B teams in Canada and the US. Org cleanup, Flow automation, lead routing, Pardot and HubSpot sync, and admin help.
 - [HubSpot Consultant in Toronto for B2B Teams](https://afaao.com/hubspot-consulting/): Toronto based HubSpot consultant for B2B teams across Canada and the US. Lifecycle stages, workflows, lead routing, integrations, cleanup and reporting.
 - [Gainsight Consultant and Admin Support for CS Teams](https://afaao.com/gainsight-consulting/): Gainsight consultant and part time admin for growing CS teams. Health scores, CTAs, playbooks, CRM sync and admin support, remote from Toronto.
 - [CRM Consultant for B2B Teams: Setup and Migration](https://afaao.com/crm-consulting/): CRM consultant for growing B2B teams. CRM implementation, cleanup, audits and migrations across HubSpot, Salesforce, Pipedrive, Zoho and Dynamics, from Toronto.
