@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lead Routing Guide: Rules, Round Robin and Fixes | Afaao</title>
+<meta name="description" content="A practical lead routing guide: account matching, territories, round robin, fallbacks and speed to lead, with how it works in HubSpot and Salesforce." />
+<link rel="canonical" href="https://afaao.com/insights/lead-routing-guide/" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta name="theme-color" content="#1c3a28" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Afaao" />
+<meta property="og:url" content="https://afaao.com/insights/lead-routing-guide/" />
+<meta property="og:title" content="Lead routing: a practical guide for HubSpot and Salesforce teams" />
+<meta property="og:description" content="A practical lead routing guide: account matching, territories, round robin, fallbacks and speed to lead, with how it works in HubSpot and Salesforce." />
+<meta property="og:image" content="https://afaao.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Afaao: RevOps, Marketing Ops and CS Ops for growing B2B teams" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://afaao.com/og-image.png" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEZJ87GL90"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+var AFAAO_CONSENT=(function(){try{return localStorage.getItem('afaao_consent');}catch(e){return null;}})();
+var AFAAO_STRICT=/^Europe\//.test((Intl.DateTimeFormat().resolvedOptions().timeZone)||'');
+var AFAAO_GRANTED=AFAAO_CONSENT==='granted'||(!AFAAO_CONSENT&&!AFAAO_STRICT);
+gtag('consent','default',{analytics_storage:AFAAO_GRANTED?'granted':'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
+var AFAAO_APOLLO_LOADED=false;
+function initApollo(){if(AFAAO_APOLLO_LOADED)return;AFAAO_APOLLO_LOADED=true;var n=Math.random().toString(36).substring(7),o=document.createElement("script");o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,o.onload=function(){window.trackingFunctions.onLoad({appId:"6ab45d322527f000206af2ee"})},document.head.appendChild(o)}
+if(AFAAO_GRANTED)initApollo();
+gtag('js',new Date());gtag('config','G-GEZJ87GL90');
+document.documentElement.className+=' js';
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap&text=Afao" />
+<link rel="stylesheet" href="/assets/site.css?v=20261124" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Lead routing: a practical guide for HubSpot and Salesforce teams", "description": "A practical lead routing guide: account matching, territories, round robin, fallbacks and speed to lead, with how it works in HubSpot and Salesforce.", "datePublished": "2026-11-24", "dateModified": "2026-11-24", "author": {"@id": "https://afaao.com/#org", "@type": "Organization", "name": "Afaao", "url": "https://afaao.com/"}, "publisher": {"@id": "https://afaao.com/#org", "@type": "Organization", "name": "Afaao", "logo": {"@type": "ImageObject", "url": "https://afaao.com/logo.svg"}}, "image": "https://afaao.com/og-image.png", "mainEntityOfPage": "https://afaao.com/insights/lead-routing-guide/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is lead routing?", "acceptedAnswer": {"@type": "Answer", "text": "Lead routing is the process and set of rules that assigns each new lead to the right owner, such as a sales rep, team or queue, as quickly as possible."}}, {"@type": "Question", "name": "What is the best lead routing method?", "acceptedAnswer": {"@type": "Answer", "text": "Match leads to existing accounts first, then route by territory or segment, use a capacity aware round robin within each team, and always keep a fallback queue that someone checks daily."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://afaao.com/"}, {"@type": "ListItem", "position": 2, "name": "RevOps Consulting", "item": "https://afaao.com/revops-consulting/"}, {"@type": "ListItem", "position": 3, "name": "Lead routing: a practical guide for HubSpot and Salesforce teams", "item": "https://afaao.com/insights/lead-routing-guide/"}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container nav">
+    <a class="logo" href="/" aria-label="Afaao home"><span>Afaao</span><i></i></a>
+    <nav class="nav-links" aria-label="Main">
+      <div class="dd">
+        <button type="button" aria-expanded="false" aria-haspopup="true">Services <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="dd-menu"><a href="/hubspot-consulting/"><strong>HubSpot Consulting</strong><small>Portal cleanup, lifecycle stages, workflows, lead routing and reporting.</small></a><a href="/salesforce-consulting/"><strong>Salesforce Consulting</strong><small>Org cleanup, Flow automation, lead to account matching, Pardot and HubSpot sync.</small></a><a href="/gainsight-consulting/"><strong>Gainsight Consulting</strong><small>Health scores, CTAs and playbooks, CRM sync and ongoing admin support.</small></a><a href="/crm-consulting/"><strong>CRM Consulting</strong><small>CRM setup, cleanup, migration and audits across HubSpot, Salesforce and more.</small></a><a href="/revops-consulting/"><strong>RevOps Consulting</strong><small>Outsourced revenue and marketing operations: funnel rules, routing, data and reporting.</small></a><hr /><a href="/#services"><strong>All services</strong><small>Marketing Ops, Sales Ops, CS Ops, data, integrations and reporting</small></a></div>
+      </div>
+      <a href="/#fix">What we fix</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/insights/">Insights</a>
+      <a href="/about/">About</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free audit</a>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-panel"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-panel" id="mobile-panel">
+  <a href="/#services">Services</a>
+  <div class="sub"><a href="/hubspot-consulting/">HubSpot Consulting</a><a href="/salesforce-consulting/">Salesforce Consulting</a><a href="/gainsight-consulting/">Gainsight Consulting</a><a href="/crm-consulting/">CRM Consulting</a><a href="/revops-consulting/">RevOps Consulting</a></div>
+  <a href="/#fix">What we fix</a>
+  <a href="/#tools">Tools</a>
+  <a href="/#how-we-work">How we work</a>
+  <a href="/#pricing">Pricing</a>
+  <a href="/#faq">FAQ</a>
+  <a href="/insights/">Insights</a>
+  <a href="/about/">About</a>
+  <a href="/contact.html">Contact</a>
+  <a class="btn btn-primary" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free 30 minute audit</a>
+</div>
+<main id="main">
+<article>
+<section class="page-hero art-hero"><div class="container prose-wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/revops-consulting/">RevOps</a> / Guide</nav>
+  <div class="eyebrow">RevOps</div>
+  <h1>Lead routing: a practical guide for HubSpot and Salesforce teams</h1>
+  <p class="art-byline">By the Afaao team &middot; November 24, 2026 &middot; 7 min read</p>
+  <p class="lead">Lead routing sounds like a small admin task until leads start sitting with nobody, two reps call the same company, or a big customer&#x27;s new contact lands with a junior rep. Routing is where marketing&#x27;s work becomes sales pipeline, and it is one of the most common things we fix.</p>
+</div></section>
+<section class="section-sm" style="padding-top:8px"><div class="container prose-wrap"><p class="art-topic">Part of our <a href="/revops-consulting/">RevOps consulting</a> guides.</p><div class="art-answer"><strong>Short answer</strong><p>Lead routing is the set of rules that decides which person owns a new lead and how fast they get it. Good routing matches leads to existing accounts first, then routes by territory, segment or round robin, always has a fallback owner, and alerts the rep right away. Speed matters: the longer a lead waits for an owner, the less likely it is to turn into a meeting.</p></div><div class="prose"><h2>What good routing does</h2><ul><li>Every lead gets an owner, every time.</li><li>Leads from existing customers and open deals go to the person who already owns the account.</li><li>New leads are shared fairly, by territory, segment or rotation.</li><li>The owner is alerted within minutes, not hours.</li><li>Anything unexpected lands in a queue a real person checks every day.</li></ul><h2>The order of the rules</h2><ol><li>Clean the lead first: normalise country, company name and domain so the rules can match.</li><li>Match to an existing account by email domain or company. If there is an owner, route there.</li><li>Route by segment or territory, for example by region, company size or industry.</li><li>Within a team, use round robin, weighted by capacity if reps carry different loads.</li><li>Fall back to a watched queue or a named person when nothing matches.</li></ol><p>Order matters because the first rule that matches usually wins. Put the most specific rules first and the catch all last.</p><h2>Round robin done well</h2><p>Simple rotation is fair on paper but ignores holidays, ramping reps and people who are already overloaded. Better setups skip reps who are out of office, cap how many new leads someone receives a day, and weight the rotation so senior reps get larger accounts. If a lead comes back months later, consider sending it to the rep who worked it before.</p><h2>Speed to lead</h2><p>Routing that is correct but slow still loses meetings. Alert the owner instantly by email, Slack or a task, set a clear expectation for first contact, and report on time to first touch each week. If leads wait for a nightly sync or a manual review, fix that before tuning anything else.</p><aside class="art-help"><strong>Want this fixed without the trial and error?</strong><p>This is exactly the kind of work we do. Book a free 30 minute audit and we will tell you what we would fix first.</p><a class="btn btn-primary" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free audit <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a> <a class="btn btn-ghost" href="/revops-consulting/">RevOps consulting</a></aside><h2>Routing in HubSpot</h2><p>HubSpot can rotate leads natively and set owners through workflows. Teams usually add company matching so contacts follow the account owner, and a check for contacts with no owner. Our guides on <a href="/insights/hubspot-leads-unassigned/">why HubSpot leads go unassigned</a> and <a href="/insights/hubspot-lead-to-account-matching/">lead to account matching in HubSpot</a> cover the details.</p><h2>Routing in Salesforce</h2><p>Salesforce uses one active lead assignment rule with ordered entries, plus Flow or a routing tool for round robin and account matching. The most common gap is integrations that create leads without running the rule. See <a href="/insights/salesforce-lead-assignment-rules/">Salesforce lead assignment rules</a> for how to set it up.</p><h2>When HubSpot and Salesforce are both in play</h2><p>Decide which system owns routing and stick to it. If HubSpot sets an owner and Salesforce reassigns it on sync, reps lose trust fast. Our guide to <a href="/insights/hubspot-salesforce-sync-errors/">HubSpot and Salesforce sync errors</a> explains how owner fields behave across the integration.</p><h2>Measure it</h2><ul><li>Leads with no owner, checked daily.</li><li>Time from lead created to owner assigned, and to first activity.</li><li>Leads per rep per week, to catch an unfair rotation.</li><li>Leads routed to the wrong team and sent back.</li></ul><p>Routing sits at the centre of our <a href="/revops-consulting/">revenue operations consulting</a> work, and it is usually the first thing we look at in a free audit.</p></div></div></section>
+</article>
+<section class="section-sm band"><div class="container">
+  <div class="section-head center reveal"><div class="eyebrow">FAQ</div><h2>Quick answers</h2></div>
+  <div class="faq"><details><summary>What is lead routing?</summary><p>Lead routing is the process and set of rules that assigns each new lead to the right owner, such as a sales rep, team or queue, as quickly as possible.</p></details><details><summary>What is the best lead routing method?</summary><p>Match leads to existing accounts first, then route by territory or segment, use a capacity aware round robin within each team, and always keep a fallback queue that someone checks daily.</p></details></div>
+</div></section>
+<section class="section-sm"><div class="container">
+  <div class="cta-band reveal">
+    <div><h2>Not sure what&#x27;s broken?</h2><p>Free 30 minute audit. We&#x27;ll tell you what we&#x27;d fix first.</p></div>
+    <div class="actions">
+      <a class="btn btn-gold" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free audit</a>
+      <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.35)" href="/contact.html">Send a message</a>
+    </div>
+  </div>
+</div></section>
+<section class="section-sm" style="padding-top:0"><div class="container"><div class="section-head center reveal"><h2>More RevOps guides</h2><p><a href="/revops-consulting/">See our RevOps consulting page</a> or <a href="/insights/">all insights</a>.</p></div><div class="art-grid"><a class="art-card reveal" href="/insights/what-is-revops/"><span class="art-tag">RevOps</span><h3>What is RevOps? Revenue operations explained for growing B2B teams</h3><p>What revenue operations is, what a RevOps team actually does, how it differs from sales ops and marketing ops, and when a growing B2B company needs it.</p><span class="art-meta">6 min read <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="art-card reveal" href="/insights/mql-vs-sql/"><span class="art-tag">RevOps</span><h3>MQL vs SQL: what the difference is and how to set the rules</h3><p>What an MQL and an SQL are, how they differ, example criteria for B2B teams, and how to build the handoff in your CRM so sales and marketing stop arguing.</p><span class="art-meta">6 min read <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="art-card reveal" href="/insights/hire-revops-or-outsource/"><span class="art-tag">RevOps</span><h3>Should you hire a RevOps person or outsource it?</h3><p>In house RevOps hire, a freelancer, or an outsourced RevOps partner. What each option is good at, where it falls short, and how a small B2B team should choose.</p><span class="art-meta">5 min read <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="art-card reveal" href="/insights/salesforce-lead-assignment-rules/"><span class="art-tag">Salesforce</span><h3>Salesforce lead assignment rules: how they work and how to fix them</h3><p>How Salesforce lead assignment rules work, how rule entry order decides the owner, why leads skip assignment, and how to add round robin and fallbacks.</p><span class="art-meta">6 min read <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="art-card reveal" href="/insights/hubspot-lead-scoring/"><span class="art-tag">HubSpot</span><h3>HubSpot lead scoring: how to set it up so sales trusts it</h3><p>How to set up HubSpot lead scoring with fit and engagement scores, pick thresholds, avoid the common mistakes and connect the score to MQLs and routing.</p><span class="art-meta">7 min read <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="art-card reveal" href="/insights/hubspot-leads-unassigned/"><span class="art-tag">HubSpot</span><h3>Why your HubSpot leads go unassigned, and how to fix lead routing</h3><p>New leads sitting in HubSpot with no owner? The usual reasons lead routing breaks, and how to fix triggers, rotation rules and fallbacks.</p><span class="art-meta">6 min read <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></div></section>
+</main><footer class="site-footer">
+  <div class="container">
+    <div class="foot">
+      <div>
+        <a class="logo" href="/" aria-label="Afaao home"><span>Afaao</span><i></i></a>
+        <p style="margin-top:14px">RevOps, Marketing Ops and CS Ops for growing B2B teams, without the cost of full time ops hires.</p>
+      </div>
+      <div><h5>Services</h5><a href="/hubspot-consulting/">HubSpot Consulting</a><a href="/salesforce-consulting/">Salesforce Consulting</a><a href="/gainsight-consulting/">Gainsight Consulting</a><a href="/crm-consulting/">CRM Consulting</a><a href="/revops-consulting/">RevOps Consulting</a><a href="/#services">All services</a><a href="/#tools">Tools we work with</a></div>
+      <div><h5>Company</h5><a href="/#how-we-work">How we work</a><a href="/#fix">What we fix</a><a href="/about/">About</a><a href="/#pricing">Pricing</a><a href="/#faq">FAQ</a><a href="/insights/">Insights</a><a href="/resources/hubspot-audit-checklist/">Free HubSpot audit checklist</a><a href="/resources/salesforce-health-check/">Free Salesforce health check</a><a href="/contact.html">Contact</a></div>
+      <div><h5>Get in touch</h5><a href="mailto:hello@afaao.com">hello@afaao.com</a><a href="https://www.linkedin.com/company/afaao/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.google.com/maps?cid=9788339617219025915" target="_blank" rel="noopener">Google Business Profile</a><a href="https://clutch.co/profile/afaao" target="_blank" rel="noopener">Clutch</a><a href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free audit</a></div>
+    </div>
+    <div class="foot-bottom"><span>&copy; 2026 Afaao. Toronto, working with B2B teams worldwide.</span><a href="/privacy.html">Privacy Policy</a></div>
+  </div>
+</footer>
+<div class="m-cta" id="m-cta" aria-hidden="true"><a class="btn btn-primary" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener" tabindex="-1">Book a free 30 minute audit</a></div>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie notice" hidden>
+  <p>We use cookies to see how people use our site and which companies visit, so we can make it more useful. <a href="/privacy.html">Privacy Policy</a></p>
+  <div class="acts"><button type="button" id="consent-decline">Decline</button><button type="button" id="consent-accept" class="accept">Accept</button></div>
+</div>
+<script src="/assets/site.js?v=20261124" defer></script>
+</body>
+</html>

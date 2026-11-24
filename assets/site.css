@@ -654,3 +654,8 @@ td.flash{animation:flash .6s ease}
 .topic-head a svg{width:16px;height:16px}
 #guides .ck-promo{max-width:none}
 .ck-promo .art-tag{justify-self:start}
+
+/* ---------- v13: two resource promos ---------- */
+.ck-promos{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0 0 22px}
+.ck-promos .ck-promo{margin:0;align-content:start}
+@media (max-width:760px){.ck-promos{grid-template-columns:1fr}}

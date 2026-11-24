@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Salesforce Lead Assignment Rules: Setup and Fixes | Afaao</title>
+<meta name="description" content="How Salesforce lead assignment rules work, how rule entry order decides the owner, why leads skip assignment, and how to add round robin and fallbacks." />
+<link rel="canonical" href="https://afaao.com/insights/salesforce-lead-assignment-rules/" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta name="theme-color" content="#1c3a28" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Afaao" />
+<meta property="og:url" content="https://afaao.com/insights/salesforce-lead-assignment-rules/" />
+<meta property="og:title" content="Salesforce lead assignment rules: how they work and how to fix them" />
+<meta property="og:description" content="How Salesforce lead assignment rules work, how rule entry order decides the owner, why leads skip assignment, and how to add round robin and fallbacks." />
+<meta property="og:image" content="https://afaao.com/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Afaao: RevOps, Marketing Ops and CS Ops for growing B2B teams" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://afaao.com/og-image.png" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GEZJ87GL90"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+var AFAAO_CONSENT=(function(){try{return localStorage.getItem('afaao_consent');}catch(e){return null;}})();
+var AFAAO_STRICT=/^Europe\//.test((Intl.DateTimeFormat().resolvedOptions().timeZone)||'');
+var AFAAO_GRANTED=AFAAO_CONSENT==='granted'||(!AFAAO_CONSENT&&!AFAAO_STRICT);
+gtag('consent','default',{analytics_storage:AFAAO_GRANTED?'granted':'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
+var AFAAO_APOLLO_LOADED=false;
+function initApollo(){if(AFAAO_APOLLO_LOADED)return;AFAAO_APOLLO_LOADED=true;var n=Math.random().toString(36).substring(7),o=document.createElement("script");o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,o.onload=function(){window.trackingFunctions.onLoad({appId:"6ab45d322527f000206af2ee"})},document.head.appendChild(o)}
+if(AFAAO_GRANTED)initApollo();
+gtag('js',new Date());gtag('config','G-GEZJ87GL90');
+document.documentElement.className+=' js';
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap&text=Afao" />
+<link rel="stylesheet" href="/assets/site.css?v=20261124" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Salesforce lead assignment rules: how they work and how to fix them", "description": "How Salesforce lead assignment rules work, how rule entry order decides the owner, why leads skip assignment, and how to add round robin and fallbacks.", "datePublished": "2026-11-24", "dateModified": "2026-11-24", "author": {"@id": "https://afaao.com/#org", "@type": "Organization", "name": "Afaao", "url": "https://afaao.com/"}, "publisher": {"@id": "https://afaao.com/#org", "@type": "Organization", "name": "Afaao", "logo": {"@type": "ImageObject", "url": "https://afaao.com/logo.svg"}}, "image": "https://afaao.com/og-image.png", "mainEntityOfPage": "https://afaao.com/insights/salesforce-lead-assignment-rules/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can Salesforce have more than one active lead assignment rule?", "acceptedAnswer": {"@type": "Answer", "text": "No. You can create several lead assignment rules but only one can be active at a time. Use rule entries inside that rule to handle different cases."}}, {"@type": "Question", "name": "Why are my Salesforce leads not being assigned?", "acceptedAnswer": {"@type": "Answer", "text": "The most common causes are an integration or import that does not use the active assignment rule, a rule entry order that sends leads to the wrong place, or no catch all entry at the end."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://afaao.com/"}, {"@type": "ListItem", "position": 2, "name": "Salesforce Consulting", "item": "https://afaao.com/salesforce-consulting/"}, {"@type": "ListItem", "position": 3, "name": "Salesforce lead assignment rules: how they work and how to fix them", "item": "https://afaao.com/insights/salesforce-lead-assignment-rules/"}]}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="container nav">
+    <a class="logo" href="/" aria-label="Afaao home"><span>Afaao</span><i></i></a>
+    <nav class="nav-links" aria-label="Main">
+      <div class="dd">
+        <button type="button" aria-expanded="false" aria-haspopup="true">Services <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="dd-menu"><a href="/hubspot-consulting/"><strong>HubSpot Consulting</strong><small>Portal cleanup, lifecycle stages, workflows, lead routing and reporting.</small></a><a href="/salesforce-consulting/"><strong>Salesforce Consulting</strong><small>Org cleanup, Flow automation, lead to account matching, Pardot and HubSpot sync.</small></a><a href="/gainsight-consulting/"><strong>Gainsight Consulting</strong><small>Health scores, CTAs and playbooks, CRM sync and ongoing admin support.</small></a><a href="/crm-consulting/"><strong>CRM Consulting</strong><small>CRM setup, cleanup, migration and audits across HubSpot, Salesforce and more.</small></a><a href="/revops-consulting/"><strong>RevOps Consulting</strong><small>Outsourced revenue and marketing operations: funnel rules, routing, data and reporting.</small></a><hr /><a href="/#services"><strong>All services</strong><small>Marketing Ops, Sales Ops, CS Ops, data, integrations and reporting</small></a></div>
+      </div>
+      <a href="/#fix">What we fix</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/insights/">Insights</a>
+      <a href="/about/">About</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free audit</a>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-panel"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-panel" id="mobile-panel">
+  <a href="/#services">Services</a>
+  <div class="sub"><a href="/hubspot-consulting/">HubSpot Consulting</a><a href="/salesforce-consulting/">Salesforce Consulting</a><a href="/gainsight-consulting/">Gainsight Consulting</a><a href="/crm-consulting/">CRM Consulting</a><a href="/revops-consulting/">RevOps Consulting</a></div>
+  <a href="/#fix">What we fix</a>
+  <a href="/#tools">Tools</a>
+  <a href="/#how-we-work">How we work</a>
+  <a href="/#pricing">Pricing</a>
+  <a href="/#faq">FAQ</a>
+  <a href="/insights/">Insights</a>
+  <a href="/about/">About</a>
+  <a href="/contact.html">Contact</a>
+  <a class="btn btn-primary" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free 30 minute audit</a>
+</div>
+<main id="main">
+<article>
+<section class="page-hero art-hero"><div class="container prose-wrap">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/salesforce-consulting/">Salesforce</a> / Guide</nav>
+  <div class="eyebrow">Salesforce</div>
+  <h1>Salesforce lead assignment rules: how they work and how to fix them</h1>
+  <p class="art-byline">By the Afaao team &middot; November 24, 2026 &middot; 6 min read</p>
+  <p class="lead">When a new lead lands in Salesforce with the wrong owner, or sits with the integration user, the cause is almost always the lead assignment rule. The feature is simple, but a few details about order, triggers and integrations trip up most teams.</p>
+</div></section>
+<section class="section-sm" style="padding-top:8px"><div class="container prose-wrap"><p class="art-topic">Part of our <a href="/salesforce-consulting/">Salesforce consulting</a> guides.</p><div class="art-answer"><strong>Short answer</strong><p>Salesforce lead assignment rules decide who owns a new lead. You can have one active lead assignment rule, made of rule entries that Salesforce checks in order; the first entry whose criteria match assigns the lead to a user or a queue. Rules run on web to lead, imports and manual creation when the assignment checkbox is used, and on API inserts only when the integration asks for them.</p></div><div class="prose"><h2>How lead assignment rules work</h2><ul><li>You can create several lead assignment rules, but only one can be active at a time.</li><li>The active rule contains rule entries. Salesforce checks them in order, from the lowest number up.</li><li>The first entry whose criteria match wins. Later entries are not checked.</li><li>Each entry assigns the lead to a user or a queue, and can send an email notification using a template you choose.</li></ul><p>Because order matters, a broad entry near the top can quietly swallow leads that a more specific entry further down was meant to catch. Put the most specific entries first and the broadest last.</p><h2>When the rule actually runs</h2><ul><li>Web to lead forms and lead imports, when you choose to use the active assignment rule.</li><li>Leads created or edited by hand, when the Assign using active assignment rule checkbox is selected.</li><li>Leads created through the API or an integration, only when the integration requests the assignment rule. If it does not, the lead stays with whoever created it, often an integration user.</li></ul><p>That last point explains most mysteries. If leads from a marketing tool or form connector all land on one integration user, check whether that tool is set to use assignment rules. For HubSpot users, the same logic sits in the integration settings, and our guide to <a href="/insights/hubspot-salesforce-sync-errors/">fixing HubSpot and Salesforce sync issues</a> covers the related errors.</p><h2>Round robin and fair distribution</h2><p>Assignment rules do not rotate leads between reps on their own. A common native approach is to add an auto number field to leads, a formula field that uses MOD on that number to produce a value such as 1, 2 or 3, and one rule entry per value assigned to each rep. It works, but it does not know who is on holiday. Teams that need weighting, capacity or account matching usually add Flow logic or a routing tool.</p><aside class="art-help"><strong>Want this fixed without the trial and error?</strong><p>This is exactly the kind of work we do. Book a free 30 minute audit and we will tell you what we would fix first.</p><a class="btn btn-primary" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free audit <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a> <a class="btn btn-ghost" href="/salesforce-consulting/">Salesforce consulting</a></aside><h2>Match leads to existing accounts first</h2><p>A new lead from a company you already sell to should go to the account owner, not into the general rotation. Salesforce lead assignment rules do not match leads to accounts out of the box, so teams use Flow, duplicate and matching rules, or a dedicated routing tool. The idea is the same as in HubSpot, see <a href="/insights/hubspot-lead-to-account-matching/">lead to account matching in HubSpot</a>.</p><h2>Always have a fallback</h2><p>Add a final rule entry with no criteria, or criteria that catch everything, that assigns to a queue a named person watches every day. A lead in a watched queue is always better than a lead sitting with an integration user.</p><h2>A quick checklist</h2><ol><li>Only the intended rule is active, and its entries are in the right order.</li><li>Specific entries sit above broad ones, and a catch all entry is last.</li><li>Every integration that creates leads is set to use the assignment rule.</li><li>Inactive users and old queues are removed from entries.</li><li>Existing account leads go to the account owner first.</li><li>A daily view shows leads owned by integration users or sitting in queues too long.</li></ol><p>Lead routing is one of the most common fixes in our <a href="/salesforce-consulting/">Salesforce consulting</a> work. For a wider check of your org, use the free <a href="/resources/salesforce-health-check/">Salesforce health check</a>.</p></div></div></section>
+</article>
+<section class="section-sm band"><div class="container">
+  <div class="section-head center reveal"><div class="eyebrow">FAQ</div><h2>Quick answers</h2></div>
+  <div class="faq"><details><summary>Can Salesforce have more than one active lead assignment rule?</summary><p>No. You can create several lead assignment rules but only one can be active at a time. Use rule entries inside that rule to handle different cases.</p></details><details><summary>Why are my Salesforce leads not being assigned?</summary><p>The most common causes are an integration or import that does not use the active assignment rule, a rule entry order that sends leads to the wrong place, or no catch all entry at the end.</p></details></div>
+</div></section>
+<section class="section-sm"><div class="container">
+  <div class="cta-band reveal">
+    <div><h2>Not sure what&#x27;s broken?</h2><p>Free 30 minute audit. We&#x27;ll tell you what we&#x27;d fix first.</p></div>
+    <div class="actions">
+      <a class="btn btn-gold" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free audit</a>
+      <a class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.35)" href="/contact.html">Send a message</a>
+    </div>
+  </div>
+</div></section>
+<section class="section-sm" style="padding-top:0"><div class="container"><div class="section-head center reveal"><h2>More Salesforce guides</h2><p><a href="/salesforce-consulting/">See our Salesforce consulting page</a> or <a href="/insights/">all insights</a>.</p></div><div class="art-grid"><a class="art-card reveal" href="/insights/hubspot-salesforce-sync-errors/"><span class="art-tag">Salesforce + HubSpot</span><h3>How to fix HubSpot and Salesforce integration and sync issues</h3><p>Picklists, validation rules, duplicates and permissions. A plain guide to the most common HubSpot and Salesforce sync errors and how to fix them.</p><span class="art-meta">7 min read <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="art-card reveal" href="/insights/lead-routing-guide/"><span class="art-tag">RevOps</span><h3>Lead routing: a practical guide for HubSpot and Salesforce teams</h3><p>A practical lead routing guide: account matching, territories, round robin, fallbacks and speed to lead, with how it works in HubSpot and Salesforce.</p><span class="art-meta">7 min read <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="art-card reveal" href="/insights/hubspot-vs-salesforce/"><span class="art-tag">CRM</span><h3>HubSpot vs Salesforce for small B2B teams: how to choose</h3><p>HubSpot or Salesforce for a small B2B team? An honest comparison of setup, admin effort, reporting, flexibility and when it makes sense to run both.</p><span class="art-meta">7 min read <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="art-card reveal" href="/insights/hire-revops-or-outsource/"><span class="art-tag">RevOps</span><h3>Should you hire a RevOps person or outsource it?</h3><p>In house RevOps hire, a freelancer, or an outsourced RevOps partner. What each option is good at, where it falls short, and how a small B2B team should choose.</p><span class="art-meta">5 min read <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="art-card reveal" href="/insights/mql-vs-sql/"><span class="art-tag">RevOps</span><h3>MQL vs SQL: what the difference is and how to set the rules</h3><p>What an MQL and an SQL are, how they differ, example criteria for B2B teams, and how to build the handoff in your CRM so sales and marketing stop arguing.</p><span class="art-meta">6 min read <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="art-card reveal" href="/insights/what-is-revops/"><span class="art-tag">RevOps</span><h3>What is RevOps? Revenue operations explained for growing B2B teams</h3><p>What revenue operations is, what a RevOps team actually does, how it differs from sales ops and marketing ops, and when a growing B2B company needs it.</p><span class="art-meta">6 min read <svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></div></section>
+</main><footer class="site-footer">
+  <div class="container">
+    <div class="foot">
+      <div>
+        <a class="logo" href="/" aria-label="Afaao home"><span>Afaao</span><i></i></a>
+        <p style="margin-top:14px">RevOps, Marketing Ops and CS Ops for growing B2B teams, without the cost of full time ops hires.</p>
+      </div>
+      <div><h5>Services</h5><a href="/hubspot-consulting/">HubSpot Consulting</a><a href="/salesforce-consulting/">Salesforce Consulting</a><a href="/gainsight-consulting/">Gainsight Consulting</a><a href="/crm-consulting/">CRM Consulting</a><a href="/revops-consulting/">RevOps Consulting</a><a href="/#services">All services</a><a href="/#tools">Tools we work with</a></div>
+      <div><h5>Company</h5><a href="/#how-we-work">How we work</a><a href="/#fix">What we fix</a><a href="/about/">About</a><a href="/#pricing">Pricing</a><a href="/#faq">FAQ</a><a href="/insights/">Insights</a><a href="/resources/hubspot-audit-checklist/">Free HubSpot audit checklist</a><a href="/resources/salesforce-health-check/">Free Salesforce health check</a><a href="/contact.html">Contact</a></div>
+      <div><h5>Get in touch</h5><a href="mailto:hello@afaao.com">hello@afaao.com</a><a href="https://www.linkedin.com/company/afaao/" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.google.com/maps?cid=9788339617219025915" target="_blank" rel="noopener">Google Business Profile</a><a href="https://clutch.co/profile/afaao" target="_blank" rel="noopener">Clutch</a><a href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener">Book a free audit</a></div>
+    </div>
+    <div class="foot-bottom"><span>&copy; 2026 Afaao. Toronto, working with B2B teams worldwide.</span><a href="/privacy.html">Privacy Policy</a></div>
+  </div>
+</footer>
+<div class="m-cta" id="m-cta" aria-hidden="true"><a class="btn btn-primary" href="https://calendly.com/harsh1610yadav/afaao-intro-call-30-min" target="_blank" rel="noopener" tabindex="-1">Book a free 30 minute audit</a></div>
+<div id="consent-banner" class="consent-banner" role="region" aria-label="Cookie notice" hidden>
+  <p>We use cookies to see how people use our site and which companies visit, so we can make it more useful. <a href="/privacy.html">Privacy Policy</a></p>
+  <div class="acts"><button type="button" id="consent-decline">Decline</button><button type="button" id="consent-accept" class="accept">Accept</button></div>
+</div>
+<script src="/assets/site.js?v=20261124" defer></script>
+</body>
+</html>

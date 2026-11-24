@@ -31,9 +31,14 @@ Core platforms: Salesforce, HubSpot and Gainsight. We also work across Marketo, 
 - [HubSpot vs Salesforce for small B2B teams: how to choose](https://afaao.com/insights/hubspot-vs-salesforce/): HubSpot or Salesforce for a small B2B team? An honest comparison of setup, admin effort, reporting, flexibility and when it makes sense to run both.
 - [MQL vs SQL: what the difference is and how to set the rules](https://afaao.com/insights/mql-vs-sql/): What an MQL and an SQL are, how they differ, example criteria for B2B teams, and how to build the handoff in your CRM so sales and marketing stop arguing.
 - [HubSpot lifecycle stages: how to set them up properly](https://afaao.com/insights/hubspot-lifecycle-stages/): How HubSpot lifecycle stages work, what each default stage should mean for a B2B team, how to automate them and the mistakes that break reporting.
+- [What is RevOps? Revenue operations explained for growing B2B teams](https://afaao.com/insights/what-is-revops/): What revenue operations is, what a RevOps team actually does, how it differs from sales ops and marketing ops, and when a growing B2B company needs it.
+- [Salesforce lead assignment rules: how they work and how to fix them](https://afaao.com/insights/salesforce-lead-assignment-rules/): How Salesforce lead assignment rules work, how rule entry order decides the owner, why leads skip assignment, and how to add round robin and fallbacks.
+- [HubSpot lead scoring: how to set it up so sales trusts it](https://afaao.com/insights/hubspot-lead-scoring/): How to set up HubSpot lead scoring with fit and engagement scores, pick thresholds, avoid the common mistakes and connect the score to MQLs and routing.
+- [Lead routing: a practical guide for HubSpot and Salesforce teams](https://afaao.com/insights/lead-routing-guide/): A practical lead routing guide: account matching, territories, round robin, fallbacks and speed to lead, with how it works in HubSpot and Salesforce.
 
 ## Company
 - [Home](https://afaao.com/): What we fix, how we work, free stack health check and cost calculator
+- [Free Salesforce health check](https://afaao.com/resources/salesforce-health-check/): printable checklist across data, routing, pipeline, automation, integrations, security and reporting
 - [Free HubSpot audit checklist](https://afaao.com/resources/hubspot-audit-checklist/): printable checklist across data, lifecycle, routing, pipelines, automation, integrations, reporting and governance
 - [About](https://afaao.com/about/): Who we are, how we work and who we are a fit for
 - [Contact](https://afaao.com/contact.html): Email hello@afaao.com or book a free 30 minute audit call at https://calendly.com/harsh1610yadav/afaao-intro-call-30-min
